@@ -1,0 +1,16 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+}
+html {
+    background-color: aliceblue;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    background-color: black;
+}
