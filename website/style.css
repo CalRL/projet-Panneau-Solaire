@@ -5,7 +5,7 @@
     margin: 0;
 }
 html {
-    background: linear-gradient(90deg, rgb(255, 253, 223) 0%, rgb(255, 255, 255) 50%, rgb(255, 197, 252) 100%);
+    background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(209, 250, 255) 50%, rgb(183, 182, 250) 100%);
 }
 body {
     display: flex;
@@ -26,8 +26,50 @@ body {
 }
 .titre {
     margin-top: 0px;
-    width: 20vh;
+    width: 30vh;
     border-bottom: 1px black solid;
     position: relative;
     margin-inline: auto;
+}
+.navig {
+    height: 8vh;
+    background-color: rgb(64, 167, 167);
+    position: relative;
+    display: block;
+}
+ul {
+    width: 80%;
+    position: fixed;
+}
+li {
+    display: block;
+    float: left;
+    list-style-type: none;
+    list-style: none;
+    font-size: 50%;
+    border-right: 1px black solid;
+    border-left: 1px black solid;
+    text-align: center;
+    padding: 3vh 7vh;
+    color: black;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.alaune {
+    background-color: rgb(3, 177, 177);
+    height: 50vh;
+    width: 143.1vh;
+    margin-top: 8vh;
+    border-radius: 5vh;
+    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+}
+.autre {
+    background-color: rgb(3, 177, 177);
+    height: 50vh;
+    width: 143.1vh;
+    margin-top: 10vh;
+    border-radius: 5vh;
+    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }
