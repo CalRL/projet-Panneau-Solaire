@@ -10,15 +10,21 @@ var height = 486
 var sunpos = SunCalc.getPosition(new Date, lat, lng)
 console.log(sunpos)
 
-var rndmAltitude = sunpos.altitude 
-var rndmAzimuth = sunpos.azimuth // *180/Math.PI;
-console.log(rndmAzimuth, rndmAltitude)
-var aziRadToDeg = 1*rndmAzimuth*180/Math.pi
-var altRadToDeg = 1*rndmAltitude*180/Math.pi
+//var rndmAltitude = sunpos.altitude 
+//var rndmAzimuth = sunpos.azimuth // *180/Math.PI;
+console.log(sunpos.azimuth, sunpos.altitude)
+var aziRadToDeg = 1*sunpos.azimuth*180/Math.pi
+var altRadToDeg = 1*sunpos.altitude *180/Math.pi
 console.log(altRadToDeg, aziRadToDeg)
 
 var times = SunCalc.getTimes(new Date(), lat, lng, height);
 console.log(times)
+var sunrise = SunCalc.getPosition(times.sunrise, lat, lng)
+var sunset = SunCalc.getPosition(times.sunset, lat, lng)
+var futureDate = new Date('April 14, 17:00:00')
+var futureTimes = SunCalc.getPosition(new Date(), lat, lng, height)
+console.log(sunrise, sunset)
+console.log(futureTimes)
 //console.log(object.azimuth)
 //console.log(object.altitude)
 // url builder
