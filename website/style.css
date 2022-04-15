@@ -32,14 +32,18 @@ body {
     margin-inline: auto;
 }
 .navig {
-    height: 8vh;
+    height: 6vh;
     background-color: rgb(64, 167, 167);
     position: relative;
     display: block;
 }
 ul {
-    width: 80%;
+    width: 100%;
     position: fixed;
+    height: 6vh;
+    background-color: rgb(64, 167, 167);
+    position: relative;
+    display: block;
 }
 li {
     display: block;
@@ -50,7 +54,7 @@ li {
     border-right: 1px black solid;
     border-left: 1px black solid;
     text-align: center;
-    padding: 3vh 7vh;
+    padding: 1.9vh 4vh;
     color: black;
 }
 a {
