@@ -1,0 +1,30 @@
+cablage: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aranacorp.com%2Ffr%2Fpilotez-un-moteur-pas-a-pas-avec-arduino%2F&psig=AOvVaw2N8_oR9msJa8OMUETx-yfY&ust=1650113733361000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCKDimumOlvcCFQAAAAAdAAAAABAJ
+
+
+moteur step 28bj-48 5v dc
+
+code : 
+
+#include <Stepper.h> 
+double stepsPerRevolution = 2048;
+Stepper myStepper(stepsPerRevolution, 8, 10, 9, 11);  // Pin inversion to make the library work
+void setup() { 
+ myStepper.setSpeed(10);  
+ Serial.begin(9600); 
+ } 
+ 
+ void loop() {  
+   // 1 rotation counterclockwise:  
+   Serial.println("counterclockwise");    
+   myStepper.step(stepsPerRevolution);  
+   delay(1000); 
+    
+  // 1 rotation clockwise: 
+  Serial.println("clockwise");  
+  myStepper.step(-stepsPerRevolution); 
+  delay(1000); 
+}
+
+
+
+moteur probablement ^pas 	assez puissant
