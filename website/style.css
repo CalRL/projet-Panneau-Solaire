@@ -57,13 +57,12 @@ a {
     text-decoration: none;
     color: white;
 }
-.alaune {
-    background-color: rgb(3, 177, 177);
-    height: 50vh;
-    width: 143.1vh;
-    margin-top: 8vh;
-    border-radius: 5vh;
-    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+.titr {
+    margin-top: 0px;
+    width: 70vh;
+    color: black;
+    border-bottom: 1px black solid;
+    position: relative;
 }
 .autre {
     background-color: rgb(3, 177, 177);
