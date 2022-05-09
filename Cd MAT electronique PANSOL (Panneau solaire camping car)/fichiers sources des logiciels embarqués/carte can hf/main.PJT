@@ -1,0 +1,67 @@
+[PROJECT]
+Target=main.HEX
+Development_Mode=
+Processor=0x876A
+ToolSuite=CCS
+
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\dr
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=main.c;
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+
+[main.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=main.c
+
+[Windows]
+0=0000 main.c 0 0 796 451 3 0
+
+[debugperif]
+selected=Analog/Digital Conv
+[debugram]
+autoread=1
+[debugeedata]
+autoread=1
+[debugbreak]
+count=0
+[pcwdebug]
+watchcol0=75
+[debugwatch]
+count=1
+e1=buf_ser
+e2=buffer
+e3=s
+e4=val
+e5=data[i]
+e6=data
+e7=*data
+e8=j
+e9=lum_sens
+e10=moyenne
+e11=somme
+e12=m_est
+e13=m_ouest
+e14=m_nord
+e15=m_sud
+[debugexpr]
+expr=code
+sideeffects=0
+[Opened Files]
+1=C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte can hf\main.c
+2=C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source pic njc\carte can hf\main.c
+3=C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source pic njc\carte can hf\can.c
+4=

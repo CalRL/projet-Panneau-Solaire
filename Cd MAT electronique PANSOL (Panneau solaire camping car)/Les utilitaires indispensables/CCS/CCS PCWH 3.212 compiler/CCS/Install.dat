@@ -1,0 +1,9 @@
+>PCWH C compiler and IDE
+-Serial In Circuit Debugger (ICD-S40)
+-USB In Circuit Debugger (ICD-U40)
+!SetupPCW.exe,,COMPILER
+?CDDate
+*CHECK
+>CCS PDF files (manual, tutorial...)
++Data Sheets\*.*
+*CHECK

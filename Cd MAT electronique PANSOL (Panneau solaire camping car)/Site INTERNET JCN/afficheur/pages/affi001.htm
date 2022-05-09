@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>L'afficheur MAT : diaporama</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="Microsoft FrontPage 6.0" name=GENERATOR>
+
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<SCRIPT language=JavaScript>
+// Le site de njc
+// lycée la briquerie 15 route de la briquerie 57100 thionville
+<!-- Beginning of JavaScript Applet -------------------
+function scrollit_r2l(seed)
+{
+	var msg="Bienvenue dans la page web de Niedercorn Jean-Claude !!!     j-c.niedercorn@ac-nancy-metz.fr "//Changer ici le texte
+	var out = " ";
+	var c   = 1;
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit_r2l(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+		}
+	}
+}
+function stop() {
+clearTimeout(timerTwo)
+}
+// -- End of JavaScript code -------------- -->
+
+</SCRIPT>
+<!-- Fonction Onload ! -->
+<meta name="Microsoft Border" content="none">
+</HEAD>
+<BODY leftMargin=50 background="../../images/fspiral.gif" onload=scrollit_r2l(100)>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="10%"><a name="0" href="../accueil.htm">
+    <IMG alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></TD>
+    <TD align=middle width="51%"><font size="5" color="#FF0000">
+    <img border="0" src="../../images/project.gif" width="32" height="32"> </font><font size="5" color="#0000FF">
+    L'afficheur MAT : diaporama</font></TD>
+    <TD align=middle width="21%"><a href="../accueil.htm">
+    <IMG alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></TD></TR></TBODY></TABLE>
+<P align=center>
+<IMG alt="lignrougfin.gif (950 octets)" 
+src="../../images/lignrfin.gif" width="530" height="4"></P>
+<p align="left">On propose ici une présentation du système au format Power Point 
+à télécharger.</p>
+<p align="left">
+<img border="0" src="../../images/doigtp.gif" width="33" height="14">
+    <a href="../fichiers/systeme.ppt">Présentation Power point</a></p>
+
+</BODY></HTML>
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

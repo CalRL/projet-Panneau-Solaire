@@ -1,0 +1,429 @@
+<html>
+<head>
+<title>Présentation du bus CAN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ li.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Sylfaen;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF"> Présentation du bus CAN.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<div class=Section1> 
+
+<div class=Section1>
+
+<p class=MsoNormal><b><i><span style='font-size:18.0pt;font-family:"Times New Roman"'>Description
+:</span></i></b><span style='font-family:"Times New Roman"'> </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Le bus CAN
+(Controller Area Network) est né du besoin de trouver une solution de
+communication série dans les véhicules automobiles, qui ont tendance à intégrer
+de plus en plus de commandes électroniques. Jusqu'à maintenant, tous les
+organes de commandes des véhicules échangeaient les données par l'intermédiaire
+de lignes dédiées. L'augmentation du nombre d'organe embarqué a contraint les
+équipementiers automobiles a développer une nouvelle architecture à base de bus
+réseaux. Le GIE Renault-PSA avec les partenaires comme Sagem, Valeo et autres
+ont développé le bus VAN (Vehicule Area Network), les puces contrôleurs sont
+fabriquées par MHS, SGS, TI .... En Allemangne, Bosch a développé, au milieu
+des années 80, le bus CAN ou &quot;Controller Area Network&quot; qui a fait
+l'objet d'une normalisation Iso 11898. </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Avec le bus CAN,
+les stations ayant les mêmes droits (organes de commande, capteurs ou
+actionneurs) sont reliées par un bus série. Le protocole CAN de base leur
+permet d'échanger 2048 variables. Ce protocole, ainsi que les paramètres
+électriques de la ligne de transmission, sont fixés par la norme 11898. La
+transmission physique s'effectue soit une paire torsadée ou par liaison
+infrarouge, hertzienne ou par fibre optique. </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Times New Roman"'><img width=454 height=242
+src="../images/image039.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>A la différence
+du faisceau de câbles, le réseau détecte et corrige, grâce à son protocole, les
+erreurs de transmissions induites par les radiations électromagnétiques.
+L'organisation en réseau apporte aussi une configurabilité aisée du système et
+la possibilité d'établir un diagnostic central. Elle permet à chaque station de
+communiquer avec les autres sans charger le calculateur des organes de
+commande. </span></p>
+
+<p class=MsoNormal><b><i><span style='font-size:18.0pt;font-family:"Times New Roman"'>Principe
+de fonctionnement :</span></i></b><span style='font-family:"Times New Roman"'> </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Du type multi
+maître, orienté messages courts, le bus CAN est bien adapté à la scrutation de
+variables émises par des stations déportées. La norme Iso 11898 spécifie un
+débit maximum de 1 Mbit/s. La longueur maximum du bus est déterminée par la
+charge capacitive et le débit. Les configurations recommandées sont les
+suivantes : <br>
+&nbsp; </span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellpadding=0 width=300 style='width:225.0pt' id="table1">
+ <tr>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:"Times New Roman"'>Débit</span></b><span style='font-family:
+  "Times New Roman"'>&nbsp;</span></p>
+  </td>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-family:"Times New Roman"'>Longueur</span></b><span
+  style='font-family:"Times New Roman"'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>1 Mbit/s&nbsp;</span></p>
+  </td>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>40 m&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>500 Kbit/s&nbsp;</span></p>
+  </td>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>100 m&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>100 Kbit/s&nbsp;</span></p>
+  </td>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>500 m&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>20 Kbit/s&nbsp;</span></p>
+  </td>
+  <td valign=bottom style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"Times New Roman"'>1000 m&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Le protocole est
+basé sur le principe de diffusion générale : lors de transmission, aucune station
+n'est adressée en particulier, mais le contenu de chaque message est explicité
+par une identification reçu de façon univoque par tous les abonnés. Grâce à cet
+identificateur, les stations, qui sont en permanence à l'écoute du réseau,
+reconnaissent et traitent les messages qui les concernent; elles ignorent
+simplement les autres. </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>L'identificateur
+indique aussi la priorité du message, qui détermine l'assignation du bus
+lorsque plusieurs stations émettrices sont en concurrences. En version de base,
+c'est un nombre de 11 bits, ce qui permet de définir jusqu'à 2048 messages plus
+ou moins prioritaires sur le réseau. Chaque message peut contenir jusqu'à 8
+octets de données, ce qui correspond par exemple à l'état de 64 capteurs.
+L'adressage par le contenu assure une grande flexibilité de configuration. Il
+est possible d'ajouter des stations réceptrices à un réseau CAN sans modifier
+la configuration des autres stations. </span></p>
+
+<p class=MsoNormal><b><i><span style='font-size:18.0pt;font-family:"Times New Roman"'>Principe
+de l'arbitrage :</span></i></b><span style='font-family:"Times New Roman"'> </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Afin d'être
+traitées en temps réel, les données doivent être transmises rapidement. Cela
+suppose non seulement une voie physique de transmission atteignant jusqu'à 1
+Mbit/s ; mais encore exige une assignation rapide du bus dans les cas de
+conflits, lorsque plusieurs stations souhaitent transmettre simultanément des messages.
+</span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>L'urgence des
+informations échangées sur le bus peut être très diverse : une valeur variant
+rapidement, comme l'état d'un capteur ou l'asservissement d'un moteur, doit
+être transmis plus souvent avec un retard moindre que d'autres valeurs comme la
+température du moteur, qui évolue lentement. Sur le réseau CAN,
+l'identificateur de chaque message, qui est un mot de 11 bits (format standard)
+ou 29 bits (format étendu), détermine sa priorité. Les priorités sont
+attribuées lors de l'analyse conceptuelle du réseau, au moyen de valeur
+binaire, et ne peuvent donner lieu à aucune modification dynamique. </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Le procédé
+d&#8217;attribution du bus est basé sur le principe de l'&quot;arbitrage bit à
+bit&quot;, selon lequel les noeuds en compétition, émettant simultanément sur
+le bus, comparent bit à bit l'identificateur de leur message avec celui des
+messages concurrents. Les stations de priorité moins élevées perdront la
+compétition face à celle qui a la priorité la plus élevée. </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=360
+height=240 src="../images/image040.jpg"></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Les stations
+sont câblées sur le bus par le principe du &quot;OU câblé&quot;, en cas de
+conflit c'est à dire émission simultanée, la valeur 0 écrase la valeur 1. On
+appel donc l'&quot;état dominant&quot; l'état logique 0, et l'&quot;état
+récessif&quot; l'état logique 1. Lors de l'arbitrage bit à bit, dès qu'une
+station émettrice se trouve en état récessif et détecte un état dominant, elle
+perd la compétition et arrête d'émettre. Tous les perdants deviennent
+automatiquement des récepteurs du message, et ne tentent à nouveau d'émettre
+que lorsque le bus se libère. </span></p>
+
+<p class=MsoNormal><b><i><span style='font-size:18.0pt;font-family:"Times New Roman"'>Formats
+de trames de messages :</span></i></b><span style='font-family:"Times New Roman"'>
+</span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>La norme CAN
+définit deux format de protocole : Standart (Version2.0 A) et Extended
+(Version2.0 B). La différence résulte seulement dans la longueur de
+l'identificateur (ID) qui est de 11 bits de base et 18 bits supplémentaires en
+mode Extended. Cette extension permet l'augmentation du nombre de variables
+échangées, et le nombre de stations sur le réseau. Le nombre d'octets de
+données échangées à chaque trame reste inchangé. </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Times New Roman"'><img width=612 height=327
+src="../images/image041.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Une trame est
+composée des champs suivants : </span></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span lang=EN-GB
+     style='font-family:"Times New Roman"'>bit SOF (Start Of Trame) </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>zone
+     d'arbitrage (11 bits) </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>bit
+     RTR (Remote Transmission Request) : détermine s'il s'agit d'une trame de
+     données ou d'une trame de demande de message. </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>bit
+     IDE qui établi la distinction entre format standard (état dominat) et
+     format étendu (état récessif) </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>1
+     bit réservé pour une utilisation future </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>4
+     bit DLC : nombre d'octets contenus dans la zone de données </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>zone
+     de données de longueur comprise entre 0 et 8 octets </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>zone
+     CRC de 15 bits :(Cyclic Redundancy Code) Ces bits sont recalculés à la
+     réception et comparés aux bits reçus. S'il y a une différence, une erreur
+     CRC est déclarée. </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>zone
+     ACK composé d'un bit à l'état récessif ainsi qu'un bit séparateur ACK. Le
+     premier bit doit être forcé à l&#8217;état dominant par les stations ayant bien
+     reçu cette trame. </span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>zone
+     EOF de 7 bits : (End Of Frame) permet d'identifier la fin de la trame.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Stuff
+     bit : au cours de la construction d'une trame, si 5 bits consécutifs
+     portent la même valeur 0 ou 1, un bit de valeur opposée est ajouté à la
+     suite des 5 bits consécutifs. </span></li>
+</ul>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Les contrôleurs
+CAN qui admettent le format étendu peuvent aussi émettre et recevoir des
+messages au format standard. En revanche, dès que l'on utilise sur le réseau
+des contrôleurs ne maîtrisant que le format standard, les messages étendus
+seront mal interprétés. </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Times New Roman"'><img width=533 height=823
+src="../images/image042.jpg"></span></p>
+
+<p class=MsoNormal><b><i><span style='font-size:18.0pt;font-family:"Times New Roman"'>Détection
+des erreurs :</span></i></b><span style='font-family:"Times New Roman"'> </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>La trame du
+protocole CAN intègre des mécanismes de détection d'erreurs. De plus, comme
+tous les noeuds de réseau surveillent simultanément le bus, ils détectent des
+différences entre bits reçus et bits émis. Dès qu'une erreur est détectée, la
+transmission en cours est interrompue par l'émission d'un indicateur d'erreur
+(&quot;error flag&quot;). L'émetteur peut donc recommencer à émettre son
+message. </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Tout ce système
+de gestion des erreurs est complètement transparent pour le développeur et
+l'utilisateur. Le système est capable de gérer automatiquement ses conflits et
+ses erreurs en émettant des trames d'erreurs pour renseigner l'émetteur du
+message sur le type de faute qu'il a commis. Une station est capable de faire
+la distinction entre les perturbations temporaires et les défauts permanents.
+Les stations en défaut permanent sont déconnectées automatiquement du réseau. </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Ce système de
+gestion d'erreur fait toute la puissance du réseau CAN, certains constructeurs
+démontrent que la probabilité d'erreur résiduelle reste inférieur 4,6 10<sup>-11</sup>.
+</span></p>
+
+<p class=MsoNormal>En bref&nbsp;:</p>
+
+<p class=MsoNormal>Pour réduire le câblage et ainsi augmenter la fiabilité des
+différentes fonctions électroniques d&#8217;un système on peut relier les fonctions
+par un réseau LAN particulier&nbsp;à topologie en bus.</p>
+
+<p class=MsoNormal>On utilise le bus CAN.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=512
+height=125 src="../images/image047.jpg"></p>
+
+<p class=MsoNormal>Chaque n&#339;ud est constitué de la façon suivante&nbsp;:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=365
+height=249 src="../images/image048.jpg"></p>
+
+<p class=MsoNormal>Le moteur de bus est chargé de l&#8217;accès au bus.</p>
+
+<p class=MsoNormal>Le contrôleur est chargé de la gestion du réseau CAN.</p>
+
+<p class=MsoNormal>Le microcontrôleur assure la gestion de la fonction
+électronique qui utilise l&#8217;accès au réseau CAN.</p>
+
+<h1>Les contrôleurs CAN.</h1>
+
+<p class=MsoNormal>Pour les contrôleurs CAN plusieurs produits existent sur le
+marché.</p>
+
+<h2>Le P82C150</h2>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Le P82C150 est
+un CAN Serial Linked I/O (SLIO), un n&#339;ud CAN sans intelligence.</span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Ce périphérique
+inclut un contrôleur CAN et 16 pins d&#8217;entrées/sorties. Ses 16 pins d&#8217;E/S sont
+individuellement configurables en mode analogique ou digital. Il est ainsi
+possible d&#8217;avoir jusqu&#8217;à 16 entrées digitales, avec la possibilité d&#8217;une
+transmission automatique d&#8217;un message au changement d&#8217;une des entrées. Le
+82C150 intègre un ADC sur 10 bits, qu&#8217;il est possible de multiplexer sur 6 entrées.
+L&#8217;oscillateur interne limite le débit entre 20kbits/s et 125kbits/s. </span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>L&#8217;absence d&#8217;intelligence
+du SLIO oblige à le mettre sur un bus où un n&#339;ud plus &#8221;intelligent&#8221;, typiquement
+un microcontrôleur sera capable de le configurer et de le commander.</span></p>
+
+<h2>Le SJA1000</h2>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Le SJA1000 est
+un contrôleur CAN ne nécessitent qu&#8217;un microcontrôleur externe. Il a été
+développé par Philips en 1997 comme un successeur (compatible) du 82C200.</span></p>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Caractéristiques&nbsp;:</span></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='color:blue;margin-bottom:6.0pt'><span
+     style='font-family:"Times New Roman";color:windowtext'>Buffer de réception
+     de 64 octets</span></li>
+ <li class=MsoNormal style='color:blue;margin-bottom:6.0pt'><span
+     style='font-family:"Times New Roman";color:windowtext'>Supporte le CAN
+     2.0A et 2.0B</span></li>
+ <li class=MsoNormal style='color:blue;margin-bottom:6.0pt'><span
+     style='font-family:"Times New Roman";color:windowtext'>Débit jusqu&#8217;a 1 Mbit/s</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Compteurs
+     d&#8217;erreur avec accès lecture/écriture</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Interruptions
+     pour chaque type d&#8217;erreur sur le bus</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Capture
+     de la dernière erreur disponible</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Détails
+     sur le bit d&#8217;ID ayant causé une perte d&#8217;arbitration</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Mode
+     &#8221;Listen Only&#8221; (aucune action sur le bus)</span></li>
+</ul>
+
+<h2>Les MCP 2510 ou 2515</h2>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Les MCP 2510 ou
+2515 sont des contrôleurs CAN autonomes développés par Microchip.</span></p>
+
+<h1>Les moteurs de bus.</h1>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Le protocole CAN
+ne spécifie pas la couche physique, c&#8217;est pourquoi la plupart des contrôleurs
+CAN ne possèdent pas de circuits permettant de les connecter à un bus, qu&#8217;il soit
+filaire, à fibre optique ou tout autre mode de transmission possible</span></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+     PCA82C250 (ou 82C251) est un transceiver qui permet de faire l&#8217;interface
+     entre le contrôleur CAN et le bus physique.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+     MCP2551 est un transceiver développé par Microchip afin de réaliser
+     l&#8217;interface entre le contrôleur CAN et le bus physique.</span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+circuit PCA82C251 est le circuit le plus utilisé. Si la longueur du bus est
+importante, il faut disposer à chaque extrémité du bus une résistance de 120
+ohms pour réaliser une adaptation d&#8217;impédance. Le 82C251 est prévu pour piloter
+jusqu&#8217;à 110 n&#339;uds et ce sur une longueur de 100 pieds à une vitesse maximale d&#8217;un Mbits/s (plus pour des vitesses plus faibles.</span></p>
+
+<h1>Les composants évolués.</h1>
+
+<p class=MsoNormal><span style='font-family:"Times New Roman"'>Devant la
+popularité du bus CAN, on trouve aujourd&#8217;hui des microcontrôleurs intégrant un
+contrôleur CAN comme par exemple le PIC 18F458 de chez Microchip.</span></p>
+
+<h1>Exemple d&#8217;application.</h1>
+
+<p class=MsoNormal>Ci-dessous un exemple d&#8217;utilisation des composants de
+Microchip.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=333
+height=173 src="../images/image049.jpg"></p>
+
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<html>
+<head>
+<title>Présentation fonctions maintenance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+<!--
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+ li.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Sylfaen;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF"> Notice du produit industriel.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<div class=Section1> 
+
+	<p> </div>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module 2 PANSOL est une partie 
+du système dans sa version industrielle. Dans cette configuration, le système se 
+compose des éléments suivants&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La partie opérative constituée de l&#8217;ensemble panneau solaire 
+motorisé, batteries et chargeur. Cette partie se connecte aux autres modules 
+grâce à 3 câbles (panneau, batterie et commande moteurs).</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Le pupitre qui regroupe les 5 modules&nbsp;: énergie, éclairage, 
+interface CAN/HF analyseur, moteur et contrôle.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Le module luminosité qu&#8217;il convient de fixer sur la partie 
+opérative (voir suite). Ce module envoie des informations au module CAN/HF du 
+pupitre sous formes d&#8217;ondes HF.</p>
+<h1>Installation de la solution industrielle.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">Après déballage des différents 
+éléments, il convient de&nbsp;suivre les étapes suivantes&nbsp;:</p>
+<h2>Mise en place du module luminosité.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">On fixe le module luminosité sur 
+la partie opérative et plus particulièrement sur le panneau solaire au moyen des 
+2 vis prévues. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">On prendra soin de fixer le 
+boîtier de manière à ce que sa face supérieure soit dans sa position la plus 
+haute&nbsp;; cela permettra aux capteurs de travailler dans de bonnes conditions 
+(dans le cas contraire, on pourra observer des dysfonctionnements car le capteur 
+sud serait masqué par la tôle de l&#8217;équerre de fixation).</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image002.jpg" width="717" height="204"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On raccorde ensuite le module 
+ainsi fixé au panneau solaire (ce dernier permet de recharger l&#8217;accumulateur 
+embarqué). Pour cela, on dispose de 2 bornes sur la boite de raccordement 
+situées sur la face arrière du panneau.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module luminosité dispose d&#8217;un 
+interrupteur placé dans le boîtier et qui permet de le mettre totalement hors 
+circuit (coupure de l&#8217;alimentation issue du panneau et mise hors circuit de 
+l&#8217;accumulateur). En mode normal cet interrupteur est fermé et permet le 
+fonctionnement du module). Dans le cas d&#8217;une longue période d&#8217;inutilisation, cet 
+interrupteur permet d&#8217;éviter que l&#8217;accumulateur ne se décharge. Il permet 
+également de mettre le module hors circuit si l&#8217;on utilise le panneau dans sa 
+version grand public.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module luminosité est muni de 2 
+leds&nbsp;qui consomme chacune 10 mA environ&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>l&#8217;une est un témoin d&#8217;alimentation et elle peut être désactivée 
+par un cavalier prévu à cet effet.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>L&#8217;autre est commandé par le microcontrôleur et signale une 
+émission d&#8217;information. Dans la version industrielle cette led n&#8217;est pas allumée 
+car elle est utilisée en maintenance ou lors de la mise au point. Dans le cas de 
+la solution éducation, elle est activée en permanence.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b>Remarque</b>&nbsp;: Dans la version 
+industrielle, le module luminosité est rendu étanche par la mise en place de 
+joints silicones. Il est, dans ce cas, connecté dans le boîtier de raccordement 
+et un presse-étoupe rend le dispositif étanche. Pour la version éducation, on 
+utilise deux bornes 4 mm pour le raccordement ce qui permet, en l&#8217;absence de 
+soleil de raccorder le module luminosité sur une autre source.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family: Wingdings">M</span> Attention, lors d&#8217;une utilisation 
+en TP toujours vérifier la mise hors tension en fin de séance afin d&#8217;éviter la 
+décharge profonde de l&#8217;accumulateur embarqué. De même, il est conseillé de 
+laisser le couvercle en place (sans les vis par exemple) car sinon les niveaux 
+de luminosité augmentent.<br>
+En tout état de cause, il ne faut pas oublier que le module luminosité et prévu 
+pour fonctionner en extérieur. Dans la salle de classe, il conviendra de 
+réajuster les interprétations quant au fonctionnement de l&#8217;ensemble en 
+conséquence&nbsp;!</p>
+<h2>Connexion du pupitre de commande.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Le pupitre de commande se raccorde 
+à la partie opérative au moyen des trois connecteurs prévus à cet effet.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image004.jpg" width="226" height="49"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour mettre en circuit la 
+batterie, il faudra mettre en place les deux cordons 4 mm prévus sur la partie 
+droite du pupitre.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image006.jpg" width="717" height="257"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour l&#8217;alimentation de l&#8217;ensemble 
+depuis le panneau solaire, il faudra également mettre en place deux cordons 4 mm 
+prévus sur la partie gauche du pupitre.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b>Remarque</b>&nbsp;: Prévu pour une 
+mise en place à l&#8217;extérieur, l&#8217;énergie fournie par le panneau en salle de TP est 
+souvent faible. On peut dans ce cas (si l&#8217;on n&#8217;effectue pas de mesure concernant 
+le panneau) alimenter directement le pupitre depuis une alimentation continue 
+(1,5 à 2A). L&#8217;alimentation est directement connectée aux bornes 4mm de l&#8217;entrée 
+du module énergie (pas de connexion entre les bornes du haut (panneau) avec 
+celles du bas&nbsp;!).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family: Wingdings">M</span> Attention, lors de l&#8217;utilisation 
+d&#8217;une alimentation, il est vivement conseillé (pour éviter tout risque, de 
+débrancher le câble reliant le panneau au module) et de limiter la tension à une 
+tension inférieure à 13,5V car le dispositif de limitation de la charge de la 
+batterie est prévue pour le panneau solaire (impédance de sortie élevée) et non 
+pour une alimentation.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b>Remarque</b>&nbsp;: Dans la version 
+industrielle, les modules sont rendus étanche par la mise en place de joints 
+silicones. Pour la version éducation, les joints ont été omis et tous les 
+modules peuvent fonctionner couvercle enlevé. Pour le module de contrôle, le 
+clavier, fixé sur le couvercle, peut être démonté afin d&#8217;enlever le couvercle.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image008.jpg" width="149" height="123">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="solarlum09_fichiers/image010.jpg" width="179" height="122"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les prises RS232 logées dans les 
+boîtiers des modules contrôle et analyseur ne sont accessibles que couvercles 
+enlevés car elles servent lors de la mise au point et de la maintenance par les 
+techniciens.</p>
+<h2>Positionnement de la partie opérative.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Il ne faut pas oublier que le 
+panneau est destiné à être placé à l&#8217;extérieur et que son fonctionnement est 
+prévu à cet usage&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Depuis la position de repos (nuit par exemple), lorsque la 
+luminosité sera suffisante, le panneau va se déplacer dans le sens horaire et 
+s&#8217;élever de manière à ce que son axe (sa normale) soit orienté vers le soleil.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Par défaut, toutes les 15 minutes, il va corriger sa position pour 
+suivre le soleil.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>En fin de journée (le soleil est à l&#8217;OUEST), quand la luminosité 
+devient insuffisante, le panneau retourne à sa position de repos pour attendre 
+une nouvelle journée. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">La partie opérative est livrée en 
+position parking (butée gauche et basse). Cette position correspond à la 
+position de repos et l&#8217;axe du panneau doit pointer alors vers le NORD (utiliser 
+la boussole si nécessaire). Les seuls mouvements possibles sont l&#8217;élévation et 
+la rotation dans le sens horaire vers l&#8217;Est (là ou le soleil se lève).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La partie opérative inclue deux 
+batteries, l&#8217;une est connecté au pupitre de contrôle par le câble prévu, tandis 
+que la seconde est connectée au chargeur de batterie interne.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Il est conseillé de toujours 
+alimenter le chargeur car cela permet en début de TP de disposer d&#8217;une batterie 
+chargée (on bascule alors l&#8217;interrupteur pour charger l&#8217;autre batterie).</p>
+<h1>Fonctionnement du système.</h1>
+<h2>Mise sous tension.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Avant toute mise sous tension, il 
+convient de vérifier les branchements de l&#8217;ensemble. Si l&#8217;éclairage est 
+insuffisant (éventuellement utiliser le luxmètre fourni). On ne pourra 
+fonctionner qu&#8217;avec&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Soit une des batteries qui doit être suffisamment chargée.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Soit une alimentation connectée en lieu et place du panneau sur le 
+pupitre (U entre 12 et 13V).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">On s&#8217;assure de la mise sous 
+tension du module luminosité, la led qui indique l&#8217;émission d&#8217;informations 
+clignote. Si la batterie du module luminosité est déchargée et que le niveau de 
+tension du panneau ne suffit pas à la charger, il faudra connecter le module sur 
+une alimentation externe (U entre 12 et 13V).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Un fois ces vérifications 
+effectuées, on peut mettre en marche le pupitre de contrôle. On doit observer, 
+s&#8217;il n&#8217;y est pas déjà, un déplacement du panneau en mode parking. Cela permet 
+l&#8217;initialisation des mesures d&#8217;angles du module moteur.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">En cas de luminosité insuffisante, 
+le panneau reste dans cette position par contre si la luminosité est suffisante, 
+on aura une mise en position du panneau au bout de 15 minutes (période par 
+défaut de la correction de position)&nbsp;; on peut toutefois forcer un 
+positionnement avec les touches 5 puis 1.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family: Wingdings">M</span> Attention, ce réveil du panneau 
+s&#8217;effectue en fonctionnement normal le matin au lever du soleil et le panneau ne 
+peut se positionner que si les capteurs sont convenablement éclairés (depuis 
+parking rotation inférieure à environ 100°). Les corrections de position ne sont 
+pas prévues pour des angles supérieurs à 100°.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Toutes les 15 minutes, on aura une 
+correction de la position du panneau.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le soir, le panneau aura effectué 
+une rotation d&#8217;environ 270° (NORD &gt; EST &gt; SUD &gt; OUEST) et quand la luminosité 
+devient inférieure à un certain seuil, le panneau rejoint la position parking au 
+prochain temps de correction (si <i>rotation &gt; 270°</i> et si <i>luminosité &lt; 
+100</i> et si <i>correction</i>).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le jour suivant le cycle 
+recommence.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center"><!--[if gte mso 9]>
+<img border="0" src="solarlum09_fichiers/image012.gif" width="562" height="548"><![endif]--></p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b>Exemple</b>&nbsp;: Dans une salle de 
+classe, on peut observer les mouvements du panneau en plaçant le panneau pour 
+que l&#8217;est soit une fenêtre (volet baissé = nuit). On allume l&#8217;ensemble, si le 
+volet est baissé rien ne bouge, on ouvre le volet et le panneau s&#8217;oriente vers 
+la fenêtre. On fait tourner le panneau de plus de 270° en manuel, on baisse le 
+volet et le panneau rejoint la position parking.</p>
+<h2>Affichage.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;afficheur indique, en 
+fonctionnement normal, la tension de la batterie et le courant qu&#8217;elle débite 
+(chiffre à multiplier par 10 pour avoir des mA et à diviser par 10 pour avoir la 
+tension en V) sur la première ligne. Sur la seconde ligne, on a l&#8217;état 
+d&#8217;éclairage (off, bloc 1 à 4, pavé complet avec niveau de 0 à 15).</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image014.jpg" width="218" height="102"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">En mode correction, il s&#8217;affiche 
+«&nbsp;correction azimut&nbsp;» ou «&nbsp;correction élévation&nbsp;» suivant le cas.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Différents autres modes 
+d&#8217;affichages peuvent être obtenus&nbsp;; ils seront présentés dans la suite.</p>
+<h2>Gestion du système par le clavier.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Le système, dans son contexte 
+industriel, se raccorde à un bus CAN et tous les modules peuvent être piloté à 
+distance. Le module de contrôle permet, dans notre cas, la commande du système.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le clavier permet d&#8217;entrer les 
+commandes et l&#8217;afficheur nous renseigne alors sur les actions possibles. Toutes 
+les commandes clavier se déroulent en 2 temps&nbsp;: </p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Une première action permet d&#8217;entrer dans un mode de commande, 
+l&#8217;affichage indique le mode et les touches qui définissent les actions. </p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Une seconde action durant le mode de commande aura pour effet de 
+générer une commande.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La touche # permet de sortir du 
+mode de commande sans action.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Voila la liste des modes et des 
+commandes&nbsp;:</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b><span style="color:blue">Mode 
+1&nbsp;: commande d&#8217;éclairage</span></b></p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 2&nbsp;: on éteint l&#8217;éclairage</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 3&nbsp;: on allume l&#8217;intégralité du pavé avec le niveau 
+d&#8217;éclairage prédéfini (0 par défaut à la mise sous tension).</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 4&nbsp;: on augmente le niveau d&#8217;éclairage de 3 sur une 
+échelle de 0 à 15.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 5&nbsp;: on diminue le niveau d&#8217;éclairage de 3 sur une échelle 
+de 0 à 15.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 6&nbsp;: on commande uniquement l&#8217;allumage du bloc 1 de 16 
+leds.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 7&nbsp;: on commande uniquement l&#8217;allumage du bloc 2 de 16 
+leds&nbsp; </p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 8&nbsp;: on commande uniquement l&#8217;allumage du bloc 3 de 16 
+leds&nbsp; </p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 9&nbsp;: on commande uniquement l&#8217;allumage du bloc 4 de 16 
+leds&nbsp; </p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b><span style="color:blue">Mode 
+2&nbsp;: choix du type de fonctionnement</span></b></p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 1&nbsp;: pour fonctionnement automatique (celui obtenu par 
+défaut à la mise sous tension). </p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 2&nbsp;: pour inhiber le fonctionnement automatique. On peut 
+alors contrôler le système avec l&#8217;analyseur CAN depuis un PC en envoyant les 
+trames nécessaires. Ce mode est le mode manuel.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b><span style="color:blue">Mode 
+3&nbsp;: choix de l&#8217;affichage LCD</span></b></p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 4&nbsp;: affichage sur LCD des informations concernant la 
+batterie.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 5&nbsp;: affichage sur LCD des informations concernant les 
+capteurs de luminosité.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 6&nbsp;: affichage sur LCD des informations concernant 
+l&#8217;éclairage.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 7&nbsp;: affichage sur LCD des informations concernant le type 
+de fonctionnement.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 8&nbsp;: affichage cyclique sur LCD des informations du 
+système.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b><span style="color:blue">Mode 
+4&nbsp;: commande de déplacement manuel du panneau</span></b></p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 1&nbsp;: commande d&#8217;arrêt manuel des moteurs (pour certains 
+types de déplacements).</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 2&nbsp;: demande de parking du panneau.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 6&nbsp;: déplacement azimut sens horaire avec une durée 
+d&#8217;environ 5 secondes.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 7&nbsp;: déplacement azimut sens antihoraire avec une durée 
+d&#8217;environ 5 secondes.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 8&nbsp;: déplacement élévation en montée avec une durée 
+d&#8217;environ 5 secondes.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 9&nbsp;: déplacement élévation en descente avec une durée 
+d&#8217;environ 5 secondes.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b><span style="color:blue">Mode 
+5&nbsp;: commande de correction manuelle</span></b></p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commande 1&nbsp;: demande de correction manuelle immédiate.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La touche # permet de sortir d&#8217;un 
+mode de commande sans action.</p>
+<h2>Gestion du système depuis un PC avec la «&nbsp;console de maintenance&nbsp;».</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module de contrôle permet de 
+piloter, à travers le bus CAN, les différents modules. Il peut&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Ne rien faire du tout si on est en mode manuel.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Commander automatiquement le positionnement du panneau (par 
+défaut).</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Recevoir des instructions depuis le clavier (voir ci-dessus).</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Recevoir des instructions depuis la liaison série connectée PC 
+grâce à un logiciel appelé «&nbsp;console de maintenance&nbsp;».</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Afficher des informations sur l&#8217;afficheur LCD.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Envoyer des informations au PC connecté par liaison série. La 
+«&nbsp;console de maintenance&nbsp;» affiche alors l&#8217;état général du système.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour utiliser la console de 
+maintenance, il suffit de raccorder le module de contrôle par une liaison série 
+avec un PC sur lequel on a installé le logiciel fourni.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image016.jpg" width="229" height="147"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La console de maintenance est 
+utilisée lors du test après fabrication pour observer rapidement le 
+fonctionnement de l&#8217;ensemble. Elle est utilisée en maintenance pour localiser 
+rapidement les défaillances.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image018.jpg" width="561" height="288"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone «&nbsp;luminosité&nbsp;» affiche sur 
+8 bits les mesures de luminosité et la valeur moyenne. Les écarts sont eux 
+calculés sur 10 bits (affichage limité à une valeur de 100). </p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone «&nbsp;éclairage&nbsp;» permet de 
+voir et de commander l&#8217;éclairage.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone «&nbsp;correction&nbsp;» permet de 
+modifier la périodicité des corrections et les seuils des écarts de luminosité 
+qui entraînent ces corrections. Le mode de correction automatique peut être 
+désactivé et on peut déclencher une correction manuelle immédiate.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone «&nbsp;énergie&nbsp;» permet de voir 
+les paramètres panneau et batterie. Attention, les informations affichées sont 
+des indications et non des mesures précises (pour les réglages on utilise des 
+appareils de mesure).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone «&nbsp;moteur&nbsp;» affiche les 
+déplacements et un éventuel parking. On peut commander manuellement le 
+déplacement du panneau solaire en fixant une durée approximative pour ces 
+déplacements. Les angles de déplacements (depuis la position parking) et 
+l&#8217;intensité en mA s&#8217;affichent. Une commande «&nbsp;parking&nbsp;» est également 
+disponible.<br>
+Attention, les informations affichées sont des indications et non des mesures 
+précises (pour les réglages on utilise des appareils de mesure) et de plus la 
+périodicité des mesures peut entraîner un retard sur ces indications surtout si 
+les déplacements sont brefs.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone «&nbsp;général&nbsp;» permet de 
+fixer les paramètres du port série et d&#8217;ouvrir un fichier de capture qui va 
+mémoriser certains paramètres du système avec une périodicité ajustable. Le port 
+série, fixé par défaut, est le port 1.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family: Wingdings">M</span> <span style="color:blue">Attention</span>, 
+le logiciel de la console de maintenance est conçu pour envoyer des demandes 
+régulières au module de contrôle. De la périodicité de ces demandes dépendent le 
+rafraîchissement des données affichées. Pour éviter de trop solliciter le module 
+de contrôle, la période est fixée à une valeur d&#8217;environ une seconde ce qui 
+entraîne bien sur quelques retards.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><span style="color:blue">Très 
+important</span>&nbsp;: le logiciel «&nbsp;console de maintenance&nbsp;» ne doit être lancé que 
+quand le module de contrôle a démarré correctement (attendre environ 50 
+secondes) car sinon, il n&#8217;affichera rien (débordement du <i>buffer</i> série du 
+PIC du module de contrôle).</p>
+<h1>Utilisation de l&#8217;analyseur CAN.</h1>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Très rapidement, lors de la 
+conception initiale de produits utilisant des modules interconnectés par bus 
+CAN, comme c&#8217;est le cas ici, il s&#8217;est avéré nécessaire de disposer d&#8217;un outil 
+pour observer et générer des trames au format CAN. C&#8217;est le module analyseur 
+CAN, d&#8217;un coût modeste et directement intégré dans le système qui remplit ce 
+rôle.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">De même, pour avoir une vue 
+d&#8217;ensemble lors d&#8217;une maintenance, il est nécessaire d&#8217;agir sur de nombreux 
+modules, souvent espacés géographiquement. Il a été décidé d&#8217;inclure, 
+directement dans le module contrôle du produit, un logiciel de supervision 
+simple et utile.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Bien évidemment, ces ajouts, 
+appelées fonctions de maintenance, ont grandement facilité la mise ou point de 
+l&#8217;ensemble. Pour les utilisations pédagogiques de l&#8217;éducation nationale, ces 
+fonctions permettent de comprendre et modifier en temps réel le fonctionnement 
+du dispositif.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour utiliser l&#8217;analyseur, il 
+suffit de raccorder le module analyseur (module CAN/HF) par une liaison série 
+avec un PC sur lequel on a installé le logiciel fourni.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image020.jpg" width="187" height="117"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le logiciel dispose de deux 
+fonctions&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>On peut observer les trames CAN et les mémoriser dans un fichier.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>On peut générer des trames CAN pour le système et ainsi le 
+piloter. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">Cette dernière fonctionnalité est 
+utilisé efficacement si on place le module de contrôle en mode manuel car sinon 
+les trames générées s&#8217;ajoutent aux trames du mode automatique et rendent les 
+observations difficiles.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Un fois connecté au PC et le 
+logiciel installé et lancé, on observe l&#8217;écran suivant&nbsp;:</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image022.jpg" width="718" height="350"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone capture de trames affiches 
+les trames véhiculées avec leur identifiant, leur taille, les données ou R pour 
+les trames de type «&nbsp;request&nbsp;».</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le bouton ON/OFF permet de lancer 
+la capture et de l&#8217;arrêter tandis que le bouton «&nbsp;efface les trames&nbsp;» efface le 
+contenu de la fenêtre.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Un compteur de trames reçus 
+affiche le nombre de trames.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Dans le menu fichier, on peut 
+ouvrir un fichier de capture qui va mémoriser les trames reçues.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image024.jpg" width="586" height="187"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La zone «&nbsp;envoie de trames&nbsp;» 
+permet de générer des trames pour notre système. Par exemple l&#8217;écran 
+ci-dessous&nbsp;:</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum09_fichiers/image026.jpg" width="544" height="218"></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>On entre dans «&nbsp;ID (hexa)&nbsp;», l&#8217;adresse du module HF. </p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>On appuie sur «&nbsp;enter&nbsp;» après la saisie pour valider la donnée 
+(indispensable&nbsp;!!!!) et l&#8217;adresse «&nbsp;ID (decimal)&nbsp;» s&#8217;affiche (on peut saisir 
+l&#8217;adresse en décimal ou en hexa de la même manière).</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>On coche «&nbsp;request&nbsp;» pour indiquer que c&#8217;est une trame de ce type 
+c'est-à-dire sans données.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>On appuie sur le bouton «&nbsp;envoie&nbsp;»</p>
+<p class="MsoNormal" style="margin-top:6.0pt">On observe le résultat de la 
+demande dans la fenêtre «&nbsp;capture de trames&nbsp;»</p>
+</body>
+</html>

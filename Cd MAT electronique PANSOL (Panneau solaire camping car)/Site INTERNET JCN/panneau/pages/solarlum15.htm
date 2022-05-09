@@ -1,0 +1,396 @@
+<html>
+<head>
+<title>module can hf</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+<!--
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+ li.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Sylfaen;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:Sylfaen;
+	}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF">Module CAN/HF.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<div class=Section1> 
+
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La partie matérielle 
+	utilisée pour l&#8217;analyseur CAN a été implanté dans le module passerelle 
+	CAN/HF (ou l&#8217;inverse si on veut) car chacune de ces fonctions ne nécessite 
+	pas trop de composants et elles peuvent cohabiter sur le même circuit 
+	imprimé (dont la taille a été imposée au départ dans un souci de 
+	rationalisation).</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le module CAN/HF regroupe deux 
+	fonctions&nbsp;:</p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+	<span style="font-family: Symbol">
+	<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>Il transmet les données HF reçues du module luminosité vers le 
+	module de contrôle.</p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+	<span style="font-family: Symbol">
+	<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>Il abrite l&#8217;analyseur de trames CAN</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le module moteur dialogue avec 
+	les autres modules au travers du bus CAN.</p>
+	<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+	<img border="0" src="solarlum15_fichiers/image002.jpg" width="385" height="200"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Sur la partie gauche de la photo, on observe le module HF qui 
+	permet de recevoir les données depuis le module luminosité. </span></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">On donne le schéma structurel de ce module&nbsp;:</span></p>
+	<p class="MsoNormal" style="margin-top:6.0pt" align="center">
+	<img border="0" src="solarlum15_fichiers/image004.jpg" width="684" height="460"></p>
+	<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Gestion de la carte.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Le pilotage de la carte est confié à 2 microcontrôleurs PIC16F876. 
+	La programmation in situ des PIC est assurée depuis les connecteurs RJ11. 
+	Elle utilise les broches RB6 et RB7 des PIC. La broche MCLR permet, en mode 
+	programmation d'appliquer la tension de programmation.</span></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">L&#8217;horloge des processeurs est fournie par les sorties SLK des 
+	circuits MCP2510 qui fournissent un signal de fréquence 2,5 MHz (la 
+	fréquence du quartz divisée par 8). </span></p>
+	<div align="center">
+		<table class="MsoTableGrid" border="0" cellpadding="0" style="border-collapse: collapse; border-width: 0" id="table1">
+			<tr>
+				<td width="295" valign="top" style="width:221.4pt;padding:0cm 5.4pt 0cm 5.4pt">
+				<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+				<img border="0" src="solarlum15_fichiers/image006.jpg" width="210" height="185"></td>
+				<td width="398" valign="top" style="width:298.65pt;padding:0cm 5.4pt 0cm 5.4pt">
+				<p class="MsoNormal" style="margin-top:6.0pt">
+				<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">La broche MCLR permet également d'assurer un RESET matériel.
+				</span></p>
+				<p class="MsoNormal" style="margin-top:6.0pt">
+				<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Le superviseur d'alimentation MC34164 est activé en mode normal 
+				par la mise en place d'un cavalier sur le connecteur NICD. Il 
+				permet de produire un RESET matériel dans le cas ou la tension 
+				d'alimentation devient trop faible. </span></p>
+				<p class="MsoNormal" style="margin-top:6.0pt">
+				<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Lors de la programmation ou la mise au point d'un programme, ce 
+				cavalier est à enlevé. Le microcontrôleur fonctionne à une 
+				fréquence de 4 MHz obtenue grâce à un quartz.</span></td>
+			</tr>
+		</table>
+	</div>
+	<h1>Alimentation de la carte.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;alimentation de la carte est 
+	obtenue depuis le bus système.</p>
+	<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+	<img border="0" src="solarlum15_fichiers/image008.jpg" width="258" height="200"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La tension <i>+Velec</i> de 8V 
+	générée par le module énergie permet grâce au régulateur 7805 de fournir la 
+	tension de 5V nécessaire aux différents circuits de la carte.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;alimentation de 3,3V 
+	nécessaire au module HF est obtenue grâce au régulateur LM1117.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La LED indicateur de présence 
+	tension peut être désactivée par le cavalier prévu à cet effet afin de 
+	diminuer la consommation.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Un interrupteur S permet de 
+	mettre la carte hors tension. Cette interrupteur peut être omis sur 
+	certaines versions (on a alors des «&nbsp;straps&nbsp;» et le module et 
+	continuellement sous tension).</p>
+	<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Réception des données par liaison HF.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Le module HF, alimenté en 3,3V est piloté par 3 signaux du PIC :</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+	<span style="font-size: 10.0pt; font-family: Symbol">
+	<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span style="font-family:&quot;Times New Roman&quot;">POWER/XTR 
+	qui permet au PIC d'activer l'émission HF. Une adaptation de tension par un 
+	pont de résistances permet d'adapter les signaux (+5V) du PIC à l'entrée du 
+	module HF (3,3V).</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+	<span style="font-size: 10.0pt; font-family: Symbol">
+	<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span style="font-family:&quot;Times New Roman&quot;">RX.DATA/XTR 
+	qui permet au module HF d'envoyer les données reçues au PIC. Cette sortie du 
+	module délivre également des commandes de contrôle qui indique le 
+	fonctionnement de ce dernier.</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+	<span style="font-size: 10.0pt; font-family: Symbol">
+	<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span style="font-family:&quot;Times New Roman&quot;">TX.DATA/XTR 
+	qui permet au module HF de recevoir les données séries issues du PIC. Cette 
+	entrée du module peut recevoir également des commandes de contrôle qui 
+	permettent de modifier le fonctionnement de ce dernier. Une adaptation de 
+	tension par un pont de résistances permet d'adapter les signaux (+5V) du PIC 
+	à l'entrée du module HF (3,3V).</span></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On utilise la liaison série du 
+	PIC pour recevoir les données au module HF. Ce dernier va recevoir une 
+	porteuse modulée. Les données seront reçues par le PIC.</p>
+	<h1>Accès au bus CAN.</h1>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Pour l&#8217;accès au bus CAN, on 
+	utilise les éléments suivants pour chacun des deux sous-ensembles (analyseur 
+	et passerelle HF)&nbsp;:</p>
+	<p class="MsoNormal" align="center" style="margin-bottom:6.0pt;text-align:center">
+	<img border="0" src="solarlum15_fichiers/image010.jpg" width="683" height="194"></p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Les circuits MCP2510 
+	dialoguent avec leur microprocesseur à travers les liaisons suivantes&nbsp;:</p>
+	<ul style="margin-top: 0cm; margin-bottom: 0cm" type="disc">
+		<li class="MsoNormal" style="margin-bottom: 6.0pt">Un bus série 
+		constitué de MSO, MSI et l&#8217;horloge MSCK.</li>
+		<li class="MsoNormal" style="margin-bottom: 6.0pt">Un fils de sélection 
+		de boîtier MCS.</li>
+		<li class="MsoNormal" style="margin-bottom: 6.0pt">La sortie MINT peut 
+		être utilisé pour générer des interruptions pour le microprocesseur (non 
+		activé dans notre cas).</li>
+	</ul>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La liaison du circuit 
+	MCP2510 avec le bus CAN s&#8217;effectue grâce aux broches TXCAN et RXCAN (niveau 
+	TTL) et le circuit d&#8217;interface PCA82C250T qui produit les signaux du bus. Le 
+	bus utilise les signaux VCAN+, VCAN- et GND.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Le circuit MCP2510 
+	nécessite pour rythmer les signaux du bus CAN d&#8217;un quartz fixé ici à 20 MHz. 
+	La broche CLKOUT produit un signal de 2,5 MHz (division par 8 de la 
+	fréquence du quartz) qui est utilisé pour fournir une horloge au circuit 
+	PIC.</p>
+	<p class="MsoNormal">On notera la présence de la résistance RT de 120 ohms 
+	qui permet d&#8217;assurer, si nécessaire, la terminaison du bus CAN si l&#8217;on met 
+	en place le cavalier prévu.</p>
+	<p class="MsoNormal">Les LEDs «&nbsp;TRAFFIC CAN&nbsp;» seront commandées par les PIC 
+	pour signaler une activité sur le bus CAN.</p>
+	<h1>Accès à la liaison série par le PIC de l&#8217;analyseur.</h1>
+	<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+	<img border="0" src="solarlum15_fichiers/image012.jpg" width="259" height="175"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On utilise un circuit 
+	adaptateur de niveau MAX232. On utilise une liaison série 2 fils sans 
+	contrôle de flux.</p>
+	<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Etude du logiciel embarqué dans le PIC passerelle HF.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">En ce qui concerne le 
+	logiciel, on trouve tout d&#8217;abord les indications relatives à la compilation 
+	du programme pour le PIC.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum15_fichiers/image014.jpg" width="528" height="82"></p>
+	<h2>Gestion du bus CAN.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le driver logiciel du circuit 
+	MCP2510 est pris en compte par la ligne&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image016.jpg" width="599" height="15"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;identifiant utilisé pour ce 
+	module est déclaré&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image018.jpg" width="548" height="42"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La commande de la LED 
+	d&#8217;activité est également déclarée&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image020.jpg" width="253" height="30"></p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Le bus CAN n&#8217;est utilisé 
+	qu&#8217;en réception par la fonction <i>gest_can</i>&nbsp;. </p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La réception est opérée par 
+	scrutation au moyen de la commande
+	<img border="0" src="solarlum15_fichiers/image022.jpg" width="122" height="13">&nbsp;</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Si une réception est 
+	détectée, on examine l&#8217;identifiant et, suivant le cas, on recueille les 
+	données adéquates&nbsp;:</p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 6.0pt">
+	<span style="font-family: Symbol">
+	<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>La demande d&#8217;information depuis le module de contrôle 
+	correspond à l&#8217;identifiant <i>i_rmain</i>. La fonction <i>can_putd</i> 
+	permet de renvoyer les mesures demandées.</p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 6.0pt">
+	<span style="font-family: Symbol">
+	<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>L&#8217;envoie de données de commande correspond à l&#8217;identifiant <i>
+	i_emain</i>.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La fonction <i>gest_can</i> 
+	est appelée périodiquement par le programme principal.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum15_fichiers/image024.jpg" width="648" height="119"></p>
+	<h2>Réception des données.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">On utilise un buffer pour 
+	recevoir les données série.<br>
+	<img border="0" src="solarlum15_fichiers/image026.jpg" width="223" height="45"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La réception série depuis le 
+	module HF s&#8217;effectue en interruption.<br>
+	<img border="0" src="solarlum15_fichiers/image028.jpg" width="517" height="243"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;octet 250 indique un début 
+	de trame&nbsp;; on initialise le pointeur <i>is</i> à 0. </p>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;octet 251 indique une fin de 
+	trame&nbsp;; on positionne l&#8217;indicateur <i>s_flag</i> à 1.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Quand une donnée arrive, elle 
+	est placée dans le buffer. </p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Si l&#8217;on n&#8217;obtient pas le 
+	caractère de fin de trame avant que le buffer soit rempli, on remet le 
+	pointeur <i>is</i> à 0 et on vide le buffer.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">C&#8217;est la fonction <i>
+	gest_serie</i> qui recopie les données séries reçues dans le buffer 
+	d&#8217;émission du bus CAN.<br>
+	<img border="0" src="solarlum15_fichiers/image030.jpg" width="224" height="159"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Cette fonction est appelée 
+	périodiquement par le programme principal et quand l&#8217;indicateur <i>s_flag</i> 
+	est à 1 et quand la trame série reçue est valide, on copie les données.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On remarque, qu&#8217;en début de 
+	traitement, on positionne la LED d&#8217;activité HF pour indiquer le transfert de 
+	données.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">En fin de recopie, le buffer 
+	série est vidée par la fonction <i>purge_srxbuf</i>.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum15_fichiers/image032.jpg" width="238" height="50"></p>
+	<h2>Sécurité de la transmission.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">Lors d&#8217;une demande de données 
+	par le bus CAN, on renvoie les données du <i>buffer</i>. Si la réception 
+	série ne s&#8217;effectue pas (mauvaise liaison par exemple), ces données risquent 
+	d&#8217;être périmées et ainsi de causer des erreurs au niveau du fonctionnement 
+	du système.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Pour régler ce problème, on 
+	utilise un <i>timer</i> logiciel activé par un <i>timer</i> matériel 
+	initialisé pour générer une interruption toutes les ms.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Les déclarations&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image034.jpg" width="397" height="34"></p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Toutes les millisecondes, 
+	la fonction ci-dessous est déclenchée&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image036.jpg" width="684" height="197"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Dés que <i>mst</i> atteint la 
+	valeur <i>1000</i> (durée d&#8217;une seconde), on remet à 0 les données du <i>
+	buffer</i> CAN et on positionne <i>mst</i> à 0.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">En pratique, cette occurrence 
+	ne se produit pas car lors d&#8217;une réception série (toutes les 500 ms), on 
+	remet <i>mst</i> à 0.</p>
+	<h2>Le programme principal.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">La déclaration des e/s&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image038.jpg" width="223" height="58"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On déclare les fonctions&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image040.jpg" width="514" height="66"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Reste le programme 
+	principal&nbsp;qui appelle le programme d&#8217;initialisation&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image042.jpg" width="162" height="141"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le programme d&#8217;initialisation 
+	initialise le bus CAN, les variables, le <i>timer</i> et les interruptions
+	<i>timer</i> et les interruptions série.
+	<img border="0" src="solarlum15_fichiers/image044.jpg" width="683" height="132"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On remarque, l&#8217;activation du 
+	module HF par la commande <i>pwr_on</i>.</p>
+	<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Etude du logiciel embarqué dans le PIC analyseur CAN.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">En ce qui concerne le 
+	logiciel, on trouve tout d&#8217;abord les indications relatives à la compilation 
+	du programme pour le PIC.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum15_fichiers/image046.jpg" width="322" height="85"></p>
+	<h2>Réception du bus CAN.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le driver logiciel du circuit 
+	MCP2510 est pris en compte par la ligne&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image047.jpg" width="611" height="15"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La commande de la LED 
+	d&#8217;activité est également déclarée&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image049.jpg" width="272" height="33"></p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Le bus CAN est utilisé en 
+	réception par la fonction <i>can_test</i>&nbsp;. </p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La réception est opérée par 
+	scrutation au moyen de la commande
+	<img border="0" src="solarlum15_fichiers/image050.jpg" width="122" height="13">&nbsp;</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Si une réception est 
+	détectée, on transmet tout d&#8217;abord <i>mst</i> une donnée qui permet de dater 
+	les trames vers la liaison série avec la fonction <i>printf</i>.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">On transmet en suite 
+	l&#8217;identifiant et les données (après avoir regardé la taille de la trame).</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Enfin, si un indicateur est 
+	positionné, on transmet cet indicateur.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Toutes ces données seront 
+	traitées et affichées par le logiciel «&nbsp;analyseur CAN&nbsp;» du PC.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La fonction <i>can_test</i> 
+	est appelée périodiquement par le programme principal.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum15_fichiers/image052.jpg" width="552" height="223"></p>
+	<h2>Réception des données.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">On utilise un <i>buffer</i> 
+	pour recevoir les données série.<br>
+	<img border="0" src="solarlum15_fichiers/image054.jpg" width="535" height="32"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La réception série depuis le 
+	logiciel «&nbsp;analyseur CAN&nbsp;» sur PC s&#8217;effectue en interruption.<br>
+	<img border="0" src="solarlum15_fichiers/image056.jpg" width="224" height="177"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;octet 13 indique une fin de 
+	trame&nbsp;; on appelle la fonction <i>send</i> chargée d&#8217;envoyer les données 
+	vers le bus CAN.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Quand une donnée arrive, elle 
+	est placée dans le <i>buffer</i>. </p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Si l&#8217;on n&#8217;obtient pas le 
+	caractère de fin de trame avant que le <i>buffer</i> soit rempli, on remet 
+	le pointeur <i>is</i> à 0 et on vide le <i>buffer</i> avec la fonction <i>
+	purge_srxbuf</i>.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum15_fichiers/image058.jpg" width="230" height="59"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La fonction <i>send</i> est 
+	chargée d&#8217;envoyer les données vers le bus CAN en appelant la fonction <i>
+	can_putd</i>.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum15_fichiers/image060.jpg" width="500" height="523"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On détermine tout d&#8217;abord 
+	l&#8217;identifiant, puis la taille des données (<i>txlen</i>), un éventuel 
+	indicateur de trame de type «&nbsp;<i>request</i>&nbsp;», puis on traite les données 
+	tant qu&#8217;on a pas atteint <i>txlen</i>.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Une fois préparée toute la 
+	trame, on l&#8217;envoie.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Après le transfert, le <i>
+	buffer</i> série est vidé par la fonction <i>purge_srxbuf</i>.</p>
+	<h2>Le programme principal.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">On déclare les fonctions&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image062.jpg" width="496" height="65"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Reste le programme 
+	principal&nbsp;qui appelle le programme d&#8217;initialisation&nbsp;:<br>
+	<img border="0" src="solarlum15_fichiers/image064.jpg" width="109" height="78"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La datation des trames 
+	s&#8217;effectue en incrémentant toutes les millisecondes le mot de 16 bits&nbsp;<i>mst&nbsp;</i>qui 
+	sera transmis au PC.<br>
+	<img border="0" src="solarlum15_fichiers/image066.jpg" width="684" height="59"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le programme d&#8217;initialisation 
+	initialise le bus CAN, purge le <i>buffer</i> série, le <i>timer</i> et les 
+	interruptions <i>timer</i> et les interruptions série.
+	<img border="0" src="solarlum15_fichiers/image068.jpg" width="659" height="100"></p>
+
+	<p> &nbsp;</div>
+</body>
+</html>

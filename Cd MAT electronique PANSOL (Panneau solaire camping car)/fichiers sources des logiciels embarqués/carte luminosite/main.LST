@@ -1,0 +1,510 @@
+CCS PCM C Compiler, Version 3.212, 26421               31-août-05 13:39
+
+               Filename: C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.LST
+
+               ROM used: 472 words (6%)
+                         Largest free fragment is 2048
+               RAM used: 25 (7%) at main() level
+                         36 (10%) worst case
+               Stack:    3 worst case (2 in main + 1 for interrupts)
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   187
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  MOVF   7B,W
+0016:  MOVWF  27
+0017:  BCF    03.7
+0018:  BCF    03.5
+0019:  MOVLW  8C
+001A:  MOVWF  04
+001B:  BTFSS  00.1
+001C:  GOTO   01F
+001D:  BTFSC  0C.1
+001E:  GOTO   032
+001F:  MOVF   22,W
+0020:  MOVWF  04
+0021:  MOVF   23,W
+0022:  MOVWF  77
+0023:  MOVF   24,W
+0024:  MOVWF  78
+0025:  MOVF   25,W
+0026:  MOVWF  79
+0027:  MOVF   26,W
+0028:  MOVWF  7A
+0029:  MOVF   27,W
+002A:  MOVWF  7B
+002B:  MOVF   20,W
+002C:  MOVWF  0A
+002D:  SWAPF  21,W
+002E:  MOVWF  03
+002F:  SWAPF  7F,F
+0030:  SWAPF  7F,W
+0031:  RETFIE
+0032:  BCF    0A.3
+0033:  BCF    0A.4
+0034:  GOTO   035
+....................  // version V2.0 du 23/08/2005  
+.................... // maj : transmission en ASCII  
+....................   
+.................... #include <16F876a.h> //mettre #include <16F876.h> si PIC16F876-04 // 
+....................  //////// Standard Header file for the PIC16F876A device ////////////////  
+.................... #device PIC16F876A  
+.................... #list  
+....................  
+.................... #device ICD=TRUE  
+.................... #device *=16  
+.................... #device ADC=10  
+.................... #use delay(clock=4000000)  
+*
+0052:  MOVLW  35
+0053:  MOVWF  04
+0054:  BCF    03.7
+0055:  MOVF   00,W
+0056:  BTFSC  03.2
+0057:  GOTO   067
+0058:  MOVLW  01
+0059:  MOVWF  78
+005A:  CLRF   77
+005B:  DECFSZ 77,F
+005C:  GOTO   05B
+005D:  DECFSZ 78,F
+005E:  GOTO   05A
+005F:  MOVLW  4A
+0060:  MOVWF  77
+0061:  DECFSZ 77,F
+0062:  GOTO   061
+0063:  NOP
+0064:  NOP
+0065:  DECFSZ 00,F
+0066:  GOTO   058
+0067:  BCF    0A.3
+0068:  BCF    0A.4
+0069:  GOTO   082 (RETURN)
+.................... #fuses XT, NOPROTECT, BROWNOUT, NOWDT  
+....................   
+.................... #zero_ram                           //remet la ram a 0 (initialise les variables a 0)  
+.................... #use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7,bits=8)  
+....................   
+.................... #define led_on output_high(PIN_B1)  
+.................... #define led_off output_low(PIN_B1)  
+.................... #define pwr_on output_low(PIN_C2)  
+.................... #define pwr_off output_high(PIN_C2)  
+....................   
+.................... /* variables du systeme */  
+.................... int16 lum_est;                         //luminosite est  
+.................... int16 lum_ouest;                       //luminosite ouest  
+.................... int16 lum_nord;                        //luminosite nord  
+.................... int16 lum_sud;                         //luminosite sud  
+....................   
+.................... /* indicateurs des taches activees periodiquement */  
+.................... int1 mes_flag;                         //indicateur declenchement mesure  
+.................... int1 ser_flag;                         //indicateur declenchement emission serie  
+.................... int16 mst;                             //tick d'horloge  
+....................   
+.................... /* declaration des fonctions */  
+.................... void init();  
+.................... void mesure();  
+.................... void gest_ser();  
+....................   
+.................... /* timer des taches appele par interruption */  
+.................... #int_timer2  
+.................... void isr_timer2(void) {  
+....................    mst++;                              //timer qui est appele toutes les ms par une interruption du timer2  
+*
+0035:  INCF   31,F
+0036:  BTFSC  03.2
+0037:  INCF   32,F
+....................    if (mst == 200){mes_flag = 1;}      //test de la luminosite canal 0 est (en ms)  
+0038:  MOVF   31,W
+0039:  SUBLW  C8
+003A:  BTFSS  03.2
+003B:  GOTO   03F
+003C:  MOVF   32,F
+003D:  BTFSC  03.2
+003E:  BSF    30.0
+....................    if (mst == 500){ser_flag = 1;}      //calcule et preparation des donnees  
+003F:  MOVF   31,W
+0040:  SUBLW  F4
+0041:  BTFSS  03.2
+0042:  GOTO   046
+0043:  DECFSZ 32,W
+0044:  GOTO   046
+0045:  BSF    30.1
+....................    if (mst == 500){mst = 0;}           //on recommence !  
+0046:  MOVF   31,W
+0047:  SUBLW  F4
+0048:  BTFSS  03.2
+0049:  GOTO   04E
+004A:  DECFSZ 32,W
+004B:  GOTO   04E
+004C:  CLRF   32
+004D:  CLRF   31
+.................... }  
+....................   
+.................... /* programme principal */  
+004E:  BCF    0C.1
+004F:  BCF    0A.3
+0050:  BCF    0A.4
+0051:  GOTO   01F
+.................... void main()  
+.................... {  
+*
+0187:  MOVLW  1F
+0188:  ANDWF  03,F
+0189:  MOVLW  50
+018A:  MOVWF  77
+018B:  MOVLW  20
+018C:  MOVWF  04
+018D:  BCF    03.7
+018E:  CLRF   00
+018F:  INCF   04,F
+0190:  DECFSZ 77,F
+0191:  GOTO   18E
+0192:  CLRF   71
+0193:  CLRF   72
+0194:  CLRF   73
+0195:  CLRF   74
+0196:  CLRF   75
+0197:  CLRF   76
+0198:  CLRF   78
+0199:  CLRF   79
+019A:  CLRF   7A
+019B:  CLRF   7B
+019C:  CLRF   7C
+019D:  CLRF   7D
+019E:  CLRF   7E
+019F:  MOVLW  50
+01A0:  MOVWF  77
+01A1:  MOVLW  A0
+01A2:  MOVWF  04
+01A3:  BCF    03.7
+01A4:  CLRF   00
+01A5:  INCF   04,F
+01A6:  DECFSZ 77,F
+01A7:  GOTO   1A4
+01A8:  MOVLW  60
+01A9:  MOVWF  77
+01AA:  MOVLW  10
+01AB:  MOVWF  04
+01AC:  BSF    03.7
+01AD:  CLRF   00
+01AE:  INCF   04,F
+01AF:  DECFSZ 77,F
+01B0:  GOTO   1AD
+01B1:  BCF    03.7
+01B2:  MOVLW  59
+01B3:  MOVWF  77
+01B4:  MOVLW  90
+01B5:  MOVWF  04
+01B6:  BSF    03.7
+01B7:  CLRF   00
+01B8:  INCF   04,F
+01B9:  DECFSZ 77,F
+01BA:  GOTO   1B7
+01BB:  BCF    03.7
+01BC:  CLRF   20
+01BD:  CLRF   04
+01BE:  BCF    03.7
+01BF:  MOVLW  1F
+01C0:  ANDWF  03,F
+01C1:  BSF    03.5
+01C2:  BSF    1F.0
+01C3:  BSF    1F.1
+01C4:  BSF    1F.2
+01C5:  BCF    1F.3
+01C6:  MOVLW  07
+01C7:  BCF    03.5
+01C8:  MOVWF  1F
+01C9:  MOVLW  19
+01CA:  BSF    03.5
+01CB:  MOVWF  19
+01CC:  MOVLW  26
+01CD:  MOVWF  18
+01CE:  MOVLW  90
+01CF:  BCF    03.5
+01D0:  MOVWF  18
+....................    init();  
+*
+01D3:  GOTO   06A
+....................    while (1)  
+....................    {  
+....................       mesure();  
+01D4:  GOTO   092
+....................       gest_ser();  
+01D5:  GOTO   155
+....................    }  
+01D6:  GOTO   1D4
+.................... }  
+....................   
+.................... /* definitions des fonctions */  
+....................   
+.................... void gest_ser(){  
+....................    int16 a;  
+01D7:  GOTO   1D7
+....................   
+....................    if (ser_flag==1){                 //faut-il emettre ?..  
+*
+0155:  BTFSS  30.1
+0156:  GOTO   184
+....................       led_on;                        //on allume la led en debut d'emission serie  
+0157:  BSF    03.5
+0158:  BCF    06.1
+0159:  BCF    03.5
+015A:  BSF    06.1
+....................       putc(65);                      //A pour debut de trame  
+015B:  MOVLW  41
+015C:  BTFSS  0C.4
+015D:  GOTO   15C
+015E:  MOVWF  19
+....................       printf("%4LU",lum_est);  
+015F:  MOVLW  01
+0160:  MOVWF  04
+0161:  MOVF   29,W
+0162:  MOVWF  37
+0163:  MOVF   28,W
+0164:  MOVWF  36
+0165:  CALL   0F8
+....................       printf("%4LU",lum_ouest);  
+0166:  MOVLW  01
+0167:  MOVWF  04
+0168:  MOVF   2B,W
+0169:  MOVWF  37
+016A:  MOVF   2A,W
+016B:  MOVWF  36
+016C:  CALL   0F8
+....................       printf("%4LU",lum_nord);  
+016D:  MOVLW  01
+016E:  MOVWF  04
+016F:  MOVF   2D,W
+0170:  MOVWF  37
+0171:  MOVF   2C,W
+0172:  MOVWF  36
+0173:  CALL   0F8
+....................       printf("%4LU",lum_sud);  
+0174:  MOVLW  01
+0175:  MOVWF  04
+0176:  MOVF   2F,W
+0177:  MOVWF  37
+0178:  MOVF   2E,W
+0179:  MOVWF  36
+017A:  CALL   0F8
+....................       putc(66);                      //B pour fin de trame  
+017B:  MOVLW  42
+017C:  BTFSS  0C.4
+017D:  GOTO   17C
+017E:  MOVWF  19
+....................       ser_flag=0;  
+017F:  BCF    30.1
+....................       led_off;                       //on eteint la led en fin d'emission serie  
+0180:  BSF    03.5
+0181:  BCF    06.1
+0182:  BCF    03.5
+0183:  BCF    06.1
+....................    }  
+.................... }  
+0184:  BCF    0A.3
+0185:  BCF    0A.4
+0186:  GOTO   1D6 (RETURN)
+....................   
+.................... void mesure(){  
+....................    if (mes_flag==1){  
+*
+0092:  BTFSS  30.0
+0093:  GOTO   0F5
+....................       set_adc_channel(0);              //mesure luminosite est sur 10 bits  
+0094:  MOVLW  00
+0095:  MOVWF  78
+0096:  MOVF   1F,W
+0097:  ANDLW  C7
+0098:  IORWF  78,W
+0099:  MOVWF  1F
+....................       delay_us(100);  
+009A:  MOVLW  21
+009B:  MOVWF  77
+009C:  DECFSZ 77,F
+009D:  GOTO   09C
+....................       lum_est=1024-read_adc();         //on complemente sur 10 bits  
+009E:  BSF    1F.2
+009F:  BTFSC  1F.2
+00A0:  GOTO   09F
+00A1:  BSF    03.5
+00A2:  MOVF   1E,W
+00A3:  SUBLW  00
+00A4:  BCF    03.5
+00A5:  MOVWF  28
+00A6:  MOVLW  04
+00A7:  MOVWF  29
+00A8:  MOVF   1E,W
+00A9:  BTFSS  03.0
+00AA:  INCFSZ 1E,W
+00AB:  SUBWF  29,F
+....................   
+....................       set_adc_channel(1);  
+00AC:  MOVLW  08
+00AD:  MOVWF  78
+00AE:  MOVF   1F,W
+00AF:  ANDLW  C7
+00B0:  IORWF  78,W
+00B1:  MOVWF  1F
+....................       delay_us(100);  
+00B2:  MOVLW  21
+00B3:  MOVWF  77
+00B4:  DECFSZ 77,F
+00B5:  GOTO   0B4
+....................       lum_ouest=1024-read_adc();  
+00B6:  BSF    1F.2
+00B7:  BTFSC  1F.2
+00B8:  GOTO   0B7
+00B9:  BSF    03.5
+00BA:  MOVF   1E,W
+00BB:  SUBLW  00
+00BC:  BCF    03.5
+00BD:  MOVWF  2A
+00BE:  MOVLW  04
+00BF:  MOVWF  2B
+00C0:  MOVF   1E,W
+00C1:  BTFSS  03.0
+00C2:  INCFSZ 1E,W
+00C3:  SUBWF  2B,F
+....................   
+....................       set_adc_channel(2);  
+00C4:  MOVLW  10
+00C5:  MOVWF  78
+00C6:  MOVF   1F,W
+00C7:  ANDLW  C7
+00C8:  IORWF  78,W
+00C9:  MOVWF  1F
+....................       delay_us(100);  
+00CA:  MOVLW  21
+00CB:  MOVWF  77
+00CC:  DECFSZ 77,F
+00CD:  GOTO   0CC
+....................       lum_nord=1024-read_adc();  
+00CE:  BSF    1F.2
+00CF:  BTFSC  1F.2
+00D0:  GOTO   0CF
+00D1:  BSF    03.5
+00D2:  MOVF   1E,W
+00D3:  SUBLW  00
+00D4:  BCF    03.5
+00D5:  MOVWF  2C
+00D6:  MOVLW  04
+00D7:  MOVWF  2D
+00D8:  MOVF   1E,W
+00D9:  BTFSS  03.0
+00DA:  INCFSZ 1E,W
+00DB:  SUBWF  2D,F
+....................   
+....................       set_adc_channel(3);  
+00DC:  MOVLW  18
+00DD:  MOVWF  78
+00DE:  MOVF   1F,W
+00DF:  ANDLW  C7
+00E0:  IORWF  78,W
+00E1:  MOVWF  1F
+....................       delay_us(100);  
+00E2:  MOVLW  21
+00E3:  MOVWF  77
+00E4:  DECFSZ 77,F
+00E5:  GOTO   0E4
+....................       lum_sud=1024-read_adc();  
+00E6:  BSF    1F.2
+00E7:  BTFSC  1F.2
+00E8:  GOTO   0E7
+00E9:  BSF    03.5
+00EA:  MOVF   1E,W
+00EB:  SUBLW  00
+00EC:  BCF    03.5
+00ED:  MOVWF  2E
+00EE:  MOVLW  04
+00EF:  MOVWF  2F
+00F0:  MOVF   1E,W
+00F1:  BTFSS  03.0
+00F2:  INCFSZ 1E,W
+00F3:  SUBWF  2F,F
+....................   
+....................       mes_flag=0;  
+00F4:  BCF    30.0
+....................    }  
+.................... }  
+00F5:  BCF    0A.3
+00F6:  BCF    0A.4
+00F7:  GOTO   1D5 (RETURN)
+....................   
+.................... void init(){  
+....................    setup_port_a(ALL_ANALOG);  
+*
+006A:  BSF    03.5
+006B:  BCF    1F.0
+006C:  BCF    1F.1
+006D:  BCF    1F.2
+006E:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_DIV_2);  
+006F:  BCF    1F.6
+0070:  BCF    03.5
+0071:  BCF    1F.6
+0072:  BCF    1F.7
+0073:  BSF    03.5
+0074:  BSF    1F.7
+0075:  BCF    03.5
+0076:  BSF    1F.0
+....................    pwr_on;  
+0077:  BCF    33.2
+0078:  MOVF   33,W
+0079:  BSF    03.5
+007A:  MOVWF  07
+007B:  BCF    03.5
+007C:  BCF    07.2
+*
+01D1:  MOVLW  FF
+01D2:  MOVWF  33
+....................    delay_ms(1000);  
+*
+007D:  MOVLW  04
+007E:  MOVWF  34
+007F:  MOVLW  FA
+0080:  MOVWF  35
+0081:  GOTO   052
+0082:  DECFSZ 34,F
+0083:  GOTO   07F
+....................    setup_timer_2(T2_DIV_BY_16,8,5);    // parametrage du timer 2  
+0084:  MOVLW  20
+0085:  MOVWF  78
+0086:  IORLW  06
+0087:  MOVWF  12
+0088:  MOVLW  08
+0089:  BSF    03.5
+008A:  MOVWF  12
+....................    enable_interrupts(INT_TIMER2);      // autorisation interruption timer2  
+008B:  BSF    0C.1
+....................    enable_interrupts(GLOBAL);          // autorisation de toutes les interruptions (afin de prendre en compte timer2)  
+008C:  MOVLW  C0
+008D:  BCF    03.5
+008E:  IORWF  0B,F
+.................... }  
+008F:  BCF    0A.3
+0090:  BCF    0A.4
+0091:  GOTO   1D4 (RETURN)
+....................  
+
+Configuration Fuses:
+   Word  1: 3731   XT NOWDT PUT DEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT

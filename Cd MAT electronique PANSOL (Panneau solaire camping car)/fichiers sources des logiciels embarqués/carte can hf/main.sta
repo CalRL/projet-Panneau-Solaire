@@ -1,0 +1,44 @@
+
+ROM used: 2104 (26%)
+          2147 (26%) including unused fragments
+
+          1 Average locations per line
+          6 Average locations per statement
+
+RAM used: 92 (26%) at main() level
+          142 (40%) worst case
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  168    92  27  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte can hf\main.c
+  267     0   0  C:\Program Files\PICC\devices\16F876a.h
+  707   244  57  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte can hf\can.c
+  402     0   0  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte can hf\can.h
+----- -----
+ 3088   672 Total
+
+Page ROM  %  RAM  Functions:
+---- --- --- ---  ----------
+0     13   1   1  @delay_ms1
+0     49   2   3  can_set_mode
+0    207  10  17  can_set_id
+0     91   4   5  mcp2510_read
+0     56   3   6  mcp2510_write
+0     28   1   0  isr_timer2
+0     55   3   3  RDA_isr
+1     99   5   0  main
+0    237  11  13  gest_serie
+0     23   1   5  @MUL1616
+0    884  42   0  gest_can
+0    285  14   1  init
+0     15   1   3  purge_srxbuf
+
+ Segment   Used  Free
+---------  ----  ----
+00000-00003     4  0
+00004-0003D    58  0
+0003E-007FF  1943  43
+00800-00FFF    99  1949
+01000-017FF     0  2048
+01800-01FFF     0  2048
+

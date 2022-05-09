@@ -1,0 +1,406 @@
+--------------------------------------------------------------
+Microsoft PowerPoint Viewer 97 pour Windows 95 et Windows NT
+--------------------------------------------------------------
+
+----------------------------------
+SOMMAIRE
+----------------------------------
+Microsoft PowerPoint Viewer 97 pour Windows 95 et Windows NT	
+Nouveautés de Microsoft PowerPoint Viewer 97	
+Configuration requise pour PowerPoint Viewer 97	
+Acheter Microsoft PowerPoint 97	
+Support technique de Microsoft PowerPoint Viewer 97	
+  Base de connaissances Microsoft	
+  Le World Wide Web	
+  TechNet	
+  Site FTP Microsoft		
+Informations sur l'utilisation de Microsoft PowerPoint Viewer 97	
+  Déplacement dans un diaporama	
+  Options de ligne de commande	
+  Fichiers de listes de présentations (.lst)	
+  Interaction avec les présentations à emporter	
+  Affichage de présentations contenant des sons RealAudio	
+  Affichage de présentations dans Netscape Navigator	
+Contrôle de PowerPoint Viewer 97 depuis d'autres applications	
+  ViewerApplication	
+  ViewerSlideShowView	
+Problèmes connus	
+Conversion de fichiers
+Installation et maintenance	
+  Installation depuis une disquette	
+  Installation depuis un explorateur Internet	
+  Mode maintenance	
+  Désinstallation	
+Distribution de PowerPoint Viewer	
+  Distribution sous forme de disquettes	
+  Distribution de PowerPoint Viewer 97 sur des serveurs réseau	
+Noms et emplacements des fichiers PowerPoint Viewer 97 installés	
+
+--------------------------------------------------------------
+Microsoft PowerPoint Viewer 97 pour Windows 95 et Windows NT
+--------------------------------------------------------------
+
+Microsoft(r) PowerPoint Viewer 97 est un logiciel gratuit, qui vous permet d'afficher et d'imprimer des documents Microsoft PowerPoint(r) 97. Comme les précédentes versions de PowerPoint Viewer, cette version vous permet aussi d'ouvrir des présentations créées avec les versions précédentes de PowerPoint pour Windows(r), et version 3.0 et suivantes de Microsoft PowerPoint pour Macintosh(r). Vous ne pouvez pas modifier une présentation dans 
+PowerPoint Viewer 97. Microsoft vous encourage à distribuer PowerPoint Viewer 97 avec vos présentations PowerPoint 97 aux personnes qui n'utilisent pas Microsoft PowerPoint 97. (Consultez le paragraphe "Distribution de PowerPoint Viewer" pour de plus amples renseignements)
+
+Microsoft(r) PowerPoint Viewer 97 ne fonctionne pas sous Windows 3.1. Les utilisateurs de Windows 3.1 doivent installer PowerPoint Viewer pour Windows 3.1. PowerPoint Viewer pour Windows 3.1 (Version US) est disponible en ligne sous la forme d'un fichier exécutable d'extraction automatique (PptVw16.exe) à l'emplacements suivant sur Internet: 
+
+	http://www.microsoft.com/france/support/produits/Office/PowerPoint/Utils/
+	
+
+Nouveautés de Microsoft PowerPoint Viewer 97
+--------------------------------------------
+Microsoft PowerPoint 97 Viewer permet l'affichage fidèle des fichiers PowerPoint 97 comprenant de nouvelles animations, effets graphiques, paramètres d'actions, liens hypertexte et diaporamas personnalisés. L'impression et les mots de passe pour les diaporamas de type borne d'information sont aussi pris en charge. 
+Microsoft PowerPoint Viewer 97 peut être exécuté comme une application autonome, mais aussi pour l'affichage de présentation PowerPoint à l'intérieur de Microsoft Internet Explorer 3.x et versions supérieures. Les présentations PowerPoint peuvent aussi être affichées dans Netscape Navigator 2.x et versions supérieures.  (Consultez le paragraphe "Affichage de présentations dans Netscape Navigator" pour de plus amples renseignements.) 
+
+Configuration requise pour PowerPoint Viewer 97
+-----------------------------------------------
+* Ordinateur personnel doté d'un microprocesseur 486 ou supérieur 
+* Microsoft Windows(r) 95 ou Microsoft Windows NT(r) Workstation 3.51 avec Service Pack 5.x ou supérieur 
+* 4 Mo de mémoire pour Windows 95 (8 Mo recommandés)
+* 12 Mo de mémoire pour Windows NT Workstation
+* 7 Mo d'espace disque (9 Mo d'espace libre pour l'installation seulement)
+* Carte graphique VGA ou de résolution supérieure 
+* Souris Microsoft ou dispositif de pointage compatible 
+
+Acheter Microsoft PowerPoint 97
+---------------------------------
+Si vous souhaitez commander la version commercialisée de Microsoft PowerPoint 97, contactez la filiale Microsoft locale. Pour savoir où se trouve la filiale Microsoft locale, consultez le site Web des bureaux Microsoft dans le monde, sur:
+	
+	http://www.microsoft.com/worldwide/
+
+Support technique de Microsoft PowerPoint Viewer 97
+---------------------------------------------------
+Le support technique Microsoft vous permet d'obtenir gratuitement des renseignements techniques sur Microsoft PowerPoint Viewer 97, de plusieurs façons. 
+Vous pouvez consulter le support technique en ligne Microsoft, la base de connaissances Microsoft, et les astuces Microsoft. Puisque PowerPoint Viewer 97 est similaire en de nombreux points à PowerPoint, les informations sur un sujet particulier tel que l'impression depuis PowerPoint peuvent s'avérer aussi valables pour PowerPoint Viewer 97. Gardez à l'esprit cette similarité lorsque vous recherchez des informations techniques concernant les problèmes que vous pourriez rencontrer lors de l'utilisation de PowerPoint Viewer 97.
+
+Base de connaissances Microsoft
+-------------------------------
+La base de connaissances Microsoft, qui est la même source d'information qui est utilisée par les ingénieurs du support technique, contient des milliers d'articles techniques et concernant le support technique sur les produits Microsoft, comprenant PowerPoint Viewer 97. Vous pouvez accéder à la base de connaissances depuis les points suivants : 
+Le World Wide Web
+Pour accéder à la base de connaissancesen Anglais sur le Web, utilisez l'adresse suivante :
+
+http://www.microsoft.com/support/mtshome.asp
+
+Cliquez sur Knowledge Base et suivez les instructions détaillées sur la page.
+
+Vous pouvez aussi consulter une page support en Français :
+
+http://www.microsoft.com/France/support/produits/office/powerpoint/
+
+TechNet
+--------
+TechNet, le réseau d'informations techniques Microsoft, est un service d'informations techniques à péage fournissant des informations de grande utilité sur les produits Microsoft, comprenant la base de connaissances Microsoft. L'abonnement au service comprend 12 mises à jour mensuelles du CD-ROM TechNet. Pour vous abonner à TechNet ou pour des renseignements, utilisez l'adresse suivante :
+
+http://www.microsoft.com/France/Support/services/4technet/
+
+Site FTP Microsoft 
+------------------
+Le serveur FTP anonyme Microsoft permet l'accès à la base de connaissances en Anglais de Microsoft pour les utilisateurs qui possèdent un accès à un fournisseur de services FTP. Pour accéder à la base de connaissances Microsoft sur le site FTP Microsoft, effectuez les opérations suivantes:
+	1. Connectez-vous à votre compte Internet.
+	2. À l'affichage de l'invite internet, tapez
+		open ftp.microsoft.com
+	3. Dans le champ réservé au nom d'utilisateur, tapez : 
+		anonymous
+	4. Dans le champ mot de passe, tapez votre adresse électronique complète
+ 	   (par exemple, jeandubo@test.com).  
+	5. À l'affichage de l'invite, tapez "cd deskapps\powerpoint\kb" 
+	  (sans les guillemets) pour accéder au répertoire KB.
+	6. Une fois que vous êtes dans le répertoire KB, téléchargez les fichiers
+	   Readme.txt et Index.txt qui se trouvent dans ce répertoire. 
+	   Readme.txt contient des informations importantes concernant les articles KB 
+	   sur le serveur FTP et la manière d'y accéder. 	   Index.txt contient une liste des titres d'articles et les identificateurs
+	   pour chaque article.
+
+---------------------------------------------------------------
+Information sur l'utilisation de Microsoft PowerPoint Viewer 97 
+---------------------------------------------------------------
+Déplacement dans un diaporama :
+
+Diapositive suivante:		Bouton gauche de la souris ou touche PG. SUIV. 
+Diapositive précédente:		Touche PG. PRÉC. 
+Quitter:			Touche Échap.
+Menu des commandes:		Bouton droit de la souris
+Aide:				Touche F1
+
+
+Options de ligne de commande 
+----------------------------
+PowerPoint Viewer possède des options de ligne de commande vous permettant de contourner l'utilisation de l'interface utilisateur. Le format de la ligne de commande doit être le suivant:
+
+ppview32.exe [options de ligne de commande] "<chemin\nom du fichier powerpnt>"
+Vous pouvez utiliser les paramètres de lignes de commande suivants :
+
+Avance automatique		/A ou /a
+Groupe de diapositives		/R=n-m ou /r=n-m où n<=m
+Boucle infinie			/L ou /l
+Impression			/P ou /p pour un fichier d'impression
+Mot de passe de borne		/K ou /k pour activer le mode borne d'affichage 
+Boîte de dialogue Macro virus	/V ou /v pour l'affichage de la boîte de dialogue 
+					 macro virus 
+
+
+Fichiers de listes de présentations(.lst)
+-----------------------------------------
+PowerPoint Viewer prend en charge les fichiers de type.lst. Ce type de fichier permet d'afficher successivement plusieurs présentations en spécifiant les fichiers dans un fichier.lst. Les fichiers de listes utilisent le format suivant : 
+
+[options de ligne de commande] "<chemin\nom du fichier powerpnt>"
+[options de ligne de commande] "<chemin\nom du fichier powerpnt>"
+etc...
+
+Vous pouvez utiliser les paramètres de lignes de commande suivants :
+
+Avance automatique		/A ou /a
+Groupe de diapositives		/R=n-m ou /r=n-m où n<=m
+Boucle infinie			/L ou /l
+Mot de passe de borne		/K ou /k pour activer le mode borne d'affichage 
+Boîte de dialogue Macro virus	/V ou /v pour l'affichage de la boîte de dialogue 					 macro virus 
+
+
+Interaction avec les présentations à emporter 
+---------------------------------------------
+Le viewer 16 bits (PptView.exe)est livré par défaut avec PowerPoint 95. PowerPoint Viewer 95 est livré par défaut avec PowerPoint 97. Il est possible d'utiliser Microsoft PowerPoint Viewer 97 pour Windows en installant le nouveau viewer. Après avoir installé PowerPoint Viewer 97, L'assistant Présentations à emporter détectera et utilisera automatiquement le nouveau viewer. 
+
+Les noms de fichiers longs sont tronqués au format 8.3 sous Windows NT.
+
+
+Affichage de présentations contenant des sons RealAudio
+-------------------------------------------------------
+Certaines présentations PowerPoint peuvent contenir des liens vers des sons RealAudio. L'utilisation de RealAudio permet d'obtenir des performances sonores de meilleure qualité lors de l'affichage d'une présentation via une connexion réseau. Toutefois, le lecteur RealAudio n'est pas installé lors de l'installation de PowerPoint Viewer 97. Vous pouvez installer le lecteur RealAudio depuis l'adresse Internet suivante:
+	http://www.realaudio.com
+
+
+Affichage de présentations dans Netscape Navigator
+--------------------------------------------------
+Pour pouvoir afficher des présentations PowerPoint dans la fenêtre de l'explorateur Netscape Navigator vous devez installer un Plug-in ActiveX pour Netscape Navigator (versions 2.x et supérieures). Vous pouvez télécharger et installer ce Plug-in depuis l'adresse Internet suivante:  http://www.microsoft.com/powerpoint/internet/viewer/   
+Nota: Il existe des problèmes répertoriés lorsque ce Plug-in est utilisé avec Internet Explorer et les versions précédentes des applications Office. N'installez pas ce Plug-in si vous utilisez ou prévoyez d'utiliser Internet Explorer et des applications Office 4.x ou Office 95.  
+
+
+Contrôle de PowerPoint Viewer 97 depuis d'autres applications
+-------------------------------------------------------------
+PowerPoint Viewer 97 comprend un modèle objet qui permet le contrôle des diaporamas depuis une application externe ou depuis VBScript. Vous trouverez un résumé du modèle objet PowerPoint Viewer ci-dessous.
+
+ViewerApplication 
+#define _ppMsoTriStateMixed -2
+#define _ppTrue -1
+#define _ppFalse 0
+
+typedef enum
+{
+   ppSlideShowManualAdvance = 1,
+   ppSlideShowUseSlideTimings,
+} EPPSlideShowAdvanceMode;
+
+ IPPViewerSlideShowView *NewShow( [in] BSTR fileName,
+      				         [in] EPPViewerSlideShowAdvanceMode mode, 
+         [in,defaultvalue(_ppFalse)] MsoTriState kiosk );
+
+void Quit( void );
+
+ViewerSlideShowView 
+   void Next();
+   void Previous();
+   void GotoSlide([in] int Index, [in,defaultvalue(_ppTrue)] MsoTriState ResetSlide );
+
+   void GetNumSlides([out] int* count );
+   void GetCurSlide( [out] int* slideId );
+ 
+   void Exit();
+
+
+----------------
+Problèmes connus
+----------------
+1. Explorateur Web Netscape Navigator: Si PowerPoint Viewer est installé dans un dossier utilisant les noms de fichiers long contenant un espace, certaines versions bêta de Netscape Navigator 2.0 ne reconnaissent pas les fichiers PowerPoint incorporées dans des documents HTML avec le mot-clé EMBED. Ce problème peut être résolu en installant PowerPoint Viewer dans un dossier dont le nom ne contient pas d'espaces.
+
+2. Présentations à emporter: Si PowerPoint 97 ou PowerPoint Viewer sont installés dans un dossier qui utilise les noms de fichiers longs contenant un ou des espaces, les diaporamas ne s'exécuteront pas automatiquement lorsque le fichier est décompressé. Le fichier doit être ouvert manuellement depuis PowerPoint ou PowerPoint Viewer après décompression.
+
+3. Présentations à emporter: Les liens hypertexte vers d'autres présentations peuvent ne pas fonctionner correctement si le diaporama est exécuté de manière automatique lors de la décompression. Ouvrez plutôt le fichier manuellement depuis PowerPoint Viewer après la décompression.
+
+4. Présentations à emporter: Pour pouvoir compresser PowerPoint Viewer 97 en utilisant les présentations à emporter PowerPoint 95, installez PowerPoint Viewer 97 et le fichier de correction pour les présentations à emporter PowerPoint 95. Tous deux sont disponibles sur le site Web PowerPoint:
+http://www.microsoft.com/powerpoint/internet/viewer/
+
+5. Mot de passe de la borne: Si l'utilisateur suit un lien hypertexte depuis une présentation principale vers une autre présentation puis appuie sur la touche Échap, la boîte de dialogue du mot de passe s'affiche.  Après la fermeture de la boîte de dialogue le programme retourne à la présentation principale. L'appui sur la touche Échap une deuxième fois provoquera la sortie de PowerPoint Viewer sans affichage de la boîte de dialogue du mot de passe.
+
+----------------------
+Conversion de fichiers
+----------------------
+ La séquence d'installations et désinstallations suivante rend la conversion des fichiers PowerPoint de versions précédentes inopérante.
+1. Installez Windows 95 sur un disque dur vide et installez cette version de Viewer 97.
+2. Installez Office 97 ou Office 97a
+3. Supprimez Viewer97 via le panneau de configuration (Ajout/Suppression de programmes)
+4. Réinstallez Viewer 97
+Résultat: les présentations de type PPC, winpp3, macpp3, winpp4, macpp5, winpp5, et winpp95 ne pourront pas être ouvertes.
+Le message d'erreur " Impossible d'ouvrir cette présentation " s'affichera pour toute présentation des types mentionnés (seules les présentations de type pp4mac pourront être ouvertes)
+
+---------------------------
+Installation et maintenance
+---------------------------
+
+Installation depuis une disquette 
+---------------------------------
+1. Fermez toutes les autres applications et assurez-vous qu'aucun utilitaire ou programme anti-virus n'est en cours d'exécution.
+
+2. Insérez la disquette étiquetée " Microsoft PowerPoint Viewer 97 pour Windows Disquette 1" dans le lecteur de disquettes 3.5".
+
+3. Sous Windows 95 ou Windows NT 4.0, cliquez sur le bouton Démarrer puis sur Exécuter.  Sous Windows NT 3.51, cliquez sur le menu Fichier puis sélectionner Exécuter.
+
+4. Tapez <Lettre de lecteur>\install.exe et appuyez sur la touche Entrée.
+
+5. Le programme d'installation de PowerPoint Viewer 97 vous demandera alors de sélectionner un dossier dans lequel installer PowerPoint Viewer. Le dossier pas défaut pour PowerPoint Viewer est \Program Files\PowerPoint Viewer (C:\PowerPoint Viewer sous Windows NT 3.51). 
+
+6. Après avoir sélectionné le dossier pour l'installation de PowerPoint Viewer, cliquez sur Installer.
+
+7. Suivez les instructions et insérez la disquette appropriée lorsque cela vous est demandé.
+
+Installation depuis un explorateur Internet 
+-------------------------------------------
+1. Téléchargez Viewer.exe sur votre disque dur local.
+
+2. Fermez toutes les autres applications et assurez-vous qu'aucun utilitaire ou programme anti-virus n'est en cours d'exécution.
+
+3. Sous Windows 95 ou Windows NT 4.0 ou encore le gestionnaire de fichiers de Windows NT 3.51, double-cliquez sur l'icône PowerPoint Viewer. Un utilitaire d'extraction automatique s'exécutera alors, qui extraira les fichiers distribués de PowerPoint Viewer 97 et démarrera le programme d'installation de PowerPoint Viewer 97.
+
+4. Le programme d'installation de PowerPoint Viewer 97 vous demandera alors de sélectionner un dossier dans lequel installer PowerPoint Viewer. Le dossier pas défaut pour PowerPoint Viewer est \Program Files\PowerPoint Viewer (C:\PowerPoint Viewer sous Windows NT 3.51). 
+
+5. Après avoir sélectionné le dossier pour l'installation de PowerPoint Viewer, cliquez sur Installer.
+
+Mode maintenance
+----------------
+Si vous avez installé Microsoft PowerPoint Viewer 97 et constaté un comportement inhabituel dans son fonctionnement, réinstallez-le de la manière suivante: 
+Windows 95 ou Windows NT 4.0
+1. Dans le panneau de configuration, double-cliquez sur Ajout/Suppression de programmes.
+
+2. Cliquez sur l'onglet Installation/Désinstallation. 
+
+3. Double-cliquez sur Microsoft PowerPoint Viewer 97.
+
+Windows NT 3.51
+
+1. Allez dans le répertoire dans lequel est installé PowerPoint Viewer.
+
+2. Exécutez le fichier Install.exe.
+
+Dans tous les cas ci-dessus, le programme d'installation affichera une boîte de dialogue de maintenance possédant un bouton Réinstaller pour restaurer tout fichier ou paramètre manquant. Cliquez sur ce bouton pour commencer la réinstallation.
+
+Désinstallation
+---------------
+Pour enlever PowerPoint Viewer 97 de votre ordinateur, suivez les instructions de ce document concernant le démarrage du programme d'installation de Microsoft PowerPoint Viewer 97. Lorsque la boîte de dialogue de maintenance apparaîtra, cliquez sur Supprimer tout. Lorsque la désinstallation sera terminée, Démarrez Powerpoint pour restaurer ses paramètres.
+ 
+---------------------------------
+Distribution de PowerPoint Viewer
+---------------------------------
+Microsoft encourage tous les utilisateurs de PowerPoint Viewer à le distribuer à leurs collègues ou amis. Vous pouvez le poster sur des services en ligne , des réseaux, ou le distribuer sous forme de disquettes. 
+
+Distribution sous forme de disquettes
+-------------------------------------
+Il existe deux procédures différentes pour la création et la distribution des disquettes à d'autres utilisateurs. La première procédure consiste à copier les fichiers créés par le programme d'installation, et doit être effectuée juste avant de quitter le programme d'installation. La seconde procédure nécessite PKZip (version 2.04), mais peut être effectuée à tout moment après le téléchargement de Viewer.exe. Créez deux disquettes 1.44 Mo formatées et vides et suivez les instructions ci-dessus: 
+	Procédure de copie de l'installation 
+	1. Étiquetez deux disquettes comme suit : " Microsoft PowerPoint Viewer 97 
+	disquette 1" et "Microsoft PowerPoint Viewer 97 disquette 2".
+	
+	2. Exécutez Viewer.exe pour démarrer le programme d'installation de Viewer 97.
+	Lorsque le programme d'installation affichera " Voulez-vous installer 
+	Microsoft PowerPoint Viewer 97?", basculez vers l'explorateur Windows 95 ou
+	le gestionnaire de fichiers Windows NT.
+
+	3. Recherchez le dossier référencé par la variable d'environnement " tmp ". 
+	Si vous ne savez pas de quel dossier il s'agit, effectuez les opérations 
+	suivantes :
+		* Allez à l'invite de MS-DOS.
+		* Tapez " set " (sans les guillemets) à l'invite MS-DOS, et appuyez 
+		sur Entrée.
+		* Recherchez la ligne " TMP=... " pour déterminer l'emplacement 
+		du dossier " tmp ".
+
+	4. Insérez la disquette étiquetée " disquette 1 "  et copiez les fichiers 
+	suivants depuis le dossier " tmp " vers la disquette:
+		* install.txt
+		* License.txt
+		* Install.exe
+		* Install.ini
+		* Setup.lst
+		* Setup.tdf
+		* ppviewer.inf
+		* viewer1.cab
+
+	5. Insérez la disquette étiquetée "disquette2" et copiez viewer2.cab dessus.
+
+Procédure PKZip 
+---------------
+Vous devez posséder PKZip version 2.04 pour cette procédure. Ce programme peut être facilement obtenu depuis les forums électroniques et autres services en-ligne. 
+
+	1.  Insérez la première disquette dans votre lecteur de disquettes.
+
+	2.  Depuis le menu Démarrage de Windows 95 ou le gestionnaire de programmes 
+	    Windows NT, démarrez une session MS-DOS.
+
+	3.  À l'affichage de l'invite MS-DOS, tapez 
+    	    pkzip -& <Lecteur>:\Viewer.zip Viewer.exe
+
+où : "<lecteur>" est le lecteur de disquettes contenant la disquette. Cette commande crée un fichier d'archives partagé sur deux disquettes. PKZip vous demandera d'insérer la disquette suivante lorsque la première sera pleine.
+
+Pour installer PowerPoint Viewer 97 sur un autre ordinateur avec des fichiers ZIP
+---------------------------------------------------------------------------------
+	1. Créez un nouveau dossier depuis lequel effectuer l'installation.
+
+	2. À l'affichage de l'invite de commande MS-DOS, tapez
+	   pkunzip <disquette>:\Viewer.zip <lecteur>:\<DossierDest>\Viewer.exe
+
+où :"<disquette>" est la lettre du lecteur contenant la disquette, et "<lecteur>" et "<dossierdest>" sont la lettre du lecteur et le dossier dans lequel vous voulez placer Viewer.exe.
+
+	3. Double-cliquez sur Viewer.exe pour démarrer l'installation.
+
+Distribution de PowerPoint Viewer 97 sur des serveurs réseau
+------------------------------------------------------------
+Création d'une source réseau depuis un jeu de disquettes Microsoft
+(Consultez " Distribution par disquettes " dans ce document pour obtenir PowerPoint Viewer 97 sur disquettes.)
+
+Pour créer une source réseau pour l'installation de PowerPoint Viewer 97, créez un nouveau dossier sur le serveur et créez deux sous-dossiers dans ce dossier: "disquet1", and "disquet2". Copier les fichiers de chaque disquette dans le sous-dossier approprié.
+Pour installer PowerPoint Viewer sur votre disque dur local, ou dans un emplacement réseau personnel, exécutez Install.exe depuis le sous-dossier "disquet1".
+
+Nota: L'installation de PowerPoint Viewer 97 ne permet pas d'exécuter l'application depuis un serveur (" Option Exécuter depuis un serveur").
+
+Création d'une source réseau pour les fichiers en-ligne de PowerPoint Viewer 97 (Viewer.exe)
+La procédure recommandée est quasi identique à la procédure " Copie du programme d'installation " détaillée dans ce document pour la création de disquettes depuis les fichier en-ligne. Au lieu de copier les fichiers vers des dossiers différents pour chaque disquette, copiez-les vers un dossier unique sur le serveur réseau. Les utilisateurs en réseau doivent alors exécuter Install.exe depuis cet emplacement sur leur disque dur local ou depuis un emplacement réseau personnel.
+
+----------------------------------------------------------------
+Noms et emplacements des fichiers PowerPoint Viewer 97 installés
+---------------------------------------------------------------- 
+Nom    Taille du fichier (en octets) Emplacement
+LICENSE.TXT  5 053             \POWERPOINT VIEWER
+LISEZMOI.TXT 21 708            \POWERPOINT VIEWER
+PPVIEW32.EXE 1 424 144         \POWERPOINT VIEWER
+PPINTLV.DLL  158 208           \POWERPOINT VIEWER 
+RAPPT.DLL    32 768            \POWERPOINT VIEWER
+MSPPT8VR.OLB 5 632             \POWERPOINT VIEWER
+PP4X322.DLL  619 520           \POWERPOINT VIEWER\XLATORS
+PP7X32.DLL   175 104           \POWERPOINT VIEWER\XLATORS
+ACMSETUP.HLP 14 490            \POWERPOINT VIEWER\SETUP
+MSSETUP.DLL  255 488           \POWERPOINT VIEWER\SETUP
+INSTALL.EXE  352 256           \POWERPOINT VIEWER\SETUP
+SETUP.STF    Taille variable   \POWERPOINT VIEWER\SETUP
+PPVIEW.DLL   87 552            \POWERPOINT VIEWER\SETUP
+PPVIEW.INF   4 306             \POWERPOINT VIEWER\SETUP
+DOCOBJ.DLL   22 016            \WINDOWS\SYSTEM
+HLINK.DLL    72 976            \WINDOWS\SYSTEM
+HLINKPRX.DLL 12 288            \WINDOWS\SYSTEM
+MSO97V.DLL   1 690 896         \WINDOWS\SYSTEM
+MSORFS.DLL   26 112            \WINDOWS\SYSTEM
+MSV7ENU.DLL  229 136           \WINDOWS\SYSTEM
+T2EMBED.DLL  222 720           \WINDOWS\SYSTEM
+URLMON.DLL   166 160           \WINDOWS\SYSTEM
+WININET.DLL  291 600           \WINDOWS\SYSTEM
+MSIMRT.DLL   14 336            \WINDOWS\SYSTEM
+MSIMRT16.DLL 10 544            \WINDOWS\SYSTEM
+MSIMRT32.DLL 22 016            \WINDOWS\SYSTEM
+MSIMUSIC.DLL 120 320           \WINDOWS\SYSTEM
+
+
+(c)Copyright 1997 Microsoft Corporation. Tous droits réservés.
+
+Ce document est fourni à titre d'information uniquement et MICROSOFT CORPORATION exclut toute autre garantie, implicite ou explicite, en ce qui concerne ce document.
+Microsoft, Windows, Windows NT, et PowerPoint sont des marques déposées de Microsoft Corporation.
+Macintosh est une marque déposée de Apple Computer, Inc.
+MICROSOFT CORPORATION - ONE MICROSOFT WAY - REDMOND, WA 98052-6399 - USA
+

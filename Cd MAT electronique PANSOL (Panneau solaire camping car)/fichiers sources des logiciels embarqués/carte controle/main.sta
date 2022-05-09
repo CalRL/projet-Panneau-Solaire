@@ -1,0 +1,116 @@
+
+ROM used: 6655 (81%)
+          6826 (83%) including unused fragments
+
+          3 Average locations per line
+          6 Average locations per statement
+
+RAM used: 151 (42%) at main() level
+          209 (58%) worst case
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  107    17   2  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\main.c
+  267     0   0  C:\Program Files\PICC\devices\16F876a.h
+  707   244  23  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\can.c
+  402     0   0  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\can.h
+  153    72   5  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\lcd.c
+   78    49   4  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\gest_time.c
+   83    51   4  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\gest_can.c
+  141   108   7  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\gest_serie.c
+  193   123   8  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\gest_affi.c
+  118    90   5  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\gest_mode.c
+  287   301  17  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte controle\gest_clav.c
+----- -----
+ 5072  2110 Total
+
+Page ROM  %  RAM  Functions:
+---- --- --- ---  ----------
+0     13   0   1  @delay_ms1
+0      7   0   1  @PUTCHAR_BIU_1
+0     14   0   0  @GETCH_BIU_1
+0     49   1   3  can_set_mode
+0    209   3  17  can_set_id
+0    208   3  22  can_putd
+0     91   1   5  mcp2510_read
+0     56   1   6  mcp2510_write
+0      8   0   0  @const301
+0     85   1   1  displays
+0     20   0   1  lcd_send_nibble
+0     57   1   3  lcd_send_byte
+0    168   3   1  isr_timer2
+0     25   0   5  @MUL1616
+0     31   0   0  can_sd_mot
+0     22   0   0  can_sd_ecl
+0     49   1   4  RDA_isr
+2    534   8   4  gest_serie
+1     39   1   2  @MUL88
+1     41   1   2  @PRINTF_X_9600_62_63
+1     23   0   3  @DIV88
+2     74   1   2  @PRINTF_U_9600_62_63
+2    116   2   9  @PRINTF_LU_9600_62_63
+0     15   0   3  purge_srxbuf
+2    312   5   1  gest_affi
+2     10   0   0  @goto10763
+0     17   0   0  @const10770
+1     66   1   2  @PRINTF_U_625
+0     12   0   0  @const10784
+0     12   0   0  @const10791
+0     15   0   0  @const10799
+0     14   0   0  @const10807
+0     14   0   0  @const10815
+0     14   0   0  @const10823
+0     14   0   0  @const10831
+2    176   3   1  affi_bat
+0     12   0   0  @const10880
+0     11   0   0  @const10884
+0     11   0   0  @const10888
+2    176   3   0  affi_lum
+1    174   3   1  affi_ecl
+0     16   0   0  @const10922
+0     15   0   0  @const10930
+0     17   0   0  @const10934
+0     17   0   0  @const10942
+0     17   0   0  @const10950
+0     17   0   0  @const10958
+0     17   0   0  @const10966
+0     22   0   0  @const10974
+0     19   0   0  @const10978
+0     19   0   0  @const10983
+0     20   0   0  @const10987
+0     33   0   1  affi_auto
+0     22   0   0  @const10995
+0     18   0   0  @const10999
+0     16   0   0  @const11006
+0     13   0   0  @const11010
+0     16   0   0  @const11021
+0     33   0   1  affi_park
+0     19   0   0  @const11028
+0     15   0   0  @const11032
+0     33   0   1  affi_manu
+0     17   0   0  @const11039
+0     12   0   0  @const11051
+0     17   0   0  @const11055
+0     17   0   0  @const11063
+0     17   0   0  @const11067
+0     17   0   0  @const11075
+0     17   0   0  @const11079
+0     14   0   0  @const11087
+0     21   0   0  @const11091
+0     18   0   0  @const11099
+0     16   0   0  @const11103
+1   1159  17   1  gest_mode
+0     95   1   7  RDA_RB
+2    525   8   2  commande
+3    682  10   0  main
+1    514   8   0  init
+
+ Segment   Used  Free
+---------  ----  ----
+00000-00003     4  0
+00004-00044    65  0
+00045-007FF  1965  14
+00800-00FFF  2016  32
+01000-017FF  1923  125
+01800-01FFF   682  1366
+

@@ -1,0 +1,112 @@
+Ligne 84: La classe ComctlLib.Slider du contrôle cmes n'est pas une classe de contrôle chargée.
+Ligne 136: La classe ComctlLib.Slider du contrôle c_barpercor n'est pas une classe de contrôle chargée.
+Ligne 166: La classe ComctlLib.Slider du contrôle c_barsecor n'est pas une classe de contrôle chargée.
+Ligne 318: La classe GaugeLib.Gauge du contrôle bar_ve n'est pas une classe de contrôle chargée.
+Ligne 333: La classe GaugeLib.Gauge du contrôle bar_vs n'est pas une classe de contrôle chargée.
+Ligne 348: La classe GaugeLib.Gauge du contrôle bar_ie n'est pas une classe de contrôle chargée.
+Ligne 363: La classe GaugeLib.Gauge du contrôle bar_is n'est pas une classe de contrôle chargée.
+Ligne 499: La classe GaugeLib.Gauge du contrôle bar_ecl n'est pas une classe de contrôle chargée.
+Ligne 514: La classe ComctlLib.Slider du contrôle c_bar n'est pas une classe de contrôle chargée.
+Ligne 582: La classe MSCommLib.MSComm du contrôle MSComm1 n'est pas une classe de contrôle chargée.
+Ligne 591: La classe GaugeLib.Gauge du contrôle bar_el n'est pas une classe de contrôle chargée.
+Ligne 611: La classe MSComDlg.CommonDialog du contrôle OpenCapt n'est pas une classe de contrôle chargée.
+Ligne 772: La classe GaugeLib.Gauge du contrôle bar_lum n'est pas une classe de contrôle chargée.
+Ligne 785: La classe GaugeLib.Gauge du contrôle bar_az n'est pas une classe de contrôle chargée.
+Ligne 821: La classe ComctlLib.Slider du contrôle t_bar n'est pas une classe de contrôle chargée.
+Ligne 925: La classe GaugeLib.Gauge du contrôle bar_t n'est pas une classe de contrôle chargée.
+Ligne 90: Le nom de la propriété _ExtentX dans cmes est incorrect.
+Ligne 91: Le nom de la propriété _ExtentY dans cmes est incorrect.
+Ligne 92: Le nom de la propriété _Version dans cmes est incorrect.
+Ligne 93: Le nom de la propriété Min dans cmes est incorrect.
+Ligne 94: Le nom de la propriété Max dans cmes est incorrect.
+Ligne 95: Le nom de la propriété SelStart dans cmes est incorrect.
+Ligne 96: Le nom de la propriété Value dans cmes est incorrect.
+Ligne 142: Le nom de la propriété _ExtentX dans c_barpercor est incorrect.
+Ligne 143: Le nom de la propriété _ExtentY dans c_barpercor est incorrect.
+Ligne 144: Le nom de la propriété _Version dans c_barpercor est incorrect.
+Ligne 145: Le nom de la propriété Min dans c_barpercor est incorrect.
+Ligne 146: Le nom de la propriété Max dans c_barpercor est incorrect.
+Ligne 147: Le nom de la propriété SelStart dans c_barpercor est incorrect.
+Ligne 148: Le nom de la propriété Value dans c_barpercor est incorrect.
+Ligne 172: Le nom de la propriété _ExtentX dans c_barsecor est incorrect.
+Ligne 173: Le nom de la propriété _ExtentY dans c_barsecor est incorrect.
+Ligne 174: Le nom de la propriété _Version dans c_barsecor est incorrect.
+Ligne 175: Le nom de la propriété Min dans c_barsecor est incorrect.
+Ligne 176: Le nom de la propriété Max dans c_barsecor est incorrect.
+Ligne 177: Le nom de la propriété SelStart dans c_barsecor est incorrect.
+Ligne 178: Le nom de la propriété Value dans c_barsecor est incorrect.
+Ligne 324: Le nom de la propriété _Version dans bar_ve est incorrect.
+Ligne 325: Le nom de la propriété _ExtentX dans bar_ve est incorrect.
+Ligne 326: Le nom de la propriété _ExtentY dans bar_ve est incorrect.
+Ligne 327: Le nom de la propriété _StockProps dans bar_ve est incorrect.
+Ligne 329: Le nom de la propriété Max dans bar_ve est incorrect.
+Ligne 330: Le nom de la propriété Style dans bar_ve est incorrect.
+Ligne 331: Le nom de la propriété NeedleWidth dans bar_ve est incorrect.
+Ligne 339: Le nom de la propriété _Version dans bar_vs est incorrect.
+Ligne 340: Le nom de la propriété _ExtentX dans bar_vs est incorrect.
+Ligne 341: Le nom de la propriété _ExtentY dans bar_vs est incorrect.
+Ligne 342: Le nom de la propriété _StockProps dans bar_vs est incorrect.
+Ligne 344: Le nom de la propriété Max dans bar_vs est incorrect.
+Ligne 345: Le nom de la propriété Style dans bar_vs est incorrect.
+Ligne 346: Le nom de la propriété NeedleWidth dans bar_vs est incorrect.
+Ligne 354: Le nom de la propriété _Version dans bar_ie est incorrect.
+Ligne 355: Le nom de la propriété _ExtentX dans bar_ie est incorrect.
+Ligne 356: Le nom de la propriété _ExtentY dans bar_ie est incorrect.
+Ligne 357: Le nom de la propriété _StockProps dans bar_ie est incorrect.
+Ligne 359: Le nom de la propriété Max dans bar_ie est incorrect.
+Ligne 360: Le nom de la propriété Style dans bar_ie est incorrect.
+Ligne 361: Le nom de la propriété NeedleWidth dans bar_ie est incorrect.
+Ligne 369: Le nom de la propriété _Version dans bar_is est incorrect.
+Ligne 370: Le nom de la propriété _ExtentX dans bar_is est incorrect.
+Ligne 371: Le nom de la propriété _ExtentY dans bar_is est incorrect.
+Ligne 372: Le nom de la propriété _StockProps dans bar_is est incorrect.
+Ligne 374: Le nom de la propriété Max dans bar_is est incorrect.
+Ligne 375: Le nom de la propriété Style dans bar_is est incorrect.
+Ligne 376: Le nom de la propriété NeedleWidth dans bar_is est incorrect.
+Ligne 506: Le nom de la propriété _Version dans bar_ecl est incorrect.
+Ligne 507: Le nom de la propriété _ExtentX dans bar_ecl est incorrect.
+Ligne 508: Le nom de la propriété _ExtentY dans bar_ecl est incorrect.
+Ligne 509: Le nom de la propriété _StockProps dans bar_ecl est incorrect.
+Ligne 511: Le nom de la propriété Max dans bar_ecl est incorrect.
+Ligne 512: Le nom de la propriété NeedleWidth dans bar_ecl est incorrect.
+Ligne 521: Le nom de la propriété _ExtentX dans c_bar est incorrect.
+Ligne 522: Le nom de la propriété _ExtentY dans c_bar est incorrect.
+Ligne 523: Le nom de la propriété _Version dans c_bar est incorrect.
+Ligne 524: Le nom de la propriété Max dans c_bar est incorrect.
+Ligne 585: Le nom de la propriété _ExtentX dans MSComm1 est incorrect.
+Ligne 586: Le nom de la propriété _ExtentY dans MSComm1 est incorrect.
+Ligne 587: Le nom de la propriété _Version dans MSComm1 est incorrect.
+Ligne 588: Le nom de la propriété DTREnable dans MSComm1 est incorrect.
+Ligne 589: Le nom de la propriété RThreshold dans MSComm1 est incorrect.
+Ligne 597: Le nom de la propriété _Version dans bar_el est incorrect.
+Ligne 598: Le nom de la propriété _ExtentX dans bar_el est incorrect.
+Ligne 599: Le nom de la propriété _ExtentY dans bar_el est incorrect.
+Ligne 600: Le nom de la propriété _StockProps dans bar_el est incorrect.
+Ligne 602: Le nom de la propriété NeedleWidth dans bar_el est incorrect.
+Ligne 614: Le nom de la propriété _ExtentX dans OpenCapt est incorrect.
+Ligne 615: Le nom de la propriété _ExtentY dans OpenCapt est incorrect.
+Ligne 616: Le nom de la propriété _Version dans OpenCapt est incorrect.
+Ligne 778: Le nom de la propriété _Version dans bar_lum est incorrect.
+Ligne 779: Le nom de la propriété _ExtentX dans bar_lum est incorrect.
+Ligne 780: Le nom de la propriété _ExtentY dans bar_lum est incorrect.
+Ligne 781: Le nom de la propriété _StockProps dans bar_lum est incorrect.
+Ligne 783: Le nom de la propriété NeedleWidth dans bar_lum est incorrect.
+Ligne 791: Le nom de la propriété _Version dans bar_az est incorrect.
+Ligne 792: Le nom de la propriété _ExtentX dans bar_az est incorrect.
+Ligne 793: Le nom de la propriété _ExtentY dans bar_az est incorrect.
+Ligne 794: Le nom de la propriété _StockProps dans bar_az est incorrect.
+Ligne 796: Le nom de la propriété NeedleWidth dans bar_az est incorrect.
+Ligne 827: Le nom de la propriété _ExtentX dans t_bar est incorrect.
+Ligne 828: Le nom de la propriété _ExtentY dans t_bar est incorrect.
+Ligne 829: Le nom de la propriété _Version dans t_bar est incorrect.
+Ligne 830: Le nom de la propriété Min dans t_bar est incorrect.
+Ligne 831: Le nom de la propriété SelStart dans t_bar est incorrect.
+Ligne 832: Le nom de la propriété Value dans t_bar est incorrect.
+Ligne 931: Le nom de la propriété _Version dans bar_t est incorrect.
+Ligne 932: Le nom de la propriété _ExtentX dans bar_t est incorrect.
+Ligne 933: Le nom de la propriété _ExtentY dans bar_t est incorrect.
+Ligne 934: Le nom de la propriété _StockProps dans bar_t est incorrect.
+Ligne 936: Le nom de la propriété Max dans bar_t est incorrect.
+Ligne 937: Le nom de la propriété Min dans bar_t est incorrect.
+Ligne 938: Le nom de la propriété Value dans bar_t est incorrect.
+Ligne 939: Le nom de la propriété NeedleWidth dans bar_t est incorrect.

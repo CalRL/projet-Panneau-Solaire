@@ -1,0 +1,290 @@
+<html>
+<head>
+<title>module luminosité</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+<!--
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;
+	}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:Sylfaen;
+	}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF"> Le module luminosité.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<div class=Section1> </div>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module de captage de la 
+luminosité est basé sur 4 capteurs solidaires du panneau solaire qui analyse 
+l&#8217;éclairement auquel est soumis le panneau. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les capteurs sont situés de 
+manière à ce que, s&#8217;ils bénéficient du même éclairement, la normale du panneau 
+soit située dans l&#8217;axe de la source de lumière (le soleil). </p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center"><img border="0" src="../images/modlum4.jpg" width="407" height="225"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Les 4 capteurs de type LDR permettent de mesurer sur 10 bits les 
+grandeurs :</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol; color: blue">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-family:&quot;Times New Roman&quot;;
+color:blue">luminosité est</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol; color: blue">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-family:&quot;Times New Roman&quot;;
+color:blue">luminosité ouest</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol; color: blue">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-family:&quot;Times New Roman&quot;;
+color:blue">luminosité nord</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol; color: black">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-family:&quot;Times New Roman&quot;;
+color:blue">luminosité sud</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Sur la photo, on observe les 4 capteurs. Ces derniers sont 
+normalement munis chacun d'un cache qui permet :</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 10.0pt; font-family: Symbol; color: blue">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-family:&quot;Times New Roman&quot;;
+color:blue">de ne pas les saturer en cas de lumière trop intense</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 10.0pt; font-family: Symbol; color: black">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-family:&quot;Times New Roman&quot;;
+color:blue">de les rendre sensible à la lumière selon les directions indiquées 
+(est, ouest, nord et sud).</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt"><b>
+<span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;color:black">
+Remarque concernant le produit pédagogique&nbsp;: </span></b>
+<span style="font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;color:black">L&#8217;implantation des 
+capteurs est une opération délicate car s&#8217;ils sont saturés, l&#8217;écart de 
+luminosité mesurable ne permet plus de piloter le système.<br>
+Pour le produit professionnel, uniquement conçu pour être placé à l&#8217;extérieur, 
+les capteurs sont placé près du circuit imprimé et les caches utilisés et les 
+capteurs sont rendus solidaires par un joint en silicone.<br>
+Pour que des mesures puissent être effectuées dans une salle de TP, les capteurs 
+sont placés «&nbsp;en altitude&nbsp;». Les caches livrés doivent être positionnés avec 
+soin&nbsp;et un film translucide peut être appliqué sur le couvercle en cas de 
+luminosité trop importante. On peut aussi «&nbsp;abaisser&nbsp;» les capteurs. Tout cela 
+dépendra de l&#8217;éclairement disponible dans la salle.</span></p>
+<p>On donne le schéma structurel de ce module :
+<img border="0" src="../../images/doigtp.gif" width="33" height="14">
+    <a href="../images/m_lum.GIF">Le schéma du module luminosité</a> 
+(taille réelle)</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Sur la partie gauche de la photo, on observe le module HF qui 
+permet d'envoyer les données vers le module CAN/HF. </span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Le module luminosité est alimenté directement depuis le panneau 
+solaire (car solidaire de ce dernier). Une batterie Cadmium Nickel est utilisée 
+pour assurer la continuité de l'alimentation quand le panneau ne peut subvenir 
+aux besoins de ce module. Quand la tension issue du panneau est suffisante, 
+l&#8217;accumulateur se charge avec une tension maximale de 8,4V.</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Deux régulateurs permettent de produire les tensions de 5V et celle 
+de 3,3V nécessaire au module HF.</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;color:black">La LED, 
+indiquant la présence de tension, peut être désactivée si l&#8217;on enlève le 
+cavalier qui lui est associé.</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">On remarque les 4 capteurs qui, associés 4 résistances fournissent 
+une tension appliquée sur 4 entrées de conversion analogique numérique du 
+PIC16F876.</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Une LED, pilotée par le PIC, sert d'indicateur lors du déroulement 
+du programme (activité d'émission de données).</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Un interrupteur S permet de mettre le module hors tension et ainsi 
+de préserver la batterie pendant les périodes de non utilisation. </span></p>
+<p class="MsoNormal" style="margin-top:6.0pt" align="center">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">On donne le schéma structurel de ce module.<br>
+<img border="0" src="modlum_fichiers/image002.jpg" width="573" height="506"></span></p>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Gestion de la carte.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">La gestion de la carte est assurée 
+par un microcontrôleur de la famille PIC.<span style="font-family:&quot;Times New Roman&quot;;
+color:black"> La programmation in situ du PIC est assurée depuis le connecteur 
+RJ11. Elle utilise les broches RB6 et RB7 du PIC. La broche MCLR permet, en mode 
+programmation d'appliquer la tension de programmation.</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">&nbsp;</p>
+<div align="center">
+	<table class="MsoTableGrid" border="0" cellpadding="0" style="border-collapse: collapse; border-width: 0" id="table2">
+		<tr>
+			<td width="235" valign="top" style="width:176.4pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+			<img border="0" src="modlum_fichiers/image004.jpg" width="173" height="153"></td>
+			<td width="458" valign="top" style="width:343.65pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">La broche MCLR permet également d'assurer un RESET matériel.
+			</span></p>
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Le superviseur d'alimentation MC34164 est activé en mode normal 
+			par la mise en place d'un cavalier sur le connecteur NICD. Il permet 
+			de produire un RESET matériel dans le cas ou la tension 
+			d'alimentation devient trop faible. </span></p>
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Lors de la programmation ou la mise au point d'un programme, ce 
+			cavalier est à enlevé. Le microcontrôleur fonctionne à une fréquence 
+			de 4 MHz obtenue grâce à un quartz.</span></td>
+		</tr>
+	</table>
+</div>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Mesure de la luminosité.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">Les capteurs de luminosité sont de 
+type LDR dont la résistance varie en fonction de l&#8217;éclairement avec une loi de 
+variation presque linéaire entre 10 <span style="font-family: Symbol">W</span> 
+(plein éclairement) et 10 M<span style="font-family: Symbol">W</span> pour 
+l&#8217;obscurité totale.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les capteurs sont associés à des 
+résistances de 10 k<span style="font-family: Symbol">W</span> afin de produire 
+une tension qui dépend de l&#8217;éclairement.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Cette tension est mesurée au moyen 
+des entrées analogiques du PIC. Une conversion analogique numérique produira 
+ainsi un nombre entre 0 et 1023 car on utilise une conversion sur 10 bits.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">On choisit une conversion sur 10 
+bits afin de pouvoir détecter des écarts de luminosité suffisamment faibles. </p>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Envoie des données par liaison HF.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Le module HF, alimenté en 3,3V est piloté par 3 signaux du PIC :</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 10.0pt; font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-family:&quot;Times New Roman&quot;">POWER/XTR 
+qui permet au PIC d'activer l'émission HF. Une adaptation de tension par un pont 
+de résistances permet d'adapter les signaux (+5V) du PIC à l'entrée du module HF 
+(3,3V).</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 10.0pt; font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-family:&quot;Times New Roman&quot;">RX.DATA/XTR 
+qui permet au module HF d'envoyer les données reçues au PIC. Cette sortie du 
+module délivre également des commandes de contrôle qui indique le fonctionnement 
+de ce dernier.</span></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 10.0pt; font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-family:&quot;Times New Roman&quot;">TX.DATA/XTR 
+qui permet au module HF de recevoir les données séries issues du PIC. Cette 
+entrée du module peut recevoir également des commandes de contrôle qui 
+permettent de modifier le fonctionnement de ce dernier. Une adaptation de 
+tension par un pont de résistances permet d'adapter les signaux (+5V) du PIC à 
+l'entrée du module HF (3,3V).</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On utilise la liaison série du PIC 
+pour envoyer les données au module HF. Ce dernier va émettre sa porteuse 
+modulée. Les données seront reçues par le module CAN/HF du pupitre de contrôle.</p>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Etude du logiciel embarqué dans le PIC.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">En ce qui concerne le logiciel, on 
+trouve tout d&#8217;abord les indications relatives à la compilation du programme pour 
+le PIC ainsi que la définition de la commande de la LED d&#8217;activité et de la 
+commande de la mise en marche de l&#8217;émetteur HF. La conversion analogique 
+numérique s&#8217;effectue sur 10 bits.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image006.jpg" width="506" height="158"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Ensuite, on déclare les variables 
+utilisées. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image008.jpg" width="462" height="56"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Ci-dessous, la déclaration des 
+indicateurs pour les tâches de conversion et d&#8217;émission. La variable <i>mst</i> 
+est incrémentée toutes les ms par une interruption du timer.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image010.jpg" width="588" height="133"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On remarque ici les indicateurs 
+(flag) qui sont utilisés pour activer périodiquement les tâches de mesure et 
+d&#8217;émission. On effectue une mesure et une émission toutes les 0,5 secondes. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">On déclare les fonctions&#8230;</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image012.jpg" width="245" height="52"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Afin d&#8217;éviter d&#8217;utiliser des 
+temporisations bloquantes pour le programme, on utilise un <i>timer</i> qui 
+fournit régulièrement des interruptions (toutes les ms ici).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Dans le programme d&#8217;interruption, 
+on va incrémenter un compteur (<i>mst</i>) et suivant sa valeur, on positionne 
+les indicateurs (flag) afin de déclencher les actions correspondantes. Une 
+campagne de mesure dure 0,5 secondes.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La fonction «&nbsp;mesure&nbsp;» est chargée 
+des conversions et de l&#8217;élaboration des données (mot de 16 bits). </p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image014.jpg" width="421" height="218"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La fonction «&nbsp;mesure&nbsp;» est activée 
+périodiquement par un timer logiciel qui positionne l&#8217;indicateur (mes_flag) à 
+«&nbsp;1&nbsp;».</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La fonction <i>gest_ser</i> est 
+activée périodiquement par un timer logiciel qui positionne l&#8217;indicateur (ser_flag) 
+à «&nbsp;1&nbsp;».</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image016.jpg" width="516" height="302"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">En début d&#8217;émission, la LED 
+«&nbsp;activité HF&nbsp;» est allumé. Cette LED est éteinte en fin d&#8217;émission&nbsp;; elle va 
+par conséquent clignoter au rythme des émissions de données. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">La trame série débute par le code 
+250 et se termine par le code 251. Elle véhicule 8 octets de données.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Reste le programme principal&nbsp;qui 
+appelle le programme d&#8217;initialisation.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image018.jpg" width="157" height="108"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le programme d&#8217;initialisation 
+initialise la conversion analogique numérique et le timer. On remarque également 
+la commande de l&#8217;émetteur HF qui est permanente.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="modlum_fichiers/image020.jpg" width="684" height="102"></p>
+<p>&nbsp;</p>
+</body>
+</html>

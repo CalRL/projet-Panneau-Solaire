@@ -1,0 +1,81 @@
+015     CCP_1_LOW
+015-016 CCP_1
+016     CCP_1_HIGH
+01B-01C CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028-029 lum_est
+02A-02B lum_ouest
+02C-02D lum_nord
+02E-02F lum_sud
+030.0   mes_flag
+030.1   ser_flag
+031-032 mst
+033     @TRIS_C
+034-035 gest_ser.a
+034     mesure.@SCRATCH
+034     init.@SCRATCH
+035     @delay_ms1.P1
+036-037 @PRINTF_LU_9600_62_63.P1
+036     gest_ser.@SCRATCH
+038     @PRINTF_LU_9600_62_63.@SCRATCH
+039     @PRINTF_LU_9600_62_63.@SCRATCH
+03A     @PRINTF_LU_9600_62_63.@SCRATCH
+03B     @PRINTF_LU_9600_62_63.@SCRATCH
+03C     @PRINTF_LU_9600_62_63.@SCRATCH
+03D     @PRINTF_LU_9600_62_63.@SCRATCH
+03E     @PRINTF_LU_9600_62_63.@SCRATCH
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07B     @SCRATCH
+07F     @INTERRUPT_AREA
+09C.6   C1OUT
+09C.7   C2OUT
+0FF     @INTERRUPT_AREA
+17F     @INTERRUPT_AREA
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+2FF     @INTERRUPT_AREA
+37F     @INTERRUPT_AREA
+3FF     @INTERRUPT_AREA
+
+0052  @delay_ms1
+0035  isr_timer2
+0187  main
+0155  gest_ser
+00F8  @PRINTF_LU_9600_62_63
+0092  mesure
+006A  init
+0187  @cinit
+
+Project Files:
+    C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.c
+    C:\Program Files\PICC\devices\16F876a.h
+
+Compiler Settings:
+    Processor:      PIC16F876A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: 1,8,16
+    ICD Provisions: Yes
+
+Output Files:
+    Errors:      C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.err
+    INHX8:       C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.HEX
+    Symbols:     C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.SYM
+    List:        C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.LST
+    Debug/COFF:  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.cof
+    Call Tree:   C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.tre
+    Statistics:  C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\carte luminosite\main.sta

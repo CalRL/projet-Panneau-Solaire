@@ -1,0 +1,56 @@
+[PROJECT]
+Target=main.HEX
+Development_Mode=
+Processor=0x6F84
+ToolSuite=CCS
+
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\dr
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=main.c;
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+
+[main.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=main.c
+
+[Windows]
+0=0000 main.c 0 0 796 451 3 0
+
+[debugperif]
+selected=Analog/Digital Conv
+[debugram]
+autoread=1
+[debugeedata]
+autoread=1
+[debugbreak]
+count=0
+[pcwdebug]
+watchcol0=75
+[debugwatch]
+count=0
+e1=code
+e2=afm_flag
+e3=msa
+e4=afm_flag
+e5=msa
+[debugexpr]
+expr=
+sideeffects=0
+[Opened Files]
+1=C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\pic clavier\main.c
+2=
+3=

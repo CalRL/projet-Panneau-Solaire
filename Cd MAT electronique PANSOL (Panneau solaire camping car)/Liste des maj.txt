@@ -1,0 +1,18 @@
+V3.10 du 21/09/2005
+
+Les schémas et implantations des cartes 
+
+Les versions de logiciels à charger dans les PIC (très important)
+
+Le contenu du fichier AVIS DE MONTAGE.DOC
+
+
+V3.20 du 15/10/2005
+
+Des rajouts et des correctifs dans les documents WORD explicatifs sur le système
+
+Les versions de logiciels à charger dans les PIC (très important); un changement important a été fait dans la carte de contrôle
+
+Des travaux pratiques supplémentaires
+
+

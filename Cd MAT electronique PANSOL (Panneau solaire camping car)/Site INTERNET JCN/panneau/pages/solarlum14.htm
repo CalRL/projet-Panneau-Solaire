@@ -1,0 +1,718 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>module contrôle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="File-List" href="solarlum14_fichiers/filelist.xml">
+
+<style>
+<!--
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+ li.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Sylfaen;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:Sylfaen;
+	}
+-->
+</style>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF">Module contrôle.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<div class=Section1> 
+
+	<p> </div>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le module de contrôle assure le 
+pilotage de l&#8217;ensemble du système et pour cela&nbsp;:</p>
+<ul style="margin-top: 0cm; margin-bottom: 0cm" type="disc">
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">Il interroge et commande 
+	les autres modules via le bus CAN.</li>
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">Il permet le dialogue 
+	avec l&#8217;utilisateur au travers d&#8217;un clavier et d&#8217;un afficheur LCD/OLED.</li>
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">Il permet la supervision 
+	du dispositif au travers d&#8217;une interface graphique sur un ordinateur PC au 
+	travers d&#8217;une liaison série RS232.</li>
+</ul>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<span style="font-family:&quot;Times New Roman&quot;;color:black"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_s1082" type="#_x0000_t75" style='width:231pt;
+ height:192.75pt' o:allowoverlap="f">
+ <v:imagedata src="solarlum14_fichiers/image001.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=308 height=257
+src="solarlum14_fichiers/image002.jpg" v:shapes="_x0000_s1082"><![endif]></span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">On donne le schéma structurel de ce module&nbsp;:</span></p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<span style="font-family:&quot;Times New Roman&quot;;color:black"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1081" type="#_x0000_t75" style='width:531.75pt;height:375.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image003.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=709 height=501
+src="solarlum14_fichiers/image004.jpg" v:shapes="_x0000_s1081"><![endif]></span></p>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Gestion de la carte.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Le pilotage de la carte est confié à un microcontrôleur PIC16F876. 
+La programmation in situ du PIC est assurée depuis les connecteurs RJ11. Elle 
+utilise les broches RB6 et RB7 des PIC. La broche MCLR permet, en mode 
+programmation d'appliquer la tension de programmation.</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">L&#8217;horloge du processeur est fournie par la sorties SLK dus circuit 
+MCP2510 qui produit un signal de fréquence 2,5 MHz (la fréquence du quartz 
+divisée par 8). </span></p>
+<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse" id="table1">
+	<tr>
+		<td width="295" valign="top" style="width:221.4pt;padding:0cm 5.4pt 0cm 5.4pt">
+		<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+		<span style="font-family:&quot;Times New Roman&quot;;color:black"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1080" type="#_x0000_t75" alt="" style='width:157.5pt;height:138.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image005.png" o:href="http://fsh/systemes/modlum6.gif"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=210 height=185
+src="solarlum14_fichiers/image006.jpg" v:shapes="_x0000_s1080"><![endif]></span></td>
+		<td width="398" valign="top" style="width:298.65pt;padding:0cm 5.4pt 0cm 5.4pt">
+		<p class="MsoNormal" style="margin-top:6.0pt">
+		<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">La broche MCLR permet également d'assurer un RESET matériel.
+		</span></p>
+		<p class="MsoNormal" style="margin-top:6.0pt">
+		<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Le superviseur d'alimentation MC34164 est activé en mode normal 
+		par la mise en place d'un cavalier sur le connecteur NICD. Il permet de 
+		produire un RESET matériel dans le cas ou la tension d'alimentation 
+		devient trop faible. </span></p>
+		<p class="MsoNormal" style="margin-top:6.0pt">
+		<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Lors de la programmation ou la mise au point d'un programme, ce 
+		cavalier est à enlevé. Le microcontrôleur fonctionne à une fréquence de 
+		4 MHz obtenue grâce à un quartz.</span></td>
+	</tr>
+</table>
+<h1>Alimentation de la carte.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;alimentation de la carte est 
+obtenue depuis le bus système.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1079" type="#_x0000_t75" style='width:200.25pt;height:141.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image007.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=267 height=189
+src="solarlum14_fichiers/image008.jpg" v:shapes="_x0000_s1079"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La tension <i>+Velec</i> de 8V, 
+générée par le module énergie, permet grâce au régulateur 7805 de fournir la 
+tension de 5V nécessaire aux différents circuits de la carte.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La LED indicateur de présence 
+tension peut être désactivée par le cavalier prévu à cet effet afin de diminuer 
+la consommation.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Un interrupteur S permet de mettre 
+la carte hors tension. Cette interrupteur peut être omis sur certaines versions 
+(on a alors des «&nbsp;straps&nbsp;» et le module et continuellement sous tension).</p>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Affichage des données avec l&#8217;afficheur OLED.</h1>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<span style="font-family:&quot;Times New Roman&quot;;color:black"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1078" type="#_x0000_t75" style='width:323.25pt;height:113.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image009.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=431 height=151
+src="solarlum14_fichiers/image010.jpg" v:shapes="_x0000_s1078"><![endif]></span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;afficheur est commandé en mode 4 
+bits depuis le port A du PIC. Les signaux E, RW et RS permettent de gérer les 
+échanges.</p>
+<h1>Accès au bus CAN.</h1>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Pour l&#8217;accès au bus CAN, on 
+utilise les éléments suivants pour chacun des deux sous-ensembles (analyseur et 
+passerelle HF)&nbsp;:</p>
+<p class="MsoNormal" align="center" style="margin-bottom:6.0pt;text-align:center"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1077" type="#_x0000_t75" style='width:512.25pt;height:145.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image011.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=683 height=194
+src="solarlum14_fichiers/image012.jpg" v:shapes="_x0000_s1077"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Les circuits MCP2510 dialoguent 
+avec leur microprocesseur à travers les liaisons suivantes&nbsp;:</p>
+<ul style="margin-top: 0cm; margin-bottom: 0cm" type="disc">
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">Un bus série constitué de 
+	MSO, MSI et l&#8217;horloge MSCK.</li>
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">Un fils de sélection de 
+	boîtier MCS.</li>
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">La sortie MINT peut être 
+	utilisé pour générer des interruptions pour le microprocesseur (non activé 
+	dans notre cas).</li>
+</ul>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La liaison du circuit MCP2510 
+avec le bus CAN s&#8217;effectue grâce aux broches TXCAN et RXCAN (niveau TTL) et le 
+circuit d&#8217;interface PCA82C250T qui produit les signaux du bus. Le bus utilise 
+les signaux VCAN+, VCAN- et GND.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le circuit MCP2510 nécessite 
+pour rythmer les signaux du bus CAN d&#8217;un quartz fixé ici à 20 MHz. La broche 
+CLKOUT produit un signal de 2,5 MHz (division par 8 de la fréquence du quartz) 
+qui est utilisé pour fournir une horloge au circuit PIC.</p>
+<p class="MsoNormal">On notera la présence de la résistance RT de 120 ohms qui 
+permet d&#8217;assurer, si nécessaire, la terminaison du bus CAN si l&#8217;on met en place 
+le cavalier prévu.</p>
+<p class="MsoNormal">La LED «&nbsp;TRAFFIC CAN&nbsp;» est commandée par le PIC pour 
+signaler une activité sur le bus CAN.</p>
+<h1>Accès à la liaison série.</h1>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1076" type="#_x0000_t75" style='width:194.25pt;height:131.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image013.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=259 height=175
+src="solarlum14_fichiers/image014.jpg" v:shapes="_x0000_s1076"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On utilise un circuit adaptateur 
+de niveau MAX232. On utilise une liaison série 2 fils sans contrôle de flux.</p>
+<h1>Gestion du clavier.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">La gestion du clavier est assurée 
+par un PIC16F84. Lorsqu&#8217;une touche est activée, le code correspondant est 
+délivré sur les broches RB0 à RB3 et la broche RB7 passe à 0 pendant 50 ms. On 
+remarquera, qu&#8217;un cavalier ICD utilise cette broche pour la programmation. En 
+usage normal, il ne faut pas oublier de remettre se cavalier en position NICD. 
+Le PIC16F84 ne permet pas de «&nbsp;debugging&nbsp;» en ligne comme les 16F877 mais on 
+peut quand même le programmer avec le module ICD.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1075" type="#_x0000_t75" style='width:423.75pt;height:168pt'>
+ <v:imagedata src="solarlum14_fichiers/image015.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=565 height=224
+src="solarlum14_fichiers/image016.jpg" v:shapes="_x0000_s1075"><![endif]></p>
+<b><span style="font-size: 16.0pt; font-family: Arial">
+<br clear="all" style="page-break-before:always">
+&nbsp;</span></b><h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Etude du logiciel embarqué.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module de contrôle constitue le 
+maître du système sur le bus CAN, les autres modules fonctionnent en esclaves.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Il pilote le système en mode 
+automatique par défaut, c'est-à-dire qu&#8217;il gère la charge de la batterie depuis 
+le panneau solaire, les déplacements du panneau solaire et il permet la commande 
+par l&#8217;utilisateur des modes d&#8217;éclairages.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Il répond aux sollicitations du 
+clavier mais aussi aux sollicitations qui lui arrivent du logiciel «&nbsp;console de 
+maintenance&nbsp;» par la liaison série.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Il affiche des données sur 
+l&#8217;afficheur LCD mais il envoie aussi des données par la liaison série au 
+logiciel «&nbsp;console de maintenance&nbsp;» sur le PC.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour le fonctionnement par défaut, 
+on peut se reporter à la notice technique du pupitre de contrôle CAN.</p>
+<h2>Le programme principal.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">En ce qui concerne le logiciel, on 
+trouve tout d&#8217;abord les indications relatives à la compilation du programme pour 
+le PIC ainsi que la définition de la LED indiquant l&#8217;activité CAN.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1074" type="#_x0000_t75" style='width:219pt;height:81pt'>
+ <v:imagedata src="solarlum14_fichiers/image017.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=292 height=108
+src="solarlum14_fichiers/image018.jpg" v:shapes="_x0000_s1074"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La déclaration des variables du 
+système.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1073" type="#_x0000_t75" style='width:431.25pt;height:338.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image019.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=575 height=451
+src="solarlum14_fichiers/image020.jpg" v:shapes="_x0000_s1073"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On déclare les inclusions des 
+drivers et des autres modules du programme&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1072" type="#_x0000_t75" style='width:379.5pt;height:71.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image021.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=506 height=95
+src="solarlum14_fichiers/image022.jpg" v:shapes="_x0000_s1072"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Reste la déclaration des fonctions 
+de ce module et le programme principal&nbsp;qui appelle le programme 
+d&#8217;initialisation&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1071" type="#_x0000_t75" style='width:135.75pt;height:120pt'>
+ <v:imagedata src="solarlum14_fichiers/image023.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=181 height=160
+src="solarlum14_fichiers/image024.jpg" v:shapes="_x0000_s1071"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On remarque que l&#8217;on appelle 
+cycliquement les fonctions&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Gestion du mode qui commande les éléments du système.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Gestion clavier qui teste l&#8217;action sur le clavier pour 
+entreprendre les opérations voulues</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Gestion affichage qui va définir l&#8217;affichage LCD/OLED.</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Gestion série qui s&#8217;occupe de la réception et l&#8217;émission vers la 
+liaison série vers le PC</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le programme d&#8217;initialisation 
+initialise les différents autres modules et les interruptions. <!--[if gte vml 1]><v:shape
+ id="_x0000_s1070" type="#_x0000_t75" style='width:366pt;height:84.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image025.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=488 height=113
+src="solarlum14_fichiers/image026.jpg" v:shapes="_x0000_s1070"><![endif]></p>
+<h2 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Gestion du temps et des tâches.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">La gestion du temps pour les 
+différentes tâches est regroupée dans le module logiciel <i>gest_time.c</i></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On utilise, des <i>timers</i> 
+logiciels déclenché depuis un <i>timer</i> matériel pour positionner des 
+indicateurs qui permettront d&#8217;activer ou non les fonctions voulues.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1069" type="#_x0000_t75" style='width:378pt;height:63pt'>
+ <v:imagedata src="solarlum14_fichiers/image027.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=504 height=84
+src="solarlum14_fichiers/image028.jpg" v:shapes="_x0000_s1069"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Ces indicateurs sont positionnés 
+selon l&#8217;état de compteurs.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1068" type="#_x0000_t75" style='width:225pt;height:75pt'>
+ <v:imagedata src="solarlum14_fichiers/image029.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=300 height=100
+src="solarlum14_fichiers/image030.jpg" v:shapes="_x0000_s1068"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Une interruption toutes les 
+millisecondes déclenche la fonction suivante.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1067" type="#_x0000_t75" style='width:459pt;height:406.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image031.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=612 height=542
+src="solarlum14_fichiers/image032.jpg" v:shapes="_x0000_s1067"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le positionnement des indicateurs 
+s&#8217;effectue de la manière suivante&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>500ms pour la périodicité des mesures de luminosité (<i>lum_flag</i>)</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>400ms pour la périodicité des mesures relatives au module énergie 
+(<i>bat_f</i>)</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>700ms pour la périodicité des mesures relatives au module moteur (<i>mot_flag</i>)</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>1000ms pour la périodicité d&#8217;actualisation de l&#8217;affichage (<i>afr_flag</i>)</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>2000ms pour la périodicité de modification de l&#8217;affichage défilant 
+(<i>afg_flag</i>)</p>
+<p class="MsoNormal" style="text-indent: -17.85pt; margin-left: 35.7pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>1mn * <i>cor_per</i>&nbsp; pour la périodicité des corrections de 
+positions du panneau (<i>cor_flag</i>)</p>
+<h2>Gestion de l&#8217;affichage.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Ce module du programme permet la 
+gestion de l&#8217;afficheur LCD/OLED. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">La déclaration des variables 
+spécifiques à ce module.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1066" type="#_x0000_t75" style='width:261.75pt;height:63pt'>
+ <v:imagedata src="solarlum14_fichiers/image033.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=349 height=84
+src="solarlum14_fichiers/image034.jpg" v:shapes="_x0000_s1066"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La déclaration des fonctions.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1065" type="#_x0000_t75" style='width:336pt;height:108.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image035.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=448 height=145
+src="solarlum14_fichiers/image036.jpg" v:shapes="_x0000_s1065"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le programme d&#8217;initialisation 
+appelé à la mise sous tension.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1064" type="#_x0000_t75" style='width:345pt;height:48.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image037.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=460 height=65
+src="solarlum14_fichiers/image038.jpg" v:shapes="_x0000_s1064"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;affichage qui fonctionne de 2 
+façons différentes&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>En mode «&nbsp;affichage normal&nbsp;», c'est-à-dire en l&#8217;absence 
+d&#8217;évènements particuliers (action clavier, correction&#8230;), l&#8217;affichage est activé 
+périodiquement par le programme principal qui appelle la fonction <i>gest_affi</i> 
+et si l&#8217;indicateur <i>afr_flag</i> est positionné à 1 (le cas toutes les 
+secondes grâce au <i>timer</i>), on affiche le message que l&#8217;on a choisi par la 
+valeur de <i>code_affi</i> qui vaut 0 par défaut.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1063" type="#_x0000_t75" style='width:138pt;height:131.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image039.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=184 height=175
+src="solarlum14_fichiers/image040.jpg" v:shapes="_x0000_s1063"><![endif]></p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>En mode «&nbsp;affichage fugitif&nbsp;» pour lequel un évènement particulier 
+nécessite d&#8217;afficher un message. Dans ce cas, on appelle directement une 
+fonction d&#8217;affichage prédéfinie.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">On donne les fonctions du mode 
+d&#8217;affichage normal. <br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1062" type="#_x0000_t75" style='width:152.25pt;height:246.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image041.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=203 height=329
+src="solarlum14_fichiers/image042.jpg" v:shapes="_x0000_s1062"><![endif]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[if gte vml 1]><v:shape
+ id="_x0000_s1061" type="#_x0000_t75" style='width:305.25pt;height:204.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image043.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=407 height=273
+src="solarlum14_fichiers/image044.jpg" v:shapes="_x0000_s1061"><![endif]>&nbsp;</p>
+<p class="MsoNormal" style="margin-top:6.0pt">On donne les fonctions appelées 
+dans le mode fugitif.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1060" type="#_x0000_t75" style='width:162pt;height:239.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image045.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=216 height=319
+src="solarlum14_fichiers/image046.jpg" v:shapes="_x0000_s1060"><![endif]>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1059" type="#_x0000_t75" style='width:159pt;height:200.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image047.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=212 height=267
+src="solarlum14_fichiers/image048.jpg" v:shapes="_x0000_s1059"><![endif]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>Gestion du clavier.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Ce module du programme permet la 
+gestion d&#8217;une commande clavier. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">La déclaration des variables est 
+des fonctions spécifiques à ce module.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1058" type="#_x0000_t75" style='width:311.25pt;height:107.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image049.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=415 height=143
+src="solarlum14_fichiers/image050.jpg" v:shapes="_x0000_s1058"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La réception du code d&#8217;une touche 
+se fait par interruption lorsque le PIC a détecté l&#8217;action sur une touche.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1057" type="#_x0000_t75" style='width:227.25pt;height:106.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image051.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=303 height=142
+src="solarlum14_fichiers/image052.jpg" v:shapes="_x0000_s1057"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le programme principal, appelle la 
+fonction <i>gest_clavier</i> périodiquement. Deux cas sont à envisager&nbsp;:</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Si on n&#8217;est pas dans le mode 
+commande ou menu (<i>afm_flag =0</i>), on teste le code qui permet d&#8217;y passer&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1056" type="#_x0000_t75" style='width:377.25pt;height:230.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image053.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=503 height=307
+src="solarlum14_fichiers/image054.jpg" v:shapes="_x0000_s1056"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Si on est dans le mode commande, 
+on attend le code de la fonction à réaliser et on appelle la fonction voulue&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1055" type="#_x0000_t75" style='width:395.25pt;height:257.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image055.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=527 height=343
+src="solarlum14_fichiers/image056.jpg" v:shapes="_x0000_s1055"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On donne les différentes fonctions 
+appelées&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1054" type="#_x0000_t75" style='width:197.25pt;height:339pt'>
+ <v:imagedata src="solarlum14_fichiers/image057.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=263 height=452
+src="solarlum14_fichiers/image058.jpg" v:shapes="_x0000_s1054"><![endif]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1053" type="#_x0000_t75" style='width:166.5pt;height:336.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image059.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=222 height=449
+src="solarlum14_fichiers/image060.jpg" v:shapes="_x0000_s1053"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1052" type="#_x0000_t75" style='width:198pt;height:333.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image061.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=264 height=445
+src="solarlum14_fichiers/image062.jpg" v:shapes="_x0000_s1052"><![endif]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1051" type="#_x0000_t75" style='width:197.25pt;height:338.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image063.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=263 height=451
+src="solarlum14_fichiers/image064.jpg" v:shapes="_x0000_s1051"><![endif]></p>
+<p class="MsoNormal"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1050" type="#_x0000_t75" style='width:275.25pt;height:78.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image065.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=367 height=105
+src="solarlum14_fichiers/image066.jpg" v:shapes="_x0000_s1050"><![endif]></p>
+<h2>Gestion du bus CAN.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">La gestion du bus CAN est regroupé 
+dans le module logiciel <i>gest_can.c</i></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le driver logiciel du circuit 
+MCP2510 est pris en compte par la ligne&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1049" type="#_x0000_t75" style='width:449.25pt;height:11.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image067.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=599 height=15
+src="solarlum14_fichiers/image068.jpg" v:shapes="_x0000_s1049"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les identifiants utilisés pour ce 
+module sont les suivants&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1048" type="#_x0000_t75" style='width:467.25pt;height:90pt'>
+ <v:imagedata src="solarlum14_fichiers/image069.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=623 height=120
+src="solarlum14_fichiers/image070.jpg" v:shapes="_x0000_s1048"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les fonctions utilisées sont les 
+suivantes&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1047" type="#_x0000_t75" style='width:414pt;height:61.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image071.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=552 height=82
+src="solarlum14_fichiers/image072.jpg" v:shapes="_x0000_s1047"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour la réception depuis le bus 
+CAN on utilise en scrutation périodiquement&nbsp;la fonction <i>can_receive</i> :<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1046" type="#_x0000_t75" style='width:368.25pt;height:320.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image073.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=491 height=427
+src="solarlum14_fichiers/image074.jpg" v:shapes="_x0000_s1046"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Après test de l&#8217;identifiant, on 
+récupère les données depuis les modules luminosité, énergie et moteur.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour l&#8217;émission des demandes, on 
+utilise des trames de «&nbsp;<i>request</i>&nbsp;».<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1045" type="#_x0000_t75" style='width:494.25pt;height:31.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image075.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=659 height=42
+src="solarlum14_fichiers/image076.jpg" v:shapes="_x0000_s1045"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Pour la commande des modules 
+éclairage et moteur, on utilise les commandes suivantes&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1044" type="#_x0000_t75" style='width:319.5pt;height:124.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image077.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=426 height=166
+src="solarlum14_fichiers/image078.jpg" v:shapes="_x0000_s1044"><![endif]></p>
+<h2>Gestion de la liaison série.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">La liaison série du PIC reçoit des 
+demandes du PC en interruption et y répond. Si la console de maintenance du PC 
+n&#8217;est pas connectée aucune interruption n&#8217;est généré et le programme de gestion 
+fonctionne de manière optimale (dans le cas contraire le ralentissement n&#8217;est 
+toutefois pas significatif).</p>
+<p class="MsoNormal" style="margin-top:6.0pt">C&#8217;est le module <i>gest_serie</i> 
+appelé périodiquement par le programme principal qui prend en charge les tâches 
+requises. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les commandes reçues ont une 
+taille d&#8217;un octet et on donne les codes correspondants&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1043" type="#_x0000_t75" style='width:336.75pt;height:55.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image079.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=449 height=74
+src="solarlum14_fichiers/image080.jpg" v:shapes="_x0000_s1043"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On utilise un <i>buffer</i> pour 
+recevoir les données série et on déclare les fonctions de ce module&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1042" type="#_x0000_t75" style='width:403.5pt;height:90.75pt'>
+ <v:imagedata src="solarlum14_fichiers/image081.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=538 height=121
+src="solarlum14_fichiers/image082.jpg" v:shapes="_x0000_s1042"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La réception série depuis le PC 
+s&#8217;effectue en interruption.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1041" type="#_x0000_t75" style='width:495pt;height:123pt'>
+ <v:imagedata src="solarlum14_fichiers/image083.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=660 height=164
+src="solarlum14_fichiers/image084.jpg" v:shapes="_x0000_s1041"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;octet 13 indique une fin de 
+trame&nbsp;; on positionne l&#8217;indicateur <i>s_flag</i> à 1.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Quand une donnée arrive, elle est 
+placée dans le buffer. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">Si l&#8217;on n&#8217;obtient pas le caractère 
+de fin de trame avant que le buffer soit rempli, on remet le pointeur <i>is</i> 
+à 0 et on vide le <i>buffer</i>.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">On donne le programme 
+d&#8217;initialisation de la liaison série et le programme de nettoyage du <i>buffer</i> 
+série.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1040" type="#_x0000_t75" style='width:350.25pt;height:90pt'>
+ <v:imagedata src="solarlum14_fichiers/image085.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=467 height=120
+src="solarlum14_fichiers/image086.jpg" v:shapes="_x0000_s1040"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">En fin de réception, le <i>buffer</i> 
+série est vidé par la fonction <i>purge_srxbuf</i>. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">C&#8217;est la fonction <i>gest_serie</i> 
+qui gère les demandes du PC. Cette fonction est appelée périodiquement par le 
+programme principal et quand l&#8217;indicateur <i>s_flag</i> est à 1, on traite les 
+demandes.</p>
+<p class="MsoNormal" style="margin-top:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1039" type="#_x0000_t75" style='width:450pt;height:379.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image087.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=600 height=506
+src="solarlum14_fichiers/image088.jpg" v:shapes="_x0000_s1039"><![endif]></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Cette première partie permet de 
+commander le module éclairage, le module moteur et de modifier les modes de 
+fonctionnement du module de contrôle.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">La partie ci-dessous permet de 
+renvoyer au PC l&#8217;état des variables du système afin qu&#8217;on puisse rafraîchir 
+l&#8217;affichage de la console de maintenance.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1038" type="#_x0000_t75" style='width:5in;height:312pt'>
+ <v:imagedata src="solarlum14_fichiers/image089.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=480 height=416
+src="solarlum14_fichiers/image090.jpg" v:shapes="_x0000_s1038"><![endif]></p>
+<h2>Gestion des modes de fonctionnement.</h2>
+<p class="MsoNormal" style="margin-bottom:6.0pt">C&#8217;est le module <i>gest_mode</i> 
+qui regroupe les fonctions qui gèrent le fonctionnement du système. </p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">On donne les déclarations des 
+fonctions&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1037" type="#_x0000_t75" style='width:158.25pt;height:66pt'>
+ <v:imagedata src="solarlum14_fichiers/image091.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=211 height=88
+src="solarlum14_fichiers/image092.jpg" v:shapes="_x0000_s1037"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La fonction d&#8217;initialisation 
+permet de fixer les paramètres de fonctionnement par défaut du système&nbsp;:<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1036" type="#_x0000_t75" style='width:512.25pt;height:89.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image093.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=683 height=119
+src="solarlum14_fichiers/image094.jpg" v:shapes="_x0000_s1036"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">C&#8217;est la fonction <i>gest_mode</i> 
+qui est appelée périodiquement par le programme principal. Elle permet de lancer 
+la gestion en mode normal (par défaut on pilote le système automatiquement) et 
+le mode manuel qui permet de ne rien faire. Ce dernier mode est utile en mise au 
+point ou en maintenance pour commander manuellement le système.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1035" type="#_x0000_t75" style='width:204pt;height:71.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image095.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=272 height=95
+src="solarlum14_fichiers/image096.jpg" v:shapes="_x0000_s1035"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">En mode de fonctionnement 
+normal, on lance une trame de demande vers les modules CAN/HF, moteur et énergie 
+d&#8217;il y lieu (voir gestion du temps). On calcule ensuite les paramètres 
+luminosité avant de passer à la correction de position. Enfin, on scrute le bus 
+CAN.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1034" type="#_x0000_t75" style='width:449.25pt;height:149.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image097.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=599 height=199
+src="solarlum14_fichiers/image098.jpg" v:shapes="_x0000_s1034"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le calcul de luminosité permet, 
+depuis les données reçues, de calculer les luminosité est, ouest, sud et nord et 
+d&#8217;établir la valeur moyenne (sur 8 bits).<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1033" type="#_x0000_t75" style='width:97.5pt;height:126pt'>
+ <v:imagedata src="solarlum14_fichiers/image099.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=130 height=168
+src="solarlum14_fichiers/image100.jpg" v:shapes="_x0000_s1033"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La correction est assurée par 
+la fonction <i>gest_corr</i> qui prédétermine en premier lieu les éventuels 
+mouvements du panneau nécessaire.<br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1032" type="#_x0000_t75" style='width:322.5pt;height:161.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image101.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=430 height=215
+src="solarlum14_fichiers/image102.jpg" v:shapes="_x0000_s1032"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Ensuite, si <i>cor_flag =1</i> 
+(toutes les 15mn par défaut) et si la luminosité est suffisante (inutile de 
+bouger s&#8217;il fait sombre), on commande les moteurs au travers du bus CAN. Quand 
+la correction est terminée, c'est-à-dire qu&#8217;on est sous les seuils requis, on 
+annule les ordres de correction et de déplacement. </p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1031" type="#_x0000_t75" style='width:371.25pt;height:198pt'>
+ <v:imagedata src="solarlum14_fichiers/image103.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=495 height=264
+src="solarlum14_fichiers/image104.jpg" v:shapes="_x0000_s1031"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Quand la nuit fut venue&#8230; 
+l&#8217;angle azimut est supérieur à 270° et il fait sombre&nbsp;; on remet le panneau en 
+position parking pour attendre un jour nouveau.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1030" type="#_x0000_t75" style='width:377.25pt;height:105pt'>
+ <v:imagedata src="solarlum14_fichiers/image105.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=503 height=140
+src="solarlum14_fichiers/image106.jpg" v:shapes="_x0000_s1030"><![endif]></p>
+<h1>Gestion du clavier avec le PIC16F84.</h1>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La gestion du clavier est 
+assurée par un PIC dévolu à cette tâche.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1029" type="#_x0000_t75" style='width:369pt;height:205.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image107.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=492 height=274
+src="solarlum14_fichiers/image108.jpg" v:shapes="_x0000_s1029"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le programme ci-dessus montre 
+les tâches à accomplir.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Les déclarations dans <i>
+clavier.c</i></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1028" type="#_x0000_t75" style='width:278.25pt;height:170.25pt'>
+ <v:imagedata src="solarlum14_fichiers/image109.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=371 height=227
+src="solarlum14_fichiers/image110.jpg" v:shapes="_x0000_s1028"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La gestion du clavier.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1027" type="#_x0000_t75" style='width:123pt;height:48pt'>
+ <v:imagedata src="solarlum14_fichiers/image111.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=164 height=64
+src="solarlum14_fichiers/image112.jpg" v:shapes="_x0000_s1027"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La sortie du code sur les 
+broches du PIC </p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1026" type="#_x0000_t75" style='width:130.5pt;height:75pt'>
+ <v:imagedata src="solarlum14_fichiers/image113.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=174 height=100
+src="solarlum14_fichiers/image114.jpg" v:shapes="_x0000_s1026"><![endif]></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le décodage des touches.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1025" type="#_x0000_t75" style='width:153.75pt;height:361.5pt'>
+ <v:imagedata src="solarlum14_fichiers/image115.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=205 height=482
+src="solarlum14_fichiers/image116.jpg" v:shapes="_x0000_s1025"><![endif]></p>
+</body>
+</html>

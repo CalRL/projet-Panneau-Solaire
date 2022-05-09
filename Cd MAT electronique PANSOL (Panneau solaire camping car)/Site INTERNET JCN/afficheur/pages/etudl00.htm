@@ -1,0 +1,2646 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40"><HEAD><TITLE>L'afficheur MAT : logiciel PC</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="Microsoft FrontPage 6.0" name=GENERATOR>
+
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<SCRIPT language=JavaScript>
+// Le site de njc
+// lycée la briquerie 15 route de la briquerie 57100 thionville
+<!-- Beginning of JavaScript Applet -------------------
+function scrollit_r2l(seed)
+{
+	var msg="Bienvenue dans la page web de Niedercorn Jean-Claude !!!     j-c.niedercorn@ac-nancy-metz.fr "//Changer ici le texte
+	var out = " ";
+	var c   = 1;
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit_r2l(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+		}
+	}
+}
+function stop() {
+clearTimeout(timerTwo)
+}
+// -- End of JavaScript code -------------- -->
+
+</SCRIPT>
+<!-- Fonction Onload ! -->
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ li.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;
+	}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+-->
+</style>
+<meta name="Microsoft Border" content="none">
+</HEAD>
+<BODY leftMargin=50 background="../../images/fspiral.gif" onload=scrollit_r2l(100)>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="10%"><a name="0" href="../accueil.htm">
+    <IMG alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></TD>
+    <TD align=middle width="51%"><font size="5" color="#FF0000">
+    <img border="0" src="../../images/project.gif" width="32" height="32"> </font><font size="5" color="#0000FF">
+    L'afficheur MAT : logiciel embarqué</font></TD>
+    <TD align=middle width="21%"><a href="../accueil.htm">
+    <IMG alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></TD></TR></TBODY></TABLE>
+<P align=center>
+<IMG alt="lignrougfin.gif (950 octets)" 
+src="../../images/lignrfin.gif" width="530" height="4"></P>
+<P align=left>
+Deux logiciels sont embarqués dans l'afficheur :</P>
+<P align=left>
+Le logiciel de la carte de commande des afficheurs
+    <img border="0" src="../../images/doigtp.gif" width="33" height="14">
+    <a href="../fichiers/carte%20microcontroleur.zip">Téléchargez le fichier 
+source</a></P>
+<P align=left>
+Le logiciel du module Rabbit de la carte de communication
+    <img border="0" src="../../images/doigtp.gif" width="33" height="14">
+    <a href="../fichiers/module%20rabbit.zip">Téléchargez les fichiers</a></P>
+  <hr>
+
+<p class=MsoNormal>Le programme AIW V2.00 implanté dans le module Rabbit permet
+de piloter l’afficheur par une liaison série depuis un réseau Ethernet et ce au
+travers d’un serveur Web embarqué. Ce module additionnel utilise la liaison
+série disponible sur l’afficheur de base et utilise de ce fait le protocole
+définit pour l’utilisation normale de la liaison série.</p>
+
+<p class=MsoNormal align="center">
+<img width=605 height=222
+src="../images/image007.jpg"></p>
+
+<p class=MsoNormal>Plusieurs fonctionnalités sont ainsi à implémentées dans le
+logiciel&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal>La gestion de la liaison Ethernet en utilisant les
+     bibliothèques de bases avec&nbsp;:</li>
+ <ul style='margin-top:0cm; margin-bottom:0cm' type=circle>
+  <li class=MsoNormal>Paramétrage IP initial</li>
+  <li class=MsoNormal>Sauvegarde des paramètres IP en mémoire Flash</li>
+  <li class=MsoNormal>Sauvegarde des paramètres IP depuis la mémoire Flash</li>
+ </ul>
+ <li class=MsoNormal>La gestion de la liaison série en utilisant les
+     bibliothèques de bases avec&nbsp;:</li>
+ <ul style='margin-top:0cm; margin-bottom:0cm' type=circle>
+  <li class=MsoNormal>Génération des messages destinés à l’afficheur de base</li>
+  <li class=MsoNormal>Affichage des paramètres IP à la mise sous tension</li>
+ </ul>
+ <li class=MsoNormal>La gestion du serveur Web en utilisant les bibliothèques
+     de bases avec&nbsp;:</li>
+ <ul style='margin-top:0cm; margin-bottom:0cm' type=circle>
+  <li class=MsoNormal>Utilisation de pages statiques (page d’accueil et de
+      navigation)</li>
+  <li class=MsoNormal>Utilisation d’une page dynamique pour afficher les
+      paramètres IP</li>
+  <li class=MsoNormal>Création et utilisation de pages dynamiques pour saisir
+      les paramètres</li>
+ </ul>
+</ul>
+
+<p class=MsoNormal>Comme pour tous programmes en C">
+</HEAD>
+<BODY leftMargin=50 background="../../images/fspiral.gif" onload=scrollit_r2l(100)>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="10%"><a name="0" href="../accueil.htm">
+    <IMG alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></TD>
+    <TD align=middle width="51%"><font size="5" color="#FF0000">
+    <img border="0" src="../../images/project.gif" width="32" height="32"> </font><font size="5" color="#0000FF">
+    L'afficheur MAT : logiciel embarqué</font></TD>
+    <TD align=middle width="21%"><a href="../accueil.htm">
+    <IMG alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></TD></TR></TBODY></TABLE>
+<P align=center>
+<IMG alt="lignrougfin.gif (950 octets)" 
+src="../../images/lignrfin.gif" width="530" height="4"></P>
+<P align=left>
+Deux logiciels sont embarqués dans l'afficheur :</P>
+<P align=left>
+Le logiciel de la carte de commande des afficheurs
+    <img border="0" src="../../images/doigtp.gif" width="33" height="14">
+    <a href="../fichiers/carte%20microcontroleur.zip">Téléchargez le fichier 
+source</a></P>
+<P align=left>
+Le logiciel du module Rabbit de la carte de communication
+    <img border="0" src="../../images/doigtp.gif" width="33" height="14">
+    <a href="../fichiers/module%20rabbit.zip">Téléchargez les fichiers</a></P>
+  <hr>
+
+<p class=MsoNormal>Le programme AIW V2.00 implanté dans le module Rabbit permet
+de piloter l’afficheur par une liaison série depuis un réseau Ethernet et ce au
+travers d’un serveur Web embarqué. Ce module additionnel utilise la liaison
+série disponible sur l’afficheur de base et utilise de ce fait le protocole
+définit pour l’utilisation normale de la liaison série.</p>
+
+<p class=MsoNormal align="center">
+<img width=605 height=222
+src="../images/image007.jpg"></p>
+
+<p class=MsoNormal>Plusieurs fonctionnalités sont ainsi à implémentées dans le
+logiciel&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal>La gestion de la liaison Ethernet en utilisant les
+     bibliothèques de bases avec&nbsp;:</li>
+ <ul style='margin-top:0cm; margin-bottom:0cm' type=circle>
+  <li class=MsoNormal>Paramétrage IP initial</li>
+  <li class=MsoNormal>Sauvegarde des paramètres IP en mémoire Flash</li>
+  <li class=MsoNormal>Sauvegarde des paramètres IP depuis la mémoire Flash</li>
+ </ul>
+ <li class=MsoNormal>La gestion de la liaison série en utilisant les
+     bibliothèques de bases avec&nbsp;:</li>
+ <ul style='margin-top:0cm; margin-bottom:0cm' type=circle>
+  <li class=MsoNormal>Génération des messages destinés à l’afficheur de base</li>
+  <li class=MsoNormal>Affichage des paramètres IP à la mise sous tension</li>
+ </ul>
+ <li class=MsoNormal>La gestion du serveur Web en utilisant les bibliothèques
+     de bases avec&nbsp;:</li>
+ <ul style='margin-top:0cm; margin-bottom:0cm' type=circle>
+  <li class=MsoNormal>Utilisation de pages statiques (page d’accueil et de
+      navigation)</li>
+  <li class=MsoNormal>Utilisation d’une page dynamique pour afficher les
+      paramètres IP</li>
+  <li class=MsoNormal>Création et utilisation de pages dynamiques pour saisir
+      les paramètres</li>
+ </ul>
+</ul>
+
+<p class=MsoNormal>Comme pour tous programmes en C, il faudra déclarer et
+initialiser des variables ou paramètres.</p>
+
+<p class=MsoNormal>On donne le listing du programme complet&nbsp;:</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>**********         DEFINITIONS                        
+*********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>***************************************************************/&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>/* configuration IP */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define IFCONFIG_ETH0 \</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                IFS_IPADDR,
+aton(&quot;10.10.10.10&quot;), \</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                IFS_NETMASK,
+aton(&quot;255.0.0.0&quot;), \</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                IFS_ROUTER_SET,
+aton(&quot;10.0.0.2&quot;), \</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                IFS_NAMESERVER_SET,
+aton(&quot;10.0.0.2&quot;), \</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>IFS_UP</span></i></p>
+
+<p class=MsoNormal>Ci-dessus, on déclare les paramètres IP par défaut.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+configuration des pages dynamiques */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>#define
+FORM_ERROR_BUF 2048</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define SSPEC_MAXSPEC 50</span></i></p>
+
+<p class=MsoNormal>Ci-dessus, on déclare les paramètres nécessaires aux pages
+dynamiques.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+configuration pour liaison série */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>#define
+BINBUFSIZE 127</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define BOUTBUFSIZE 127</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define STX 0x02</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define GS 0x1D</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define ETX 0x03</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define SOH 0x01</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>#define
+EOT 0x04</span></i></p>
+
+<p class=MsoNormal>Ci-dessus, on déclare les paramètres la taille des buffers
+utilisés par la liaison série et les caractères de contrôle utilisés pour
+générer les messages.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+définitions des es led et switch */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define DS1 6                      //led, port G bit 6</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define DS2 7                      //led, port G bit 7</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define S2  1                        //switch, port G
+bit 1</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#define S3  0                        //switch, port G
+bit 0</span></i></p>
+
+<p class=MsoNormal>Ci-dessus, on définit les leds et switchs connectés au port
+G de la carte Rabbit.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********        
+LIBRAIRIES &amp; FICHIERS WEB           *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+librairies &amp; gestion mémoire */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#memmap xmem</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#use &quot;dcrtcp.lib&quot;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>#use
+&quot;http.lib&quot;</span></i></p>
+
+<p class=MsoNormal>Ci-dessus, on précise la gestion de la mémoire. Les
+bibliothèques utilisées par Ethernet sont définies dans <i>dcrtcp.lib</i>
+tandis que <i>http.lib</i> concerne celle du serveur Web.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+ximport permet d'importer des fichiers */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#ximport &quot;d:\rabbit\aiw/index.htm&quot;    
+index_html</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#ximport &quot;d:\rabbit\aiw/nav.htm&quot;      
+nav_html</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#ximport &quot;d:\rabbit\aiw/main.htm&quot;     
+main_html</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#ximport &quot;d:\rabbit\aiw/ipstat.shtml&quot; 
+ipstat_shtml</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#ximport &quot;d:\rabbit\aiw/fond1.gif&quot;    
+fond1_gif</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#ximport &quot;d:\rabbit\aiw/logo.gif&quot;     
+logo_gif</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>#ximport &quot;d:\rabbit\aiw/puce1.gif&quot;    
+puce1_gif</span></i></p>
+
+<p class=MsoNormal>Les fichiers des pages Web créés sur le PC sont précisés ici
+afin d’être chargé en mémoire Flash lors de la compilation et du transfert vers
+la mémoire Flash du module Rabbit.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+précise le type de fichiers à gérer par le serveur */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+la valeur par défaut '/' doit être placée en premier */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>const HttpType http_types[] =</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { &quot;.shtml&quot;, &quot;text/html&quot;,
+shtml_handler}, // ssi</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { &quot;.htm&quot;, &quot;text/html&quot;, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { &quot;.cgi&quot;, &quot;&quot;,
+NULL},                     // cgi</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { &quot;.gif&quot;, &quot;image/gif&quot;, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { &quot;&quot;, &quot;text/plain&quot;,
+NULL},           // generic text</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>};</span></i></p>
+
+<p class=MsoNormal>On précise ici le traitement qui doit être réservé par le
+serveur Web aux fichiers en fonction de leur extension.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********         
+VARIABLES POUR LES MESSAGES        *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>int
+mes_n;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>char
+mes_text[41];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>char
+mes_clig[41];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>char
+mes_defil[30];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>char
+action_mes[30];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>char
+num_e[3];                                  //message en cours</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>char
+num_m[3];</span></i></p>
+
+<p class=MsoNormal>On précise ici les variables concernant les messages. <i>mes_n</i>
+indique le message à traiter par le serveur Web. Les chaînes de caractères
+représentent le message en cours de traitement dans la page active de gestion
+des messages.</p>
+
+<p class=MsoNormal>Tandis que <i>num_e</i> indique le message en cours
+d’affichage sur l’afficheur. La chaîne <i>action_mes</i> choisie par
+l’utilisateur sera traité afin de contrôler les actions à entreprendre.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+VARIABLES POUR LES PARAMETRES IP       *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>int first;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>char ip_ad[20];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>char ip_mask[20];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>char ip_pas[30];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>char ip_dns[30];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>char ip_name[30];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>char
+action_ip[30];</span></i></p>
+
+<p class=MsoNormal>On précise ici les variables concernant les paramètres IP.
+Les chaînes de caractères représentent les paramètres en cours de traitement
+dans la page active de gestion des paramètres IP.</p>
+
+<p class=MsoNormal>La chaîne <i>action_ip</i> choisie par l’utilisateur sera
+traitée afin de contrôler les actions à entreprendre.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FICHIERS POUR PAGES WEB                *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+http_flashspec associe les fichiers importés avec ximport avec leur nom dans le
+serveur web */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>const HttpSpec http_flashspec[] =</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/&quot;,             
+index_html,    NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/index.htm&quot;,    
+index_html,    NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/nav.htm&quot;,      
+nav_html,       NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/main.htm&quot;,     
+main_html,                   NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/ipstat.shtml&quot;,    
+ipstat_shtml,    NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/fond1.gif&quot;,    
+fond1_gif,   NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/logo.gif&quot;,      logo_gif,  
+NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_FILE,  &quot;/puce1.gif&quot;,    
+puce1_gif,   NULL, 0, NULL, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_VARIABLE, &quot;ip_ad&quot;, 0, ip_ad,
+PTR16, &quot;%s&quot;, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   { HTTPSPEC_VARIABLE, &quot;ip_mask&quot;, 0,
+ip_mask, PTR16, &quot;%s&quot;, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   </span><span style='font-size:10.0pt'>{
+HTTPSPEC_VARIABLE, &quot;ip_pas&quot;, 0, ip_pas, PTR16, &quot;%s&quot;, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+</span><span lang=EN-GB style='font-size:10.0pt'>{ HTTPSPEC_VARIABLE,
+&quot;ip_dns&quot;, 0, ip_dns, PTR16, &quot;%s&quot;, NULL},</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>};</span></i></p>
+
+<p class=MsoNormal>On précise ici l’association des fichiers importés au
+serveur Web. Les variables dynamiques de la page d’affichage des paramètres IP
+sont indiquées au serveur Web.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+DEFINITION DES FONCTIONS               *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+init_es(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+init_res(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+init_mes(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+gest_message(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+store_mes(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+choix_mes(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+effac_mes(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+test_mes(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+num_mes(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+cont_mesn(int n);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void gest_ip(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void refresh_ip(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void save_ip(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void restor_ip(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void affi_ip(void);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>int launched(HttpState* state);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>int
+delays(int s);</span></i></p>
+
+<p class=MsoNormal>La déclaration des fonctions de notre programme.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+PROGRAMME PRINCIPAL                    *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>main()</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal>Après toutes ces déclarations et définitions, voila le
+programme principal.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+PARAMETRES DE LA PAGE DES MESSAGES */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+Déclare le tableau myform1 qui reçoit les variables</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>FormVar myform1[15];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int var1;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int form1;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>// tableau des choix pour le défilement</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>static const char* const defil_options[] =
+{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>&quot;Message fixe&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Message defilant&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+};</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+// tableau des choix pour action des messages</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                static
+const char* const action_options[] = {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               &quot;&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Tester un message&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Enregistrer un message&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Effacer un message&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Afficher un message&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Valider un message&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+};</span></i></p>
+
+<p class=MsoNormal>La page des messages est une page dynamique construite en
+mémoire&nbsp;; elle est déclarée ici. Elle permet de saisir des variables et de
+choisir parmi une liste déroulante (<i>action_options</i>) la variable <i>action_mes</i>
+définie précédemment</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+PARAMETRES DE LA PAGE DES PARAMETRES RESEAU */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+Déclare le tableau myform2 qui reçoit les variables</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>FormVar myform2[15];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int var2;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int form2;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>int function;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+int user;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+// tableau des choix pour modification IP</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>static const char* const ip_options[] = {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>&quot;&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Modifier paramètres&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+            &quot;Initialiser paramètres&quot;,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+};</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+création de l'utilisateur</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>user = sauth_adduser(&quot;user&quot;,
+&quot;pass&quot;, SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal>La page des paramètres IP est une page dynamique construite
+en mémoire&nbsp;; elle est déclarée ici. Elle permet de saisir des variables et
+de choisir parmi une liste déroulante (<i>ip_options</i>) la variable <i>action_ip</i>
+définie précédemment.</p>
+
+<p class=MsoNormal>On remarquera la déclaration de l’utilisateur et du mot de
+passe associé qui réglemente l’accès à cette page.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+DEMARRAGE DU PROGRAMME PRINCIPAL */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                init_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                init_res();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+init_es();</span></i></p>
+
+<p class=MsoNormal>Quelques initialisations qui seront expliquées par la suite
+dans les fonctions correspondantes.</p>
+
+<p class=MsoNormal>Ci-dessous, on a la construction de la page de gestion des
+messages en mémoire RAM. On définit les différentes fenêtres qui permettent à
+l’utilisateur de saisir ses messages.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+CONSTRUCTION PAGE DYNAMIQUE DES MESSAGES */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+Création de la page (avec tableau de variables)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>form1 =
+sspec_addform(&quot;creer.htm&quot;, myform1, 7, SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>// Fixe le titre</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setformtitle(form1,
+&quot;Gestion des messages&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+numero du message en cours</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                var1
+= sspec_addvariable(&quot;num_e&quot;, &amp;num_e, PTR16, &quot;%s&quot;, 
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>var1 = sspec_addfv(form1, var1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvname(form1, var1,
+&quot;Affichage&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvdesc(form1, var1, &quot;Numero du message en cours&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form1, var1, 3);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvreadonly(form1, var1, 1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>// numéro du message</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                var1
+= sspec_addvariable(&quot;mes_n&quot;, &amp;mes_n, INT16, &quot;%d&quot;,
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>var1 = sspec_addfv(form1, var1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvname(form1, var1, &quot;Numéro du message&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvdesc(form1,
+var1, &quot;Valeur entre 1 et 510&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form1, var1, 5);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvrange(form1, var1, 1,510);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>// choix de l'action</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                var1
+= sspec_addvariable(&quot;action_mes&quot;, action_mes, PTR16, &quot;%s&quot;,
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>var1 = sspec_addfv(form1, var1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvname(form1, var1, &quot;Action&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvdesc(form1, var1, &quot;Faites votre choix !&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form1, var1, 40);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvoptlist(form1, var1,
+action_options, 6);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfventrytype(form1, var1,
+HTML_FORM_PULLDOWN);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>// choix du defilement</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                var1
+= sspec_addvariable(&quot;mes_defil&quot;, mes_defil, PTR16, &quot;%s&quot;,
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>var1 = sspec_addfv(form1, var1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvname(form1, var1, &quot;Choix du défilement&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvdesc(form1,
+var1, &quot;Faites votre choix !&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form1, var1, 40);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvoptlist(form1, var1,
+defil_options, 2);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfventrytype(form1, var1,
+HTML_FORM_PULLDOWN);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>// choix du message</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                var1
+= sspec_addvariable(&quot;mes_text&quot;, &amp;mes_text, PTR16,
+&quot;%s&quot;,  SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>var1 = sspec_addfv(form1, var1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvname(form1, var1, &quot;Texte du message&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvdesc(form1,
+var1, &quot;Limité à 40 caractères&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvlen(form1,
+var1, 40);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+choix du masque de clignotement</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>var1 =
+sspec_addvariable(&quot;mes_clig&quot;, &amp;mes_clig, PTR16, &quot;%s&quot;, 
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var1 = sspec_addfv(form1, var1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvname(form1, var1, &quot;Masque de clignotement&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvdesc(form1,
+var1, &quot;Limité à 40 caractères&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvlen(form1,
+var1, 40);</span></i></p>
+
+<p class=MsoNormal>Ci-dessous, on a la construction de la page de gestion des
+paramètres IP en mémoire RAM. On définit les différentes fenêtres qui
+permettent à l’utilisateur de saisir ses messages.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+CONSTRUCTION PAGE DYNAMIQUE PARAMETRAGE RESEAU */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+Création de la page (avec tableau de variables)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>form2 =
+sspec_addform(&quot;newip.htm&quot;, myform2, 8, SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                // Fixe le titre</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setformtitle(form2,
+&quot;Paramétrage IP&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                function =
+sspec_addfunction(&quot;launched&quot;, launched, SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setformepilog(form2, function);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setuser(form2, user);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setrealm(form2,
+&quot;Admin&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                // masque</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 = sspec_addvariable(&quot;ip_mask&quot;,
+&amp;ip_mask, PTR16, &quot;%s&quot;,  SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 = sspec_addfv(form2, var2);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvname(form2, var2, &quot;Masque de sous-reseau&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvdesc(form2,
+var2, &quot;de la forme : xxx.xxx.xxx.xxx&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form2, var2, 20);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                // adresse ip</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 = sspec_addvariable(&quot;ip_ad&quot;,
+&amp;ip_ad, PTR16, &quot;%s&quot;,  SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 = sspec_addfv(form2, var2);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvname(form2, var2,
+&quot;Adresse IP&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvdesc(form2, var2, &quot;de la forme :
+xxx.xxx.xxx.xxx&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form2, var2, 20);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                // adresse dns</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 =
+sspec_addvariable(&quot;ip_dns&quot;, &amp;ip_dns, PTR16, &quot;%s&quot;, 
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 = sspec_addfv(form2, var2);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvname(form2, var2,
+&quot;Adresse DNS&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvdesc(form2, var2, &quot;de la forme :
+xxx.xxx.xxx.xxx&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                sspec_setfvlen(form2,
+var2, 20);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                //
+adresse passerelle</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                var2
+= sspec_addvariable(&quot;ip_pas&quot;, &amp;ip_pas, PTR16, &quot;%s&quot;, 
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                var2
+= sspec_addfv(form2, var2);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvname(form2, var2,
+&quot;Passerelle IP&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvdesc(form2, var2, &quot;de la forme :
+xxx.xxx.xxx.xxx&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form2, var2, 20);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                // choix</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 =
+sspec_addvariable(&quot;action_ip&quot;, action_ip, PTR16, &quot;%s&quot;,
+SERVER_HTTP);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                var2 = sspec_addfv(form2, var2);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvname(form2, var2,
+&quot;Action&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>sspec_setfvdesc(form2, var2, &quot;Faites votre choix !&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>sspec_setfvlen(form2, var2, 40);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfvoptlist(form2, var2,
+ip_options, 3);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sspec_setfventrytype(form2, var2,
+HTML_FORM_PULLDOWN);</span></i></p>
+
+<p class=MsoNormal>Ci-dessous, une attente de 40 secondes afin de pouvoir
+solliciter la carte de l’afficheur de base&nbsp;; cette dernière mettant plus
+de 35 secondes à devenir opérationnelle. La fonction <i>delays</i> sera
+commentée dans la suite. La fonction <i>affi_ip</i> permet d’afficher entre
+autre l’adresse IP en cours.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+TEMPORISATION ATTENTE INIT CARTE AFFICHEUR */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                delays(40);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                affi_ip();  
+</span></i></p>
+
+<p class=MsoNormal>Le lancement du serveur Web après celui de la gestion du
+réseau avec TCP/IP. Le port 80 est utilisé par le serveur Web.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+LANCEMENT DU SERVEUR ET DU RESEAU */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+</span><span lang=EN-GB style='font-size:10.0pt'>sock_init();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   http_init();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   tcp_reserveport(80);</span></i></p>
+
+<p class=MsoNormal>Le programme consiste en un test pour savoir s’il faut réinitialiser
+les paramètres IP. On scrute ensuite la variable <i>action_mes</i> pour savoir
+s’il faut agir au niveau des messages. On scrute ensuite la variable <i>action_ip</i>
+pour savoir s’il faut agir au niveau des paramètres IP. Enfin un test permet de
+répondre à une demande du serveur Web.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+BOUCLE D'ATTENTE DES TRAVAUX */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+while (1)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               refresh_ip();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               gest_message();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               gest_ip();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               http_handler();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+}</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction de gestion des messages qui utilise des
+fonctions de bases pour agir sur la liaison série avec la carte principale de
+l’afficheur. En cas d’action, on réinitialise la demande afin d’en attendre une
+nouvelle.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : GESTION DES MESSAGES       *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+gest_message(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               if
+(!strcmp(action_mes,&quot;Effacer un message&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               effac_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               num_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               strcpy(action_mes,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               if
+(!strcmp(action_mes,&quot;Enregistrer un message&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                 
+store_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                 
+num_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               strcpy(action_mes,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               if
+(!strcmp(action_mes,&quot;Tester un message&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               test_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               num_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               strcpy(action_mes,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               if
+(!strcmp(action_mes,&quot;Afficher un message&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               cont_mesn(mes_n);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               num_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+                             strcpy(action_mes,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               if
+(!strcmp(action_mes,&quot;Valider un message&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               choix_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               cont_mesn(mes_n);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               num_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+                            strcpy(action_mes,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction de gestion des paramètres IP qui utilise des
+fonctions de bases pour agir sur la les paramètres. En cas d’action, on
+réinitialise la demande afin d’en attendre une nouvelle.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : GESTION IP                 *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+gest_ip(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char scratch[40];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                longword temp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               if
+(!strcmp(action_ip,&quot;&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               ifconfig(IF_ETH0,
+IFG_IPADDR, &amp;temp, IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               inet_ntoa(
+ip_ad, temp);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               ifconfig(IF_ETH0,
+IFG_NETMASK, &amp;temp, IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               inet_ntoa(
+ip_mask, temp);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               ifconfig(IF_ETH0,
+IFG_ROUTER_DEFAULT, &amp;temp, IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               </span><span
+style='font-size:10.0pt'>inet_ntoa( ip_pas, temp);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               </span><span
+lang=EN-GB style='font-size:10.0pt'>inet_ntoa( scratch, def_nameservers[0]);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               strcpy(ip_dns,scratch);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               BitWrPortI(PGDR,
+&amp;PGDRShadow, 1, DS1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               strcpy(action_ip,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               if
+(!strcmp(action_ip,&quot;Modifier paramètres&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               ifconfig(
+IF_ETH0,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_DOWN,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_IPADDR,
+aton(ip_ad),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_NETMASK,
+aton(ip_mask),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_ROUTER_SET,
+aton(ip_pas),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_NAMESERVER_SET,
+aton(ip_dns),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_UP,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               strcpy(action_ip,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               save_ip();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               if
+(!strcmp(action_ip,&quot;Initialiser paramètres&quot;)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               ifconfig(
+IF_ETH0,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_DOWN,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_IPADDR,
+aton(&quot;10.10.10.10&quot;),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_NETMASK,
+aton(&quot;255.0.0.0&quot;),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_ROUTER_SET,
+aton(&quot;10.0.0.5&quot;),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_NAMESERVER_SET,
+aton(&quot;10.0.0.5&quot;),</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_UP,</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               strcpy(action_ip,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               </span><span
+style='font-size:10.0pt'>save_ip();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La gestion des entrées/sorties qui initialise le port G du
+Rabbit.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>********** 
+INITIALISATION DES Entrées Sorties         *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+init_es(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>//
+initialisation entrées sortie : configure Port G</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>WrPortI(PGCR, &amp;PGCRShadow, 0x00);                                                                                    //clear
+all bits for pclk/2</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                WrPortI(PGFR, &amp;PGFRShadow, 0x00);                                                                                    //clear
+all bits for normal function</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                WrPortI(PGDCR, &amp;PGDCRShadow,
+PGDCRShadow|0xC0);                               //set bits 7,6 drive open
+drain</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                WrPortI(PGDR, &amp;PGDRShadow,
+PGDCRShadow|0xC0);                     //set bit 7,6 output high</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                BitWrPortI(PGDCR, &amp;PGDCRShadow, 0,
+2);                                                                           //clear
+bit 2 drive output</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                BitWrPortI(PGDR, &amp;PGDRShadow, 0,
+2);                                                                 //clear bit
+2 output low</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                WrPortI(PGDDR, &amp;PGDDRShadow,
+0xC4);                                                                                             //set
+bits 7,6,2 to output and</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                                                                                                                                                                                                                                                           </span><span
+style='font-size:10.0pt'>//clear bits 5,4,3,1,0 to input</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La variable first indique le démarrage initial et elle
+permet à la mise sous tension de valider une restauration des paramètres réseau
+stockés en mémoire Flash. L’initialisation des chaînes de caractères de la page
+dynamique des paramètres IP.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********   
+INITIALISATION PAGES PARAMETRES RESEAU   *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+init_res(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                first
+= 1;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>//
+initialisation affichage configuration réseau</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                strcpy(ip_ad,&quot;10.10.10.10&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>strcpy(ip_mask,&quot;255.0.0.0&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(ip_pas,&quot;10.0.0.2&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(ip_dns,&quot;10.0.0.3&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(ip_name,&quot;aiw.mat.com&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>L’initialisation des chaînes de caractères de la page
+dynamique des messages.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********   
+INITIALISATION DES PAGES WEB             *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>//
+initialisation affichage</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+init_mes(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+mes_n = 1;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+</span><span lang=EN-GB style='font-size:10.0pt'>strcpy(num_e,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   strcpy(num_m,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   </span><span style='font-size:10.0pt'>strcpy(mes_text,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+strcpy(mes_clig,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+strcpy(mes_defil,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+strcpy(action_mes,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>store_mes</i> permet de placer dans la
+mémoire de l’afficheur le message repéré par son numéro <i>num_m</i> (valeur
+ASCII de <i>mes_n</i>). On envoie sur la liaison série un paquet au bon format
+(voir protocole de dialogue).</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : STORE_MES                  *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+memorise un message dans l'afficheur */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void store_mes(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char buf_s[40];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char num_m[3];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int a,b,i;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBopen(9600);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(num_m,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   itoa(mes_n,num_m);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputc(STX);                                   //STX</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputc(0x30);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputc(0x30);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputc(0x31);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputc(GS);                                     //GS</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(buf_s,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sprintf(buf_s,&quot;%3s&quot;,num_m);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (buf_s[0]==0x20)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               buf_s[0]=0x30;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (buf_s[1]==0x20)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               buf_s[1]=0x30;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputs(buf_s);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputc(GS);                                     //GS</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                for (i=0;i &lt;= 39;i++){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               if
+((!strcmp(mes_defil,&quot;Message defilant&quot;))&amp;&amp; i==39){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                  </span><span
+style='font-size:10.0pt'>serBputc('@');                                                 //@
+pour defilement</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               </span><span
+lang=EN-GB style='font-size:10.0pt'>else{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               if
+(i&gt;=strlen(mes_text)&amp;&amp; i&lt;=39){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               </span><span
+style='font-size:10.0pt'>serBputc(0x20);                                 //remplissage
+avec espace</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               </span><span
+lang=EN-GB style='font-size:10.0pt'>if (i&lt;strlen(mes_text)&amp;&amp;
+i&lt;=39){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               a
+= mes_text[i];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               b
+= mes_clig[i];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               if
+( b==0x63 &amp;&amp; i&lt;=strlen(mes_clig))</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               </span><span
+style='font-size:10.0pt'>a=a+0x80;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                 
+             serBputc(a);                                        //envoie du
+texte</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                serBputc(ETX);                                  //ETX</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                while
+(serBwrFree() != BOUTBUFSIZE) ;      // attend la fin de la transmission avant
+de fermer le port</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+serBclose();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>choix_mes</i> permet de choisir pour
+l’afficheur le message à afficher. Il est repéré par son numéro <i>num_m</i>
+(valeur ASCII de <i>mes_n</i>). On envoie sur la liaison série un paquet au bon
+format (voir protocole de dialogue).</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : CHOIX_MES                  *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+choisit un message dans l'afficheur */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+choix_mes(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                char
+buf_s[30];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>char num_m[3];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBopen(9600);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(num_m,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   </span><span style='font-size:10.0pt'>itoa(mes_n,num_m);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                serBputc(SOH);                                  //SOH</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                serBputc(0x30);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                serBputc(0x30);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                serBputc(0x31);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>serBputc(GS);                                     //GS</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(buf_s,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sprintf(buf_s,&quot;%3s&quot;,num_m);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (buf_s[0]==0x20)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               buf_s[0]=0x30;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (buf_s[1]==0x20)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               buf_s[1]=0x30;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputs(buf_s);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBputc(GS);                                     //GS</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>while (serBwrFree() != BOUTBUFSIZE) ;      // attend la fin de la
+transmission avant de fermer le port</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+serBclose();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>effac_mes</i> permet d’effacer dans
+l’afficheur. Il est repéré par son numéro <i>num_m</i> (valeur ASCII de <i>mes_n</i>).
+On envoie sur la liaison série un paquet au bon format (voir protocole de
+dialogue).</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : EFFAC_MES                  *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+efface un message dans l'afficheur */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+effac_mes(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                strcpy(mes_text,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                strcpy(mes_clig,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                strcpy(mes_defil,&quot;Message
+fixe&quot;);                  //             &quot;Message fixe&quot;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+store_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>test_mes</i> permet de tester sur l’afficheur
+un message. Sans altérer le numéro <i>mes_n</i>, on utilise l’emplacement 511
+afin de réaliser ce test. On envoie sur la liaison série un paquet au bon
+format (voir protocole de dialogue).</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : TEST_MES                  *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+teste un message sur l'afficheur */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+test_mes(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                int
+a;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                a
+= mes_n;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                mes_n
+= 511;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                store_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                choix_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                mes_n
+= a;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>num_mes</i> permet de demander à l’afficheur
+le numéro du message en cours d’affichage&nbsp;; ce numéro va être stocké dans
+la variable <i>num_e</i>. On envoie sur la liaison série un paquet au bon
+format (voir protocole de dialogue).</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : NUM_MES                    *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>//*
+demande numero message sur l'afficheur */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void num_mes(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>    int i,j,c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>    char s[50];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                 i=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                 j=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                 c=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                 sprintf(s,&quot;%c%s%c%c%s%s%c&quot;,0x05,&quot;001&quot;,0x1D,0x1B,&quot;F2&quot;,&quot;---&quot;,0x06);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                 serBopen(9600);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>    serBputs(s);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>    while (serBwrFree() != </span><span
+style='font-size:10.0pt'>BOUTBUFSIZE) ;     // attend la fin de la transmission
+avant de lire</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>   
+</span><span lang=EN-GB style='font-size:10.0pt'>while (c != 0x09)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               if ((c = serBgetc()) !=
+-1)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               s[i]=c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   serBclose();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   for(i=5;i&lt;8;i++)                                                                                                                                          //extraction
+des données utiles</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                num_e[j]=s[i];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>j++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+             }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>cont_mesn</i> permet de demander le contenu
+du message mémorisé de numéro n. On initialisera les chaînes de caractères de
+la page dynamique des messages avec les données obtenues. On envoie sur la
+liaison série un paquet au bon format (voir protocole de dialogue).</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : CONT_MESN                  *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+demande message contenu message n l'afficheur */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void cont_mesn(int n)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int i,j,c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   char s[50];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                i=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                j=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                c=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                itoa(n,num_m);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                sprintf(s,&quot;%c%s%c%c%s%3s%c&quot;,0x05,&quot;001&quot;,0x1D,0x1B,&quot;F3&quot;,num_m,0x06);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (s[8]==0x20)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               s[8]=0x30;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (s[9]==0x20)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               s[9]=0x30;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                serBopen(9600);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   serBputs(s);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   </span><span style='font-size:10.0pt'>while
+(serBwrFree() != BOUTBUFSIZE) ;     // attend la fin de la transmission avant
+de lire</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+</span><span lang=EN-GB style='font-size:10.0pt'>while (c != 0x09)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               if ((c = serBgetc()) !=
+-1)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               s[i]=c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   serBclose();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (s[44]!='@')</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               </span><span
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               strcpy(mes_defil,&quot;Message
+fixe&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                else</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               strcpy(mes_defil,&quot;Message
+defilant&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                for(i=5;i&lt;45;i++)                                                                                                                                          //extraction
+des données utiles</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+             </span><span lang=EN-GB style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (s[i]&gt;=0x80)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               mes_text[j]=(s[i]-0x80);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               mes_clig[j]='c';</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               else</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               mes_text[j]=s[i];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               </span><span
+style='font-size:10.0pt'>mes_clig[j]=0x20;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+             j++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+             }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                mes_text[40]=0x00;                                                                                                                       //terminateur
+nul d'une chaine</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                mes_clig[40]=0x00;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>refresh_ip</i> permet de réinitialiser les
+paramètres IP, soit avec des données sauvegardées dans la mémoire Flash après
+démarrage du programme, soit depuis les données initiales par action sur le
+bouton <i>s2</i>. On remarquera ici l’utilisation de la fonction <i>userblock</i>
+(bibliothèque système prédéfinie) qui permet d’utiliser facilement une zone de
+la mémoire Flash pour y sauvegarder nos paramètres IP. L’adresse 0 de cette
+zone contient O (occupé) ou L (libre) pour indiquer si des paramètres IP sont
+mémorisés. Dans le cas contraire, on utilise les  données IP par défaut défini
+au début du programme.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : RAFRAICHISSEMENT IP        *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>void
+refresh_ip(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char b[3];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (first==1)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               //
+eventuellement restauration adresse IP</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               readUserBlock(b,
+0, 1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               if
+(b[0]=='O') {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               restor_ip();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               first = 0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (!BitRdPortI(PGDR, S2)){</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               strcpy(action_ip,&quot;Initialiser
+paramètres&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               BitWrPortI(PGDR,
+&amp;PGDRShadow, 0, DS1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               strcpy(b,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               strcat(b,
+&quot;L&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               </span><span
+style='font-size:10.0pt'>writeUserBlock(0, b, 1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>save_ip</i> permet de modifier les paramètres
+IP depuis la page de gestion des paramètres IP et de les sauvegarder en mémoire
+Flash. Bien que cette modification soit dynamique, c’est à dire prise en compte
+immédiatement par le programme, il est nécessaire de redémarrer l’afficheur
+pour obtenir les fonctionnalités de gestion des messages.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTIONS : SAVE IP                    *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>&nbsp;void
+save_ip(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'> char buf[100];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'> longword temp;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                /*ifconfig(IF_ETH0, IFG_IPADDR,
+&amp;temp, IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                inet_ntoa( ip_ad, temp);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                ifconfig(IF_ETH0, IFG_NETMASK,
+&amp;temp, IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                inet_ntoa( ip_mask, temp);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                ifconfig(IF_ETH0, IFG_ROUTER_DEFAULT,
+&amp;temp, IFS_END);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>inet_ntoa( ip_pas, temp);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>inet_ntoa( buf, def_nameservers[0]);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(ip_dns,buf);*/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(buf,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, &quot;O&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, ip_ad);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, &quot;O&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, ip_mask);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, &quot;O&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, ip_dns);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, &quot;O&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, ip_pas);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcat(buf, &quot;O&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                writeUserBlock(0, buf, 100);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>restor_ip</i> permet d’initialiser les
+paramètres IP depuis un contenu placé en mémoire Flash.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>**********      FONCTIONS : RESTOR IP                 
+*********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>void restor_ip(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int i,j;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char buf[100];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;                i=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                j=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                readUserBlock(buf, 1, 100);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;                while((c=buf[i])!='O')</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               ip_ad[j]=c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               j++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                ip_ad[j]=0x00;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                tcp_config(MY_IP,ip_ad);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                j=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                while((c=buf[i])!='O')</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               ip_mask[j]=c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               j++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                ip_mask[j]=0x00;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                tcp_config(NETMASK,ip_mask);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                j=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;                while((c=buf[i])!='O')</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               ip_dns[j]=c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               j++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                ip_dns[j]=0x00;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                *_last_nameserver = 0;                                   /*
+reset table des serveurs DNS */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                tcp_config(NAMESERVER,ip_dns);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                j=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                while(((c=buf[i])!='O')||(c==' '))</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               </span><span
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               ip_pas[j]=c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               j++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                ip_pas[j]=0x00;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>                </span><span
+lang=EN-GB style='font-size:10.0pt'>router_del_all();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                tcp_config(GATEWAY,ip_pas);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction redirection permet au sortir de l’affichage de
+la page dynamique des paramètres IP de retourner à la page newip.htm (page elle-même).</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>**********      FONCTIONS : REDIRECTION               
+*********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;int launched(HttpState* state)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>    {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>    cgi_redirectto(state,
+&quot;http://ip_ad/ipstat.shtml&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>    </span><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>delays</i> permet, en utilisant l’horloge
+temps réel intégrée au Rabbit, de produire une temporisation de <i>n</i>
+secondes.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTION : DELAYS                     *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+temporisation en s */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>int delays(int s)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                unsigned long     t0, t1, t2;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                struct tm                               rtc;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;                tm_rd(&amp;rtc);                                                                                                     //
+get time in struct tm</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                t0 = mktime(&amp;rtc);                                                                           //
+convert struct tm into seconds since 1980</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                tm_wr(&amp;rtc);                                                                                                     //
+set clock</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                t1 = mktime(&amp;rtc);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                do {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               t2 = read_rtc();                                                                 //
+read time in seconds since 1980</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                </span><span style='font-size:
+10.0pt'>} while ( t2 &lt; (t1+s) );</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+<p class=MsoNormal>La fonction <i>affi_ip</i> est appelée à la mise sous
+tension afin d’afficher 2 messages pendant 5 et 8 secondes. Un de ces messages
+affiche l’adresse IP utilisée après son éventuelle restauration depuis la
+mémoire Flash.</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/***************************************************************</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>**********     
+FONCTION : AFFI_IP                  *********</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>***************************************************************/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>/*
+affiche l'adresse IP */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>&nbsp;</span><span lang=EN-GB
+style='font-size:10.0pt'>void affi_ip(void)</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>{</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                int i,j;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char buf[25];</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                char c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>&nbsp;                i=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                j=0;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                readUserBlock(buf, 0, 1);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                if (buf[0]=='O') {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               readUserBlock(buf, 1,
+20);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               while((c=buf[i])!='O')</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               {</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               ip_ad[j]=c;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               j++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               i++;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               ip_ad[j]=0x00;</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                               }</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>                strcpy(mes_text,&quot;ETHERNET OK
+V2.00 BY NJC&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   test_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   delays(5);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   strcpy(mes_text,ip_ad);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span lang=EN-GB
+style='font-size:10.0pt'>   </span><span style='font-size:10.0pt'>test_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+delays(8);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+strcpy(mes_text,&quot;&quot;);</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>  
+test_mes();</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>}</span></i></p>
+
+</BODY></HTML>
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

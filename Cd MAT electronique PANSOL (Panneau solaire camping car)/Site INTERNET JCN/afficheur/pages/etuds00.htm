@@ -1,0 +1,837 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40"><HEAD><TITLE>L'afficheur MAT : étude système</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="Microsoft FrontPage 6.0" name=GENERATOR>
+
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<SCRIPT language=JavaScript>
+// Le site de njc
+// lycée la briquerie 15 route de la briquerie 57100 thionville
+<!-- Beginning of JavaScript Applet -------------------
+function scrollit_r2l(seed)
+{
+	var msg="Bienvenue dans la page web de Niedercorn Jean-Claude !!!     j-c.niedercorn@ac-nancy-metz.fr "//Changer ici le texte
+	var out = " ";
+	var c   = 1;
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit_r2l(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+		}
+	}
+}
+function stop() {
+clearTimeout(timerTwo)
+}
+// -- End of JavaScript code -------------- -->
+
+</SCRIPT>
+<!-- Fonction Onload ! -->
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ li.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;
+	}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+div.Section2
+	{page:Section2;}
+-->
+</style>
+<meta name="Microsoft Border" content="none">
+</HEAD>
+<BODY leftMargin=50 background="../../images/fspiral.gif" onload=scrollit_r2l(100)>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="10%"><a name="0" href="../accueil.htm">
+    <IMG alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></TD>
+    <TD align=middle width="51%"><font size="5" color="#FF0000">
+    <img border="0" src="../../images/project.gif" width="32" height="32"> </font><font size="5" color="#0000FF">
+    L'afficheur MAT : étude système</font></TD>
+    <TD align=middle width="21%"><a href="../accueil.htm">
+    <IMG alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></TD></TR></TBODY></TABLE>
+<P align=center>
+<IMG alt="lignrougfin.gif (950 octets)" 
+src="../../images/lignrfin.gif" width="530" height="4"></P>
+<p align="center">L'étude système complète au format Word</p>
+<p align="center">&nbsp;<a href="../fichiers/etude%20systeme.doc"><img border="0" src="../images/image001.gif" width="40" height="40"></a></p>
+<hr>
+
+<div class=Section1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le système présenté est celui
+d’un affichage industriel de type panneau d’affichage. Utilisé dans de
+nombreuses applications">
+</HEAD>
+<BODY leftMargin=50 background="../../images/fspiral.gif" onload=scrollit_r2l(100)>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="10%"><a name="0" href="../accueil.htm">
+    <IMG alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></TD>
+    <TD align=middle width="51%"><font size="5" color="#FF0000">
+    <img border="0" src="../../images/project.gif" width="32" height="32"> </font><font size="5" color="#0000FF">
+    L'afficheur MAT : étude système</font></TD>
+    <TD align=middle width="21%"><a href="../accueil.htm">
+    <IMG alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></TD></TR></TBODY></TABLE>
+<P align=center>
+<IMG alt="lignrougfin.gif (950 octets)" 
+src="../../images/lignrfin.gif" width="530" height="4"></P>
+<p align="center">L'étude système complète au format Word</p>
+<p align="center">&nbsp;<a href="../fichiers/etude%20systeme.doc"><img border="0" src="../images/image001.gif" width="40" height="40"></a></p>
+<hr>
+
+<div class=Section1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le système présenté est celui
+d’un affichage industriel de type panneau d’affichage. Utilisé dans de
+nombreuses applications, ce type d’afficheur est celui que l’on trouve dans les
+domaines public ou industriel, pour afficher des messages visibles à grande
+distance.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La société <i>MAT Electronique</i>
+qui commercialise ce type d’afficheur, propose une vaste gamme de produits qui
+se caractérisent par&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>la nature de la technologie
+     des afficheurs utilisés. On dispose d’afficheurs à gaz ou d’afficheur à
+     matrice de diodes électroluminescentes.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>le type de message affichable.
+     Le message est restitué sur <i>x</i> lignes de <i>y</i> afficheurs</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>les possibilités de commande à
+     distance de ses afficheurs.</li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Dans la gamme des afficheurs
+proposés, il a été retenu un afficheur de 2 lignes de 12 caractères de 50 mm à
+matrice de LEDS.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=317 height=153 src="../images/image008.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le diagramme sagittal, nous
+montre l’environnement de l’afficheur&nbsp;:</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=513 height=362 src="../images/image027.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Comme précisé, l’afficheur
+diffuse vers l’utilisateur un message qui apparaît sur 2 lignes de 12
+caractères. Ce message peut être défilant ce qui ne le réduit donc pas aux 2x12
+caractères affichés&nbsp;; la taille maximale est de 40 caractères.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le personnel de contrôle et de
+surveillance, utilise un système informatique pour initialiser les messages qui
+sont mémorisés dans l’afficheur et choisir le message à afficher. Le système
+informatique n’est pas toujours localisé à proximité de l’afficheur et
+différents moyens de communication de type série peuvent être utilisés.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Afin de pouvoir rapidement
+refléter des messages choisis par des systèmes industriels dépourvus de moyens
+de communication évolués, une liaison parallèle permet également de choisir le
+message à afficher.</p>
+
+<h1>Analyse fonctionnelle.</h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le schéma fonctionnel présente
+l’organisation du produit.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=517 height=296 src="../images/image003.jpg"></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>La matrice d’affichage est
+     composée de 24 matrices de 5 x 7 LEDS afin de produire des messages textes
+     organisés en 2 lignes de 12 caractères.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>L’interface de commande permet
+     de produire les signaux de commande nécessaire à la gestion des diodes
+     électroluminescentes.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>L’interface de communication,
+     permet, de recevoir des données d’un système informatique sous forme
+     série, avec l’aide ou non de modems suivant la distance. L’utilisateur
+     paramètre son système pour l’envoie des données à afficher en mode
+     automatique ou manuel. L’option Ethernet permet également l’accès depuis
+     un réseau de ce type.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>La mémoire de messages,
+     associée à l’unité de traitement, doit, entre autre, contenir différentes
+     pages parmi lesquelles on pourra choisir celle devant être reproduite par
+     la matrice d’affichage.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>En fin, une unité de contrôle
+     d’affichage et de communication construite autour d’un système à base de
+     microprocesseur gère les tâches d’affichage et de communication.</li>
+</ul>
+
+<h1>Communication avec l’afficheur.</h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Étant donné les secteurs d’activité
+très divers qui sont amenés à utiliser ce type d’affichage, le constructeur
+propose différents moyens d’accès à son produit.</p>
+
+<h2>Liaison parallèle.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>En environnement industriel, ce
+sont souvent des automates programmables implantés sur des systèmes de production
+qui doivent provoquer l’affichage de messages. </p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Malheureusement, ces dispositifs
+ne dispose pas toujours de canaux de communication libre ou suffisamment
+évolués. </p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Une liaison parallèle sur 9 bits,
+permettant de choisir directement le message à afficher, est prévue à cet
+effet.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Les messages doivent, dans ce
+cas, déjà avoir été mémorisés dans la mémoire de messages.</p>
+
+<h2>Liaison série.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La liaison série est, à l’heure
+actuelle, la plus adaptée pour le dialogue à distance avec un équipement, c’est
+pourquoi c’est elle qui a été choisie pour les échanges avec l’afficheur.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Plusieurs possibilités existent
+quand à son utilisation&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>La liaison série RS232 permet
+     de connecter l’afficheur à un environnement informatique de type PC. La
+     distance entre le PC et l’afficheur est limitée à quelques dizaines de
+     mètres en fonction du milieu environnant.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>La liaison RS422 permet de
+     connecter l’afficheur à un environnement informatique de type industriel
+     (des automates, par exemple). La distance des équipements, de types bus,
+     atteint la centaine de mètres.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>La liaison à boucle de courant
+     permet de connecter l’afficheur à un environnement informatique de type
+     industriel (des automates, par exemple). La distance des équipements, de
+     types bus, atteint quelques dizaines de mètres.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>La liaison par modem associée
+     à la liaison RS232 permet de connecter l’afficheur à un environnement
+     informatique distant. La distance des équipements n’est alors plus limitée
+     que par l’utilisation du réseau téléphonique.</li>
+</ul>
+
+<h2>Liaison réseau.</h2>
+
+<p class=MsoNormal>Un module de communication disposant d’une liaison série
+(afin de se connecter au produit existant) et d’une liaison Ethernet permet de
+connecter l’afficheur à un réseau informatique d’entreprise.</p>
+
+<p class=MsoNormal>L’afficheur peut ainsi être piloté à distance au travers
+d’un réseau Ethernet. Les fonctionnalités sont alors les suivantes&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal>Accès au produit global au travers d’un réseau
+     d’entreprise Ethernet.</li>
+ <li class=MsoNormal>Pilotage graphique de l’affichage au travers d’un browser
+     Web standard.</li>
+ <li class=MsoNormal>Installation et paramétrage aisé.</li>
+</ul>
+
+<h1>Organisation structurelle.</h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Étant donné les options de
+communication disponibles et les impératifs de coût, l’organisation
+structurelle suivante a été choisie par le constructeur.</p>
+
+<h2>Produit de base.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On peut utiliser le produit de
+base ci-dessous.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On choisira, dans ce cas,
+obligatoirement une des liaisons série pour la communication.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La liaison parallèle, permet de
+choisir le message à afficher. La méthode de choix est du type&nbsp;: Dernière
+demande servie</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=307 height=153 src="../images/image028.jpg"></p>
+
+<h2>Option Modem.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On peut également utiliser
+l’option modem qui rend l’afficheur accessible depuis le réseau téléphonique
+commuté.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=305 height=214 src="../images/image005.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Là encore, on peut utiliser la
+liaison parallèle pour choisir le message à afficher. La méthode de choix est
+du type&nbsp;: Dernière demande servie</p>
+
+<h2>Option Ethernet.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On peut également adjoindre
+l’option Ethernet qui rend l’afficheur accessible depuis le réseau. Dans ce
+cas, toutes les fonctionnalités du réseau Ethernet tels que l’utilisation d’un
+routeur, par exemple, deviennent également accessibles.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=258 height=232 src="../images/image006.jpg"></p>
+
+<h1 style='margin-top:12.0pt;margin-right:1.0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt;page-break-after:auto;punctuation-wrap:simple;
+text-autospace:none;vertical-align:baseline'>Étude de l’afficheur de base.</h1>
+
+<h2>Fonction d’usage.</h2>
+
+<p class=MsoNormal>La fonction d’usage de l’afficheur est de restituer un
+message visuel sur 24 afficheurs constitués d’une matrice de points 5x7 et
+organisés en 2 lignes.</p>
+
+<p class=MsoNormal>Le message peut être visualisé de différentes manières&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal>Affichage défilant.</li>
+ <li class=MsoNormal>Affichage clignotant d’un ou plusieurs caractères.</li>
+</ul>
+
+<p class=MsoNormal>Plusieurs messages peuvent être enregistrés dans une mémoire
+interne à l’afficheur et seul l’un d’eux sera affiché à un instant donné.</p>
+
+<p class=MsoNormal>La mémorisation des messages, le mode d’affichage et le
+choix du message à afficher sont commandés par un opérateur au moyen d’un outil
+informatique. </p>
+
+<p class=MsoNormal>Une commande directe permet également de choisir le message
+à afficher.</p>
+
+<h2>Milieux associés.</h2>
+
+<p class=MsoNormal>L’afficheur peut être installé en extérieur ou en intérieur.
+L’afficheur doit pouvoir prendre place dans un milieu industriel fortement
+perturbé.</p>
+
+<h2>Schéma fonctionnel de niveau 2.</h2>
+
+<p class=MsoNormal>On donne le schéma fonctionnel de niveau 2 de l’afficheur.</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=381
+height=209 src="../images/image002.gif"></p>
+
+<p class=MsoNormal>L’énergie électrique est fournie par le réseau EDF. </p>
+
+<p class=MsoNormal>Le pilotage et la commande s’effectue, au choix, par : </p>
+
+<p class=Nlisteronds><span style='font-family:Symbol'>Þ<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Liaison série RS232.</p>
+
+<p class=Nlisteronds><span style='font-family:Symbol'>Þ<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Liaison série RS422.</p>
+
+<p class=Nlisteronds><span style='font-family:Symbol'>Þ<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Liaison série à boucle de courant.</p>
+
+<p class=MsoNormal>Le choix du message s’effectue par une liaison
+unidirectionnelle depuis tout équipement à partir d’entrées tout ou rien.</p>
+
+<h2 style='margin-top:6.0pt;margin-right:1.0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt;text-align:justify;page-break-after:auto;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'>Schéma fonctionnel de degré
+2.</h2>
+
+<p class=MsoNormal>On donne le schéma fonctionnel de degré 2 et on y distingue
+: </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=494
+height=358 src="../images/image020.gif"></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-14.15pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La fonction FP1 restitue le message souhaité sous forme
+lumineuse.</p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-14.15pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La fonction FP2 utilise les informations de la fonction FP3 afin
+d’établir les commandes nécessaires à la gestion de la matrice d’affichage.</p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-14.15pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La fonction FP3 de traitement et de mémorisation, est chargée
+de&nbsp;:</p>
+
+<p class=MsoNormal style='margin-left:64.35pt;text-indent:-18.0pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Échanger des données avec les fonctions FP4, FP5, FP6 et FP7.</p>
+
+<p class=MsoNormal style='margin-left:64.35pt;text-indent:-18.0pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Traiter ces données afin d’assurer la gestion et la mémorisation des
+messages</p>
+
+<p class=MsoNormal style='margin-left:64.35pt;text-indent:-18.0pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>D’agir sur l’interface de commande afin d’obtenir l’affichage du message
+désiré.</p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-14.15pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La fonction FP4 adapte le niveau électrique entre les données D1
+compatibles RS232 et les données D2 compatibles avec l’unité de traitement et
+de mémorisation FP3. </p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-14.15pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La fonction FP5 adapte le niveau électrique entre les données D3
+compatibles RS422 et les données D4 compatibles avec l’unité de traitement et
+de mémorisation FP3. </p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-14.15pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La fonction FP6 adapte le niveau électrique entre les données D5
+d’une boucle de courant et les données D6 compatibles avec l’unité de
+traitement et de mémorisation FP3. </p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-14.15pt;punctuation-wrap:
+simple;text-autospace:none;vertical-align:baseline'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La fonction FP7 adapte le niveau électrique entre les données D7
+issues d’un automate programmable et les données D7 compatibles avec l’unité de
+traitement et de mémorisation FP3. </p>
+
+<h2>Analyse de la fonction FP1.</h2>
+
+<p class=MsoNormal>L’affichage est assuré par des afficheurs de 50 mm
+constitués par une matrice de 5 par 7.</p>
+
+<p class=MsoNormal>Le schéma structurel ci-dessous nous montre que les 7 lignes
+sont alimentées depuis les sorties d’un registre à décalage.</p>
+
+<p class=MsoNormal>La mise en série de ces registres permet au moyen d’un
+signal Data et ce rythme du signal Clock de positionner l’état des lignes
+depuis le microprocesseur. </p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=458
+height=517 src="../images/image009.jpg"></p>
+
+<h2>Analyse de la fonction FP2.</h2>
+
+<p class=MsoNormal>Un seul port de 8 bits du microprocesseur de la fonction FP3
+permet de commander les afficheurs.</p>
+
+<p class=MsoNormal>Le schéma structurel nous montre la génération des 4 signaux
+de commandes des registres à décalage au travers de buffer à collecteur ouvert.</p>
+
+<p class=MsoNormal align="center">
+<img width=604 height=184
+src="../images/image029.jpg"></p>
+
+<p class=MsoNormal>La commande des 5 colonnes de l’afficheur est obtenue au
+travers d’un décodeur 3 vers 8 dont 5 sorties sont utilisées.</p>
+
+<p class=MsoNormal align="center">
+<img width=605 height=324
+src="../images/image030.jpg"></p>
+
+<p class=MsoNormal>Au niveau de l’efficacité si l’on considère que le courant
+est limité par une résistance de 100 ohms, on a&nbsp;un courant de l’ordre de
+30 mA.</p>
+
+<h2>Analyse de la fonction FP3.</h2>
+
+<p class=MsoNormal>La fonction FP3 est construite autours d’un microcontrôleur
+8 bits associé à une mémoire EPROM de 8 k octets et à une RAM de 64 k octets
+qui contient les messages mémorisés.</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=540
+height=447 src="../images/image012.jpg"></p>
+
+<p class=MsoNormal>C’est le port P6x de 8 bits qui permet de commander les
+afficheurs au travers de la fonction FP2.</p>
+
+<p class=MsoNormal>La bonne marche de l’afficheur est conditionnée à celle du
+bon déroulement du programme de gestion, aussi le microprocesseur est il
+associé à un circuit de gestion de l’alimentation utilisant un circuit
+spécialisé MAX690.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=346
+height=153 src="../images/image013.jpg"></p>
+
+<p class=MsoNormal>On utilise des ports d’entrée/sortie pour commander
+l’affichage mais aussi pour lire l’état d’interrupteurs qui permettront de
+choisir différents paramètres.</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=371
+height=433 src="../images/image014.jpg"></p>
+
+<h2>Analyse de la fonction FP4.</h2>
+
+<p class=MsoNormal>La fonction FP4 permet de convertir les signaux de la
+transmission série RS232 en signaux compatibles avec le port série du
+microprocesseur. Elle est construite autour du circuit MAX232.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=493
+height=250 src="../images/image015.jpg"></p>
+
+<h2>Analyse de la fonction FP5.</h2>
+
+<p class=MsoNormal>La fonction FP5 permet de convertir les signaux de la
+transmission série RS485 en signaux compatibles avec le port série du
+microprocesseur. Elle est construite autour du circuit LTC491.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=509 height=207 src="../images/image016.jpg"></p>
+
+<h2>Analyse de la fonction FP6.</h2>
+
+<p class=MsoNormal>La fonction FP6 permet de convertir les signaux de la
+transmission série boucle de courant en signaux compatibles avec le port série
+du microprocesseur. </p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=361 height=274 src="../images/image017.jpg"></p>
+
+<h2>Analyse de la fonction FP7.</h2>
+
+<p class=MsoNormal>La fonction FP7 permet de mettre à niveau les signaux de la
+transmission en mode parallèle afin de les rendre compatible avec les ports du
+microprocesseur.</p>
+
+<p class=MsoNormal>On donne pour un bit le schéma utilisé.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=400
+height=127 src="../images/image018.jpg"></p>
+
+<p class=MsoNormal>La mis en place ou non et le choix des valeurs de composants
+permet d’utiliser en entrée différentes tensions. </p>
+
+<h2>Analyse de la fonction FA.</h2>
+
+<p class=MsoNormal>La fonction FA permet de fournir l’énergie nécessaire au
+fonctionnement de l’ensemble des fonctions. </p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=604
+height=435 src="../images/image019.jpg"></p>
+
+<h1 style='margin-top:12.0pt;margin-right:1.0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt;page-break-after:auto;punctuation-wrap:simple;
+text-autospace:none;vertical-align:baseline'>Étude de l’afficheur avec option
+modem.</h1>
+
+<p class=MsoNormal>Dans ce cas, on adjoint, entre la liaison série de base et
+la ligne téléphonique d’un réseau téléphonique commuté (RTC), le module modem
+assuré de générer les signaux nécessaires.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=305 height=214 src="../images/image020.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La transmission de protocole
+V22bis, est assurée par un module de TELECOM DESIGN construit autour du TDK
+73M2901. Le logiciel de gestion permet de générer les commandes AT nécessaires.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le module modem prend place sur
+la carte de communication qui permet, par un paramétrage basé sur des straps,
+d’orienter correctement les informations entre le module connecté d’une part à
+la ligne téléphonique et d’autre part à la liaison série RS232 de la fonction
+FP3.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le technicien chargé de
+l’installation du produit se charge d’effectuer les connexions nécessaires.</p>
+
+<h1 style='margin-top:12.0pt;margin-right:1.0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt;page-break-after:auto;punctuation-wrap:simple;
+text-autospace:none;vertical-align:baseline'>Étude de l’afficheur avec option
+Ethernet.</h1>
+
+<p class=MsoNormal>Dans ce cas, on adjoint, entre la liaison série de base et
+le réseau Ethernet, le module Ethernet assuré de générer les signaux
+nécessaires.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=258 height=232 src="../images/image021.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La transmission, est assurée par
+un module Rabbit. On utilise, pour la commande de l’afficheur, un serveur Web
+embarqué dans le module.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le module Ethernet prend place
+sur la carte de communication qui permet, par un paramétrage basé sur des straps,
+d’orienter correctement les informations entre le module connecté d’une part au
+réseau Ethernet et d’autre part à la liaison série RS232 de la fonction FP3.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le technicien chargé de
+l’installation du produit se charge d’effectuer les connexions nécessaires et
+de paramétrer le module en fonction de la configuration du réseau de
+l’entreprise.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le module Rabbit est construit
+autour d’un microcontrôleur dérivé du Z80 (Zilog) qui présente la particularité
+de disposer d’un grand nombre d’entrées/sorties et de supporter une grande
+quantité de mémoire. La fréquence de fonctionnement élevée permet de travailler
+correctement avec un réseau Ethernet à 10 Mbits/s.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La tension d’alimentation du
+microcontrôleur est de 3,3V.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>L’accès au réseau Ethernet se
+fait au travers d’un circuit spécialisé de chez Realtek, le RTL8019 comme le
+montre le schéma ci-dessous.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt' align="center">
+<img width=604 height=376
+src="../images/image022.jpg"></p>
+
+<h1>Organisation matérielle de l’afficheur.</h1>
+
+<p class=MsoNormal>L’afficheur est organisé en plusieurs cartes électroniques
+placées dans un coffret étanche (IP65).</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Ces cartes se répartissent les
+différentes fonctions présentées auparavant.</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>Une carte à base d’un
+     microcontrôleur 68HC03 regroupe les fonctions FP3 à FP6. Elle reçoit en
+     entrée les signaux série (RS232, RS422 ou boucle de courant) et les
+     signaux parallèles de choix du message (en binaire) et fournit sur un port
+     8 bits les signaux de commande de la matrice d’affichage.</li>
+</ul>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=260 height=196 src="../images/image023.jpg"></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>Une carte «&nbsp;de
+     puissance&nbsp;» regroupe la fonction d’alimentation FA et la fonction
+     interface de commande des afficheurs FP2.</li>
+</ul>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=342 height=121 src="../images/image024.jpg"></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>Les cartes regroupant les
+     afficheurs ainsi que les registres à décalages utilisés sont placés de
+     manière à être visible au travers d’un filtre optique rouge.</li>
+</ul>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=394 height=152 src="../images/image025.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Les cartes ci-dessus
+représentent l’afficheur de base et elles sont interconnectées aux moyens de
+borniers. Un bornier de type industriel permet la connexion externe de
+l’afficheur.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=220 height=77 src="../images/image026.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Afin de pouvoir utiliser
+des modules optionnels, une carte d’interconnexion supplémentaire supporte des
+embases afin de mettre en place les modules optionnels enfichables. On remarque
+les éléments de l’adaptation de niveau de la liaison parallèle sur la partie
+gauche de la carte.</p>
+<p class=MsoNormal style='margin-bottom:6.0pt'>
+<img border="0" src="../images/etuds01.jpg" width="965" height="265"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Une série de cavaliers ou straps
+permet de configurer la carte d’interconnexion afin de rendre ou non
+opérationnels les modules additionnels.</p>
+
+<p class=MsoNormal>Dans sa version industrielle, le coffret de l’afficheur est
+clos afin d’assurer la sécurité. Dans sa version éducation, la face arrière est
+divisée en 2 parties&nbsp;:</p>
+
+<p class=MsoNormal style='margin-left:14.2pt;text-indent:-14.2pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Une partie amovible permettant l’accès aux éléments de
+configuration.</p>
+
+<p class=MsoNormal style='margin-left:14.2pt;text-indent:-14.2pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Une partie fixe qui masque la connexion secteur et le
+transformateur d’alimentation.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Partie fixe en position et
+partie amovible enlevée&nbsp;:</p>
+<p class=MsoNormal style='margin-bottom:6.0pt' align="center">
+<img border="0" src="../images/etuds02.jpg" width="630" height="408"></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Partie fixe démontée et partie 
+amovible en place&nbsp;:</p>
+<p class=MsoNormal style='margin-bottom:6.0pt' align="center">
+<img border="0" src="../images/etuds03.jpg" width="605" height="288"></p>
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:left'>Les 
+schémas de l'afficheur de base :</p>
+
+</div>
+
+<div class=Section2>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=756 height=590 src="../images/image031.jpg"></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=860 height=604 src="../images/image032.jpg"></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=865 height=605 src="../images/image033.jpg"></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=855 height=592 src="../images/image034.jpg"></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=917 height=594 src="../images/image035.jpg"></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'>
+<img
+width=868 height=563 src="../images/image036.jpg"></p>
+
+</div>
+
+</BODY></HTML>
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

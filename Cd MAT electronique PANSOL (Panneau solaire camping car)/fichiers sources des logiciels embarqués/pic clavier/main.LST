@@ -1,0 +1,433 @@
+CCS PCM C Compiler, Version 3.212, 26421               31-août-05 13:40
+
+               Filename: C:\Dossier MAT Electronique\Programmes PIC applications MAT\Panneau solaire\source modules pic (version 2)\pic clavier\main.LST
+
+               ROM used: 292 words (29%)
+                         Largest free fragment is 732
+               RAM used: 6 (9%) at main() level
+                         7 (10%) worst case
+               Stack:    2 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   10F
+0003:  NOP
+....................  // version V2.0 du 30/07/2005  
+.................... // maj : aucune  
+....................   
+.................... #include <16F84A.h> 
+....................  //////// Standard Header file for the PIC16F84A device ////////////////  
+.................... #device PIC16F84A  
+.................... #list  
+....................  
+.................... #device *=16  
+.................... #zero_ram  
+.................... #use delay(clock=2500000)  
+*
+0009:  MOVLW  12
+000A:  MOVWF  04
+000B:  BCF    03.7
+000C:  MOVF   00,W
+000D:  BTFSC  03.2
+000E:  GOTO   015
+000F:  MOVLW  CF
+0010:  MOVWF  0C
+0011:  DECFSZ 0C,F
+0012:  GOTO   011
+0013:  DECFSZ 00,F
+0014:  GOTO   00F
+0015:  GOTO   109 (RETURN)
+....................   
+.................... /* variables du systeme */  
+....................   
+.................... #include "clavier.c"                   //driver clavier a consulter pour bits utilises 
+....................  /* driver pour le clavier */  
+.................... #define C1 input(PIN_A4)  
+.................... #define C2 input(PIN_B5)  
+.................... #define C3 input(PIN_B4)  
+....................   
+.................... #define LR1 output_low(PIN_A0)  
+.................... #define LR2 output_low(PIN_A1)  
+.................... #define LR3 output_low(PIN_A2)  
+.................... #define LR4 output_low(PIN_A3)  
+....................   
+.................... #define HR1 output_high(PIN_A0)  
+.................... #define HR2 output_high(PIN_A1)  
+.................... #define HR3 output_high(PIN_A2)  
+.................... #define HR4 output_high(PIN_A3)  
+....................   
+.................... /* variables du systeme */  
+.................... int code;  
+....................   
+.................... /* declaration des fonctions */  
+.................... int clavier();  
+.................... void gest_clavier();                   //gestion des appels clavier  
+.................... void gest_code();  
+....................   
+.................... /* definitions des fonctions */  
+.................... void gest_clavier(){  
+....................    code=clavier();  
+*
+00F7:  MOVF   0D,W
+00F8:  MOVWF  11
+....................    gest_code();  
+....................    code=0;  
+*
+010D:  CLRF   11
+.................... }  
+010E:  GOTO   122 (RETURN)
+....................   
+.................... void gest_code(){  
+....................    if (code!=0){  
+*
+00F9:  MOVF   11,F
+00FA:  BTFSC  03.2
+00FB:  GOTO   10D
+....................       output_b(code);  
+00FC:  MOVLW  00
+00FD:  BSF    03.5
+00FE:  MOVWF  06
+00FF:  BCF    03.5
+0100:  MOVF   11,W
+0101:  MOVWF  06
+....................       output_low(PIN_B7);  
+0102:  BSF    03.5
+0103:  BCF    06.7
+0104:  BCF    03.5
+0105:  BCF    06.7
+....................       delay_ms(20);  
+0106:  MOVLW  14
+0107:  MOVWF  12
+0108:  GOTO   009
+....................       output_high(PIN_B7);  
+0109:  BSF    03.5
+010A:  BCF    06.7
+010B:  BCF    03.5
+010C:  BSF    06.7
+....................    }  
+.................... }  
+....................   
+.................... int clavier(){  
+....................    int cd;  
+....................      
+....................    cd=0;  
+*
+0016:  CLRF   12
+....................    LR1;  
+0017:  BSF    03.5
+0018:  BCF    05.0
+0019:  BCF    03.5
+001A:  BCF    05.0
+....................    LR2;  
+001B:  BSF    03.5
+001C:  BCF    05.1
+001D:  BCF    03.5
+001E:  BCF    05.1
+....................    LR3;  
+001F:  BSF    03.5
+0020:  BCF    05.2
+0021:  BCF    03.5
+0022:  BCF    05.2
+....................    LR4;  
+0023:  BSF    03.5
+0024:  BCF    05.3
+0025:  BCF    03.5
+0026:  BCF    05.3
+....................    if ((!C1)||(!C2)||(!C3)){  
+0027:  BSF    03.5
+0028:  BSF    05.4
+0029:  BCF    03.5
+002A:  BTFSS  05.4
+002B:  GOTO   036
+002C:  BSF    03.5
+002D:  BSF    06.5
+002E:  BCF    03.5
+002F:  BTFSS  06.5
+0030:  GOTO   036
+0031:  BSF    03.5
+0032:  BSF    06.4
+0033:  BCF    03.5
+0034:  BTFSC  06.4
+0035:  GOTO   0F5
+....................       while (cd==0){  
+0036:  MOVF   12,F
+0037:  BTFSS  03.2
+0038:  GOTO   0D6
+....................          LR1;  
+0039:  BSF    03.5
+003A:  BCF    05.0
+003B:  BCF    03.5
+003C:  BCF    05.0
+....................          HR2;  
+003D:  BSF    03.5
+003E:  BCF    05.1
+003F:  BCF    03.5
+0040:  BSF    05.1
+....................          HR3;  
+0041:  BSF    03.5
+0042:  BCF    05.2
+0043:  BCF    03.5
+0044:  BSF    05.2
+....................          HR4;  
+0045:  BSF    03.5
+0046:  BCF    05.3
+0047:  BCF    03.5
+0048:  BSF    05.3
+....................          if (!C1){cd = 0x01;}  
+0049:  BSF    03.5
+004A:  BSF    05.4
+004B:  BCF    03.5
+004C:  BTFSC  05.4
+004D:  GOTO   051
+004E:  MOVLW  01
+004F:  MOVWF  12
+....................          else if (!C2){cd = 0x02;}  
+0050:  GOTO   060
+0051:  BSF    03.5
+0052:  BSF    06.5
+0053:  BCF    03.5
+0054:  BTFSC  06.5
+0055:  GOTO   059
+0056:  MOVLW  02
+0057:  MOVWF  12
+....................          else if (!C3){cd = 0x03;}  
+0058:  GOTO   060
+0059:  BSF    03.5
+005A:  BSF    06.4
+005B:  BCF    03.5
+005C:  BTFSC  06.4
+005D:  GOTO   060
+005E:  MOVLW  03
+005F:  MOVWF  12
+....................          HR1;  
+0060:  BSF    03.5
+0061:  BCF    05.0
+0062:  BCF    03.5
+0063:  BSF    05.0
+....................          LR2;  
+0064:  BSF    03.5
+0065:  BCF    05.1
+0066:  BCF    03.5
+0067:  BCF    05.1
+....................          HR3;  
+0068:  BSF    03.5
+0069:  BCF    05.2
+006A:  BCF    03.5
+006B:  BSF    05.2
+....................          HR4;  
+006C:  BSF    03.5
+006D:  BCF    05.3
+006E:  BCF    03.5
+006F:  BSF    05.3
+....................          if (!C1){cd = 0x04;}  
+0070:  BSF    03.5
+0071:  BSF    05.4
+0072:  BCF    03.5
+0073:  BTFSC  05.4
+0074:  GOTO   078
+0075:  MOVLW  04
+0076:  MOVWF  12
+....................          else if (!C2){cd = 0x05;}  
+0077:  GOTO   087
+0078:  BSF    03.5
+0079:  BSF    06.5
+007A:  BCF    03.5
+007B:  BTFSC  06.5
+007C:  GOTO   080
+007D:  MOVLW  05
+007E:  MOVWF  12
+....................          else if (!C3){cd = 0x06;}  
+007F:  GOTO   087
+0080:  BSF    03.5
+0081:  BSF    06.4
+0082:  BCF    03.5
+0083:  BTFSC  06.4
+0084:  GOTO   087
+0085:  MOVLW  06
+0086:  MOVWF  12
+....................          HR1;  
+0087:  BSF    03.5
+0088:  BCF    05.0
+0089:  BCF    03.5
+008A:  BSF    05.0
+....................          HR2;  
+008B:  BSF    03.5
+008C:  BCF    05.1
+008D:  BCF    03.5
+008E:  BSF    05.1
+....................          LR3;  
+008F:  BSF    03.5
+0090:  BCF    05.2
+0091:  BCF    03.5
+0092:  BCF    05.2
+....................          HR4;  
+0093:  BSF    03.5
+0094:  BCF    05.3
+0095:  BCF    03.5
+0096:  BSF    05.3
+....................          if (!C1){cd = 0x07;}  
+0097:  BSF    03.5
+0098:  BSF    05.4
+0099:  BCF    03.5
+009A:  BTFSC  05.4
+009B:  GOTO   09F
+009C:  MOVLW  07
+009D:  MOVWF  12
+....................          else if (!C2){cd = 0x08;}  
+009E:  GOTO   0AE
+009F:  BSF    03.5
+00A0:  BSF    06.5
+00A1:  BCF    03.5
+00A2:  BTFSC  06.5
+00A3:  GOTO   0A7
+00A4:  MOVLW  08
+00A5:  MOVWF  12
+....................          else if (!C3){cd = 0x09;}  
+00A6:  GOTO   0AE
+00A7:  BSF    03.5
+00A8:  BSF    06.4
+00A9:  BCF    03.5
+00AA:  BTFSC  06.4
+00AB:  GOTO   0AE
+00AC:  MOVLW  09
+00AD:  MOVWF  12
+....................          HR1;  
+00AE:  BSF    03.5
+00AF:  BCF    05.0
+00B0:  BCF    03.5
+00B1:  BSF    05.0
+....................          HR2;  
+00B2:  BSF    03.5
+00B3:  BCF    05.1
+00B4:  BCF    03.5
+00B5:  BSF    05.1
+....................          HR3;  
+00B6:  BSF    03.5
+00B7:  BCF    05.2
+00B8:  BCF    03.5
+00B9:  BSF    05.2
+....................          LR4;  
+00BA:  BSF    03.5
+00BB:  BCF    05.3
+00BC:  BCF    03.5
+00BD:  BCF    05.3
+....................          if (!C1){cd = 0x0a;}  
+00BE:  BSF    03.5
+00BF:  BSF    05.4
+00C0:  BCF    03.5
+00C1:  BTFSC  05.4
+00C2:  GOTO   0C6
+00C3:  MOVLW  0A
+00C4:  MOVWF  12
+....................          else if (!C2){cd = 0x0b;}  
+00C5:  GOTO   0D5
+00C6:  BSF    03.5
+00C7:  BSF    06.5
+00C8:  BCF    03.5
+00C9:  BTFSC  06.5
+00CA:  GOTO   0CE
+00CB:  MOVLW  0B
+00CC:  MOVWF  12
+....................          else if (!C3){cd = 0x0c;}  
+00CD:  GOTO   0D5
+00CE:  BSF    03.5
+00CF:  BSF    06.4
+00D0:  BCF    03.5
+00D1:  BTFSC  06.4
+00D2:  GOTO   0D5
+00D3:  MOVLW  0C
+00D4:  MOVWF  12
+....................       }  
+00D5:  GOTO   036
+....................       LR1;  
+00D6:  BSF    03.5
+00D7:  BCF    05.0
+00D8:  BCF    03.5
+00D9:  BCF    05.0
+....................       LR2;  
+00DA:  BSF    03.5
+00DB:  BCF    05.1
+00DC:  BCF    03.5
+00DD:  BCF    05.1
+....................       LR3;  
+00DE:  BSF    03.5
+00DF:  BCF    05.2
+00E0:  BCF    03.5
+00E1:  BCF    05.2
+....................       LR4;  
+00E2:  BSF    03.5
+00E3:  BCF    05.3
+00E4:  BCF    03.5
+00E5:  BCF    05.3
+....................       while ((!C1)||(!C2)||(!C3)){;}  
+00E6:  BSF    03.5
+00E7:  BSF    05.4
+00E8:  BCF    03.5
+00E9:  BTFSS  05.4
+00EA:  GOTO   0F4
+00EB:  BSF    03.5
+00EC:  BSF    06.5
+00ED:  BCF    03.5
+00EE:  BTFSS  06.5
+00EF:  GOTO   0F4
+00F0:  BSF    03.5
+00F1:  BSF    06.4
+00F2:  BCF    03.5
+00F3:  BTFSS  06.4
+00F4:  GOTO   0E6
+....................    }  
+....................    return(cd);  
+00F5:  MOVF   12,W
+00F6:  MOVWF  0D
+.................... }  
+....................  
+....................   
+.................... /* declaration des fonctions */  
+.................... void init();  
+....................   
+.................... /* programme principal */  
+.................... void main()  
+.................... {  
+*
+010F:  MOVLW  1F
+0110:  ANDWF  03,F
+0111:  MOVLW  43
+0112:  MOVWF  0C
+0113:  MOVLW  0D
+0114:  MOVWF  04
+0115:  BCF    03.7
+0116:  CLRF   00
+0117:  INCF   04,F
+0118:  CLRWDT
+0119:  DECFSZ 0C,F
+011A:  GOTO   116
+011B:  CLRF   20
+011C:  CLRF   04
+011D:  BCF    03.7
+011E:  MOVLW  1F
+011F:  ANDWF  03,F
+....................    init();  
+0120:  GOTO   004
+....................    while (1)  
+....................    {  
+....................       gest_clavier();  
+0121:  GOTO   016
+....................    }  
+0122:  GOTO   121
+.................... }  
+....................   
+.................... /* definitions des fonctions */  
+.................... void init(){  
+....................    output_high(PIN_B7);  
+*
+0004:  BSF    03.5
+0005:  BCF    06.7
+0006:  BCF    03.5
+0007:  BSF    06.7
+*
+0123:  SLEEP
+.................... }  
+*
+0008:  GOTO   121 (RETURN)
+....................  

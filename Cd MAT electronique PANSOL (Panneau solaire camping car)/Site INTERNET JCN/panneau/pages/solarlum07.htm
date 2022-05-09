@@ -1,0 +1,949 @@
+<html>
+<head>
+<title>ressource mcp 2510</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+ li.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Sylfaen;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:Arial;}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF"> Présentation du MCP 2510.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<div class=Section1> 
+
+<div class=Section1>
+
+<p class=MsoToc1><img border="0" src="../../images/doigtp.gif" width="33" height="14">
+<a href="#1">Présentation et mise en &#339;uvre</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#2">Les buffers d&#8217;émission et de réception</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#3">Les trames du bus CAN</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#4">La transmission des messages</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#5">Réception des messages</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#6">Les filtres d&#8217;acquisition</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#7">Les modes de fonctionnement</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#8">Les registres internes du MCP2510</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#9">Utilisation du bus SPI</a><br>
+<img border="0" src="../../images/doigtp.gif" width="33" height="14"> <a href="#10">Programmation du MCP2510</a></p>
+<hr>
+
+<h1><a name="1">1/ Présentation et mise en &#339;uvre.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+contrôleur de bus CAN 2510 est représenté ci-dessous&nbsp;:</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=183 height=181
+src="../images/image050.jpg"></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Avec
+sa mise en &#339;uvre dans un exemple&nbsp;:</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><img
+width=541 height=255 src="../images/image051.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ci-dessous
+le diagramme fonctionnel&nbsp;:</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=419 height=196
+src="../images/image052.jpg"></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ce
+schéma présente différents éléments&nbsp;:</span></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+     circuit d&#8217;accès au bus (CAN protocol engine) qui permet en utilisant les
+     buffers et les registres de contrôle de transmettre les données. La
+     transmission est activée en positionnant les registres de contrôle
+     adéquate par la liaison SPI ou en commandant les bits de transmission du
+     boîtier. Des indicateurs d&#8217;état ou d&#8217;erreurs peuvent être lus dans les
+     registres appropriés. Lors de l&#8217;apparition d&#8217;un message sur le bus CAN, la
+     validité de celui-ci est testée et si les indications des filtres le
+     permettent le message est placé dans un des 2 registres de réception.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>L&#8217;interface
+     SPI permet les échanges entre le microcontrôleur et contrôleur CAN.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Des
+     broches d&#8217;interruption permettent une flexibilité élevée du contrôleur,
+     une broche générale et des broches spécifiques à chaque registre de
+     réception permettent de savoir si une donnée est arrivée dans un des
+     buffers de réception. L&#8217;usage des ces broches est optionnel&nbsp;; une
+     scrutation des registres de contrôle accessible depuis le bus SPI
+     permettent également de mettre en évidence une réception.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>3
+     broches supplémentaires permettent de déclencher l&#8217;émission immédiate de
+     données placées dans les 3 registres d&#8217;émission. L&#8217;usage des ces broches
+     est optionnel&nbsp;; une scrutation des registres de contrôle accessible
+     depuis le bus SPI permettent également de déclencher une émission.</span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+tableau ci-dessous résume le rôle des différentes broches du circuit&nbsp;:</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=509 height=401
+src="../images/image053.jpg"></span></p>
+
+<b><span style='font-size:16.0pt;font-family:Arial'><br clear=all
+style='page-break-before:always'>
+</span></b>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="2">2/ Les buffers d&#8217;émission et de réception.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+circuit dispose de 3 buffers d&#8217;émission, de 2 buffers de réception, de 2
+masques de validation (un pour chaque registre de réception) et de 6 filtres de
+validation comme le montre la figure ci-dessous&nbsp;:</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=462 height=496
+src="../images/image054.jpg"></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Sur
+la figure ci-dessus on remarque l&#8217;unité de gestion du protocole (protocol
+engine) qui se charge de d&#8217;émettre et de recevoir les données depuis le bus
+CAN. Cette unité de gestion s&#8217;occupe de l&#8217;émission et de la réception de
+manière transparente en vérifiant les éventuelles erreurs.</span></p>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="3">3/ Les trames du bus CAN.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+bus CAN permet de véhiculer des trames de données normales ou étendue. Ces
+trames permettent à un n&#339;ud CAN d&#8217;envoyer des données sur le bus.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>On
+peut également utiliser des trames de demande distante (remote frame). Ces trames
+permettent, en les envoyant à un n&#339;ud, de demander en retour une trame de
+données.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Sur
+le bus CAN, on trouve également&nbsp;:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Des trames d&#8217;erreur
+(error frame) qui permettent à un n&#339;ud de signaler une erreur sur le bus.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Des trames de
+surcharge (overload frame) qui contient des indicateurs informant les autres
+n&#339;uds d&#8217;une surcharge d&#8217;un n&#339;ud.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>L&#8217;espace
+inter trame est composé de 3 bits dont la durée permet aux n&#339;uds du réseau de
+traiter les données.</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=466 height=720
+src="../images/image055.jpg"></span></p>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="4">4/ La transmission des messages.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+circuit dispose de 3 buffers d&#8217;émission de 14 octets. </span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+premier octet TXBnCTRL est un registre de contrôle associé à ce buffer. Il
+précise les conditions d&#8217;émission et contient des indicateurs sur l&#8217;état de la
+transmission. </span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>5
+autres octets permettent de stocker les identifiants du message (format
+standard ou étendue).</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+8 derniers octets représentent les données du message à transmettre.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Pour
+que le microprocesseur puisse écrire les données dans le buffer d&#8217;émission, le
+bit TXBnCTRL.TXREQ doit être à 0 pour indiquer qu&#8217;aucun message n&#8217;est en
+instance. Il faut au moins charger les registres TXBnSIDH, TXBnSIDL et TXBnDLC.
+Si le message contient des données, il faut aussi charger les registres TXBnDm.
+Si le message contient des identifiants étendus, le registre TXBnEIDm doit être
+chargé et le bit TXBnSIDL.EXIDE positionné à 1.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Avant
+d&#8217;envoyer le message, on doit initialiser le bit CANINT.TXInE ou désactiver la
+génération des interruptions quand le message est envoyé. Les bits de contrôle
+de priorité TXBnCTRL.TXP sont positionnés dans le registre de contrôle.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Priorité des transmissions.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>La
+priorité d&#8217;émission des messages est fixé par les bits
+TXBnCTRL.TXP&lt;1&nbsp;:0&gt; qui permettent de fixer 4 niveaux de priorité (11
+est la valeur maxi indiquant une priorité maximale). Toutefois si les degrés de
+priorité ont même valeur, c&#8217;est le buffer de numéro le plus élevé qui sera
+envoyé en premier.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Déclenchement d&#8217;une transmission.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Pour
+transmettre un message, il faut positionner à 1 le bit TXBnCTRL.TXREQ par la
+liaison SPI ou positionner à 0 la broche TXnRTS du boîtier. On peut fixer les
+bits de priorité dans la même opération.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Lors
+d&#8217;une demande de transmission comme indiquée ci-dessus, les bits TXBnCTRL ABTF,
+MLOA et TXERR sont remis à 0.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+positionnement du bit TXREQ ne lance pas la transmission&nbsp;; celle-ci
+débutera quand le bus sera libre et que le niveau de priorité sera atteint.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Une
+fois la transmission effectuée correctement sur le bus, le bit TXBnCTRL.TXREQ
+passe à 0, le bit CANINTF.TXnIF passe à 1 et une interruption est générée si le
+bit CANINTE.TXnIE est à 1.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Si
+la transmission échoue, le bit TXBnCTRL.TXREQ reste à 1 et les indicateurs
+suivants sont positionnés&nbsp;:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Si la transmission
+débute puis échoue les bit TXBnCTRL.TXERR et CANINTT.MERRF passe à 1et une
+interruption est généré sur INT si le bit CANINTE.MERRE est à 1.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Si le message perd
+son arbitration le bit TXBnCTRL.MLOA passe à 1</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Les broches TXnRTS.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ces
+broches peuvent être configurées en entrées de déclenchement pour les
+transmissions des buffers associés ou comme entrées binaires.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+rôle des broches se définit dans le registre TXRTSCTRL qui n&#8217;est accessible
+qu&#8217;en mode de configuration.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Dans
+le cas du mode de déclenchement de transmission, ces broches agissent sur front
+descendant et ces broches sont prévues pour être reliées directement aux
+broches RXnBF afin d&#8217;autoriser une transmission automatique d&#8217;une donnée en cas
+de signalisation d&#8217;arrivée d&#8217;un message sur RXnBF.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Annulation d&#8217;une transmission.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Une
+transmission d&#8217;un message peut être annulée par remise à 0 du bit
+TXBnCTRL.TXREQ correspondant. On peut annuler tous les messages en positionnant
+à 1 le bit CANCTRL.ABAT&nbsp;; il faudra ensuite le remettre à 0 afin de
+recommencer à transmettre. Le positionnement de ce bit place à 1 l&#8217;indicateur
+CANCTRL.ABTF qui est également mis à 1 par l&#8217;annulation d&#8217;un message
+individuel.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Attention,
+une fois la transmission d&#8217;un message, il n&#8217;est plus possible de l&#8217;annuler et
+il sera retransmis automatiquement en cas d&#8217;erreur d&#8217;arbitration de bus.</span></p>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="5">5/ Réception des messages.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+contrôleur CAN dispose de 2 buffers de réception associés à de multiples
+filtres associés à chacun d&#8217;eux. Un buffer supplémentaire (Message Assembly
+Buffer MAB) constitue un troisième buffer.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Les buffers.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+messages reçus arrivent dans le buffer MAB et, si les filtres sont positionnés
+correctement, les messages sont copiés dans le registre RXB0 ou RXB1. Cela
+permet de traiter un message pendant la réception d&#8217;un autre.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Quand
+un message est placé dans le buffer RXBn, le bit CANINTF.RXnIF correspondant
+est mis à 1. Ce bit doit être remis à 0 après traitement de la donnée afin
+d&#8217;indiquer la libération du buffer de réception pour une nouvelle donnée.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Dans
+le cas d&#8217;une réception correcte, une interruption est générée sur la sortie INT
+du boîtier si le bit CANINTE.RXnIE est à 1.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Priorité des réceptions.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>RXB0
+est le buffer de priorité la plus élevée et dispose de 2 filtres d&#8217;acquisition
+qui lui sont associés.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>RXB1
+est le buffer de priorité la moins élevée et dispose de 4 filtres d&#8217;acquisition
+qui lui sont associés.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+nombre de filtres plus restreint pour RXB0 rend ce buffer plus restrictif ce
+qui implique une priorité plus élevée.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+registre RXB0CTRL peut être configuré pour que si RXB0 contient un message
+valide et que si un nouveau message arrive pour RXB0, un indicateur de
+dépassement soit positionné et que le nouveau message soit directement
+transféré dans RB1 (sans critères de filtrage).</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>A
+chaque buffer de réception sont associés 2 filtres d&#8217;acquisition. Quand un
+message arrive les bits &lt;3&nbsp;:0&gt; du registre RXBnCTRL indiquent le
+numéro du filtre qui a permis l&#8217;acquisition et si le message est une demande de
+transfert distante.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+bits RXBnCTRL.RXM permettent de fixer le mode de réception. </span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>A
+00, on autorise une réception normale des données (en tenant compte des
+filtres). Dans ce cas le fait de recevoir ou non un message étendu est fixé par
+le bit RFXnSIDL.EXIDE du filtre d&#8217;acquisition.</span></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Pour
+     01 on accepte les messages standard.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Pour
+     10, on accepte les messages étendus.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Dans
+     ces deux cas, si le bit RFXnSIDL.EXIDE du filtre ne correspond pas au mode
+     choisit par les bits RXBnCTRL.RXM le filtre est rendu inactif.</span></li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Pour
+     11, le buffer accepte tous les messages indépendamment des filtres ce qui
+     est bien utile pour réaliser un débogage de programme.</span></li>
+</ul>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Les broches RXB0F et RXB1F du boîtier.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>En
+plus de la sortie INT, ces broches permettent d&#8217;indiquer si un message valide a
+été reçu.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+broches RXBnBF peuvent être configurées comme indicateur d&#8217;interruption ou
+comme sortie binaire normale. La configuration et les indicateurs associés se
+trouvent dans le registre BFPCTRL.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>En
+mode interruption les bits BFPCTRL.BxBFE et PFPCTRL.BxBFM sont positionnés à
+1&nbsp;; ces broches sont actives à l&#8217;état bas et sont mapées sur le bit
+CANINTF.RXnIF pour chacun des buffers de réception. Quand ces bits passent à 1
+pour indiquer une réception correcte la broche RXnBF passe à l&#8217;état bas. Quand
+le bit CANINTFRXnIF est remis à 0 par le programme, la broche repasse à l&#8217;état
+haut.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Quand
+une broche est utilisée en sortie logique, les bits BFPCTRL.BxBFM doivent être
+positionnés à 0 et les bits BFPCTRL.BxBFE à 1 pour le buffer correspondant.
+Dans ce mode, l&#8217;état de la sortie logique est l&#8217;image du bit BFPCTRL.BxBFS.
+Attention, il est conseillé d&#8217;utiliser l&#8217;instruction «&nbsp;bit modifie&nbsp;»
+pour positionner ce bit afin d&#8217;éviter tout état «&nbsp;parasite&nbsp;».</span></p>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="6">6/ Les filtres d&#8217;acquisition.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+filtres d&#8217;acquisition et les masques permettent de déterminer si un message
+issu du bus CAN et arrivant dans le registre MAB doit être copié dans un
+registre RXBx.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Quand
+une donnée arrive dans le registre MAB, le champ identifiant du message est
+comparé à la valeur du filtre. Si ce dernier correspond, le message est copié
+dans un registre de réception.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+masque est utilisé pour indiquer quels bits de champ d&#8217;identification sont à
+prendre en compte. La table ci-dessous indique comment chaque bit du champ
+d&#8217;identification est comparé au filtre en tenant compte du masque. Un bit à 0
+du masque indique que le bit correspond de la donnée est prise en compte
+indépendamment du filtre.</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=339 height=202
+src="../images/image056.jpg"></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+filtres RXF0, RXF1 et le masque RXM0 sont associés au registre RXB0.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+filtres RXF2, RXF3, RXF4, RXF5 et le masque RXM1 sont associés au registre
+RXB1.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Quand
+l&#8217;occurrence d&#8217;un filtre est positive, le numéro du filtre correspondant est
+mémorisé dans les bits FILHIT du registre RXBnCTRL.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Pour
+RXB1 le registre RXB1CTRL contient 3 bits FILHIT avec le codage suivant&nbsp;:</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=303 height=154
+src="../images/image014.jpg"></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+codes 000 et 001 n&#8217;apparaissent que si le BUKT du registre RXB0CTRL est à 1
+pour indiquer q&#8217;un message de RXB0 a été transféré vers RXB1.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>RXB0CTRL
+contient une copie du bit BUKT et FILHIT&lt;0&gt;. Le codage du bit BUKT
+autorise ces 3 bits a être utilisés de la même manière que les bits
+RXB1CTRL.FILHIT et de distinguer un appel au filtre RXF0 et RXF1 soit dans RXB0
+ou, après déplacement dans RXB1.</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=317 height=103
+src="../images/image015.jpg"></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Si
+le bit BUKT est à 0, on a 6 codes correspondant aux 6 filtres plus 2 codes
+correspondant à RXF0 et RXF1 déplacé dans RXB1.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Si
+plus d&#8217;un filtre est correct, les bits FIHIT donne la valeur la plus faible ce
+qui rend prioritaire les filtres de numéro faible.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+filtres et les masques ne peuvent être que modifiés en mode configuration.</span></p>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="7">7/ Les modes de fonctionnement.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+contrôleur CAN dispose de plusieurs modes de fonctionnement&nbsp;:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Le mode de
+configuration</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Le mode normal</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Le mode sommeil</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Le mode écoute
+seulement</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Le mode bouclage.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+choix d u mode s&#8217;effectue grâce aux bits CANCTRL.REQOP. Il est à remarquer que
+le mode ne se modifie que si les transmissions en cours sont achevées aussi
+convient-il de vérifier si le choix effectué est devenu actif en vérifiant les
+bits CANSTAT.OPMODE</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Le mode de configuration.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ce
+mode permet l&#8217;initialisation du contrôleur et ce mode est actif par défaut à la
+mise sous tension ou après un reset matériel. Il peut également être choisit en
+appliquant le mot 100 aux bits CANCTRL.REQOP</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ce
+mode repositionne à 0 les indicateurs d&#8217;erreur et seul ce mode permet l&#8217;accès
+aux registres&nbsp;:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>CNF1, CNF2 et CNF3</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>TXRTSCTRL</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Filtres d&#8217;acquisition</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:18.0pt;text-indent:-18.0pt'><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Times New Roman"'>Masques d&#8217;acquisition</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Après
+vérification du mode d&#8217;initialisation, on peut initialiser les registres puis
+passer en mode normal</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Le mode sommeil.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ce
+mode permet de diminuer la consommation du circuit et seul l&#8217;interface SPI
+permet l&#8217;accès aux registres.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+passage en mode sommeil est immédiat aussi il convient de s&#8217;assurer de la fin
+des transmissions avant son activation.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>La
+sortie de ce mode peut se faire par programme ou par détection d&#8217;une activité
+sur le bus.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Le mode écoute.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ce
+mode permet de surveiller l&#8217;activité sur le bus CAN et une partie des fonctions
+internes sont inhibées.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Le mode bouclage.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ce
+mode permet de renvoyer les données reçues vers le bus.</span></p>
+
+<h2 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'>Le mode normal.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Ce
+mode permet un usage complet du contrôleur et seul ce mode permet d&#8217;envoyer des
+données.</span></p>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="8">8/ Les registres internes du MCP2510.</a></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Le
+tableau ci-dessous donne un aperçu des registres du contrôleur dont l&#8217;adresse
+de base est donnée sur 8 bits (4 bits ligne + 4 bits colonne).</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>Les
+registres en grisé permettent une modification d&#8217;un bit avec l&#8217;instruction SPI
+bit modify. </span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=627 height=361
+src="../images/image057.jpg"></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=627 height=384
+src="../images/image058.jpg"></span></p>
+
+<h1 style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm'><a name="9">9/ Utilisation du bus SPI.</a></h1>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center'><span
+style='font-family:"Times New Roman"'><img width=666 height=659
+src="../images/image059.jpg"></span></p>
+
+<h1><a name="10">10/ Programmation du MCP2510.</a></h1>
+
+<p class=MsoNormal>Dans ce premier exemple, on retrouve la structure matérielle
+complète d&#8217;accès au bus CAN depuis un circuit de type microprocesseur. Le
+circuit U04 permet l&#8217;accès au bus. </p>
+
+<p class=MsoNormal>Le circuit U03 est piloté par&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal>Une entrée CS chip select active à «&nbsp;0&nbsp;»</li>
+ <li class=MsoNormal>Une entrée Reset,activeà «&nbsp;0&nbsp;», qui permet un
+     reset matériel du composant.</li>
+ <li class=MsoNormal>Une entrée SCK d&#8217;horloge série qui permet de rythmer les
+     échanges série avec le composant sur les broches SO et SI.</li>
+ <li class=MsoNormal>Les broches SO et SI de dialogue série.</li>
+ <li class=MsoNormal>Les broches TX0RTS, TX1RTS et TX1RTS sont des entrées
+     binaires qui peuvent servir à déclencher une émission sur le bus.</li>
+ <li class=MsoNormal>Les broches INT, RX0BUF et RX1BUF sont des sorties
+     d&#8217;interruptions mais les deux dernières peuvent être utilisées en tant que
+     sorties binaires.</li>
+ <li class=MsoNormal>Les broches TXCAN et RXCAN de niveau TTL permettent
+     l&#8217;échange de signaux au format CAN.</li>
+ <li class=MsoNormal>Les broches OSC1 et OSC2 permettent la connexion du quartz
+     d&#8217;horloge.</li>
+ <li class=MsoNormal>La sortie CLKOUT si elle est activée par programme permet
+     de produire une horloge de la fréquence de celle du quartz divisée par n
+     (n est de 8 par défaut).</li>
+</ul>
+
+<p class=MsoNormal>Les diodes MD1 et MD2 indiquent l&#8217;état du bus.</p>
+
+<h1 align=center style='text-align:center'><a name="_Toc78019159"><img
+width=541 height=255 src="../images/image051.jpg"></a></h1>
+
+<p class=MsoNormal>Le circuit précédent peut être simplifié afin d&#8217;économiser
+le nombre de broches nécessaires à la commande du circuit. La broche reset peut
+être positionné à «&nbsp;1&nbsp;» car on dispose d&#8217;un reset logiciel. La sortie
+CLKOUT peut être utilisée comme horloge pour le microcontrôleur. Si on
+n&#8217;utilise pas la sortie INT, on doit ainsi disposer de 4 broches de commande.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=599
+height=197 src="../images/image060.jpg"></p>
+
+<h2>1/ Exemple 1.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Voyons un exemple simple qui
+permet d&#8217;envoyer une trame sur le bus CAN.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=422 height=102
+src="../images/image061.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Tout d&#8217;abord les définitions pour
+le mode de fonctionnement du PIC que l&#8217;on a placé dans le fichier <i>main.c</i>.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=125 height=16
+src="../images/image021.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Permet d&#8217;utiliser le bus CAN
+avec le MCP 2510, on inclut les bibliothèques nécessaires (soit can.c qui
+utilise can.h comme fichier d&#8217;entête).</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=498 height=121
+src="../images/image022.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Une première fonction qui permet
+l&#8217;envoie sur le bus CAN des données <i>data</i>. On remarque que l&#8217;envoie sur
+le bus est réalisé grâce à la commande <i>can_putd</i> avec les arguments
+suivant&nbsp;:</p>
+
+<p class=MsoNormal style='margin-left:35.7pt;text-indent:-17.85pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>0x400&nbsp;: l&#8217;identifiant de la trame émise. Touts les n&#339;uds
+vont voir la trame et, en fonction de cet identifiant, un n&#339;ud CAN pourra ou
+non accepter de traiter les données. Nous verrons que ce choix dépend du
+programme de gestion du n&#339;ud destination ou de la programmation du contrôleur
+distant.</p>
+
+<p class=MsoNormal style='margin-left:35.7pt;text-indent:-17.85pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>data&nbsp;: un pointeur vers les données,</p>
+
+<p class=MsoNormal style='margin-left:35.7pt;text-indent:-17.85pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>3&nbsp;: le nombre d&#8217;octets de données (de 0 à 8 octets maximum).</p>
+
+<p class=MsoNormal style='margin-left:35.7pt;text-indent:-17.85pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>1&nbsp;: le niveau de priorité (entre 0 et 3, 3 pour la priorité
+d&#8217;envoi la plus élevée).</p>
+
+<p class=MsoNormal style='margin-left:35.7pt;text-indent:-17.85pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>TRUE&nbsp;: qui indique une identification étendue (FALSE dans le
+cas contraire),</p>
+
+<p class=MsoNormal style='margin-left:35.7pt;text-indent:-17.85pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>FALSE&nbsp;: qui indique que le message n&#8217;est pas un message
+d&#8217;interrogation (on positionne le bit REQUEST de l&#8217;identifiant).</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Cette fonction retourne TRUE ou
+FALSE si le transfert est correct ou non.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=275 height=227
+src="../images/image023.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le programme principal <i>main</i>
+commence par faire un «&nbsp;reset&nbsp;» matériel du contrôleur CAN dont la
+broche <i>reset</i> est connectée à la sortie B4 du PIC. Ce reset peut
+également être déclenché logiciellement et il a également lieu à la mise sous
+tension.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La fonction <i>can_init</i>
+permet l&#8217;initialisation logicielle du contrôleur CAN.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La fonction <i>can_putd</i>
+permet ici d&#8217;envoyer un paquet d&#8217;identifiant 0x100 ne contenant aucune donné,
+de priorité basse, avec un identifiant long et ce sans positionner le bit <i>request</i>
+de l&#8217;identifiant. Ce paquet permet de réveiller des n&#339;uds CAN (en effet
+certains n&#339;uds restent en veille tant qu&#8217;il ne voit pas une trame valide sur le
+bus). Une temporisation d&#8217;une seconde permet de s&#8217;assurer du réveil de ces
+n&#339;uds.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Le programme se poursuit par une
+boucle sans fin qui envoie toutes les secondes une donnée qui évolue
+(incrémentation) en utilisant la fonction <i>w7seg</i>.</p>
+
+<h2>2/ Initialisation du contrôleur CAN.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>C&#8217;est la fonction <i>can_init</i>
+du fichier <i>can.c</i> qui réalise cette tâche. Voyons le contenu de la
+fonction.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=576 height=289
+src="../images/image024.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La fonction <i>can_set_mode</i>
+permet de passer en mode configuration avant de modifier les paramètres. Les
+autres modes sont visibles dans le fichier <i>can.h</i>.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=660 height=25
+src="../images/image062.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La fonction <i>can_set_baud</i>
+permet de fixer en fonction de l&#8217;horloge utilisée la vitesse utilisée sur le
+bus CAN.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On positionne ensuite les
+registres RXB0CTRL et RXB1CTRL. </p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse' id="table1">
+ <tr>
+  <td width=347 valign=top style='width:260.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:6.0pt'>Pour les registres, on utilise
+  des structures de 8 bits qui sont définies dans <i>can.h</i>. </p>
+  <p class=MsoNormal style='margin-bottom:6.0pt'>On valide, dans
+  l&#8217;initialisation, la réception et l&#8217;utilisation du double buffer. </p>
+  <p class=MsoNormal style='margin-bottom:6.0pt'>On écrit ensuite avec <i>mcp2510_write</i>
+  les données dans les registres.</p>
+  <p class=MsoNormal style='margin-bottom:6.0pt'>&nbsp;</p>
+  </td>
+  <td width=347 valign=top style='width:260.05pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:6.0pt'><img width=367 height=182
+  src="../images/image063.jpg"></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La fonction <i>can_set_id</i>
+permet ensuite de positionner les masques et les filtres qui permettent de
+préciser les bits à prendre en compte (masque) et les identifiants associés qui
+seront traités lors de l&#8217;observation d&#8217;une trame sur le bus CAN. </p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Ici, par défaut, on ne filtre
+aucun identifiant (ou partie d&#8217;identifiant) ce qui fait que toutes les trames
+seront visibles pour le PIC qui traitera les identifiants par filtrage
+logiciel. C'est-à-dire que c&#8217;est le programme du PIC qui va décider de prendre
+en compte ou non les données en fonction de l&#8217;identifiant de la trame.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On repasse ensuite en mode
+normal pour utiliser le contrôleur CAN. </p>
+
+<h2>3/ Un petit analyseur de bus CAN.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Cet exemple permet d&#8217;envoyer sur
+le port série le contenu des trames circulant sur le bus CAN. Un logiciel comme
+<i>hyperterminal</i> ou l&#8217;espion série intégrée à CCS, permet la visualisation.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Cet exemple permet également de
+voir comment fonctionne la réception de donnée depuis le bus CAN.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=622 height=157
+src="../images/image064.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On a tout d&#8217;abord
+l&#8217;initialisation du PIC, de la liaison série et la prise en compte du driver de
+bus CAN.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=272 height=203
+src="../images/image065.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Dans le programme principal, on
+définit les variables&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>rx_id&nbsp;: pour
+     l&#8217;identifiant de la trame reçue.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>buffer&nbsp;: un buffer de 8
+     octets de type int.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>i,rx_len&nbsp;: les variables
+     rx_len pour la taille des données et i comme compteur de boucle.</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>rxstat&nbsp;: une structure de
+     type rx_stat définie dans can.h.</li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Ensuite, on effectue un reset
+matériel du circuit MCP et l&#8217;initialisation de celui-ci.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La structure <i>rxstat</i>
+permettra de mémoriser les paramètres de la réception (sur un octet).</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=126 height=94
+src="../images/image066.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Enfin, on lance une boucle sans
+fin.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=325 height=207
+src="../images/image067.jpg"></p>
+
+<h3>Test de réception.</h3>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La fonction <i>can_kbhit()</i>
+permet de vérifier la présence, en réception, d&#8217;une trame et elle renvoie
+«&nbsp;1&nbsp;» si c&#8217;est le cas (sinon «&nbsp;0&nbsp;»).</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=267 height=102
+src="../images/image068.jpg"> </p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Cette fonction utilise <i>mcp2510_read</i>
+pour placer dans la structure <i>b_CANINTF</i> (du type <i>struct_CANINTF</i>)
+le contenu du registre <i>CANINTF</i>. </p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=391 height=138
+src="../images/image069.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On teste les indicateurs <i>rx0if</i>
+ou <i>rx1if</i> car on dispose de deux registres de réception. Si l&#8217;un de ces
+indicateurs est à «&nbsp;1&nbsp;», on retourne «&nbsp;1&nbsp;» (sinon
+«&nbsp;0&nbsp;») pour indiquer une réception.</p>
+
+<h3>Lecture des données reçues.</h3>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>La fonction <i>can_getd</i> renvoie
+«&nbsp;1&nbsp;» si la trame reçue est correcte (c&#8217;est pourquoi on fait un
+test). </p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=401 height=25
+src="../images/image070.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Les champs utilisés sont les
+suivants&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>rx_id&nbsp;: identifiant placé
+     par celui qui envoie le message</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>&amp;buffer[0]&nbsp;: pointeur
+     vers le buffer de données</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>rx_len&nbsp;: nombre de
+     données</li>
+ <li class=MsoNormal style='margin-bottom:6.0pt'>rxstat&nbsp;: la structure qui
+     reçoit les indications sur le message reçu (numéro du buffer, type
+     d&#8217;identifiant,&#8230;)</li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On envoie les informations
+(indentifiant et nombre de données) formatées vers la liaison série&nbsp;:</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=273 height=16
+src="../images/image034.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On teste ensuite s&#8217;il s&#8217;agit
+d&#8217;une trame de donnée ou d&#8217;une trame de type «&nbsp;request&nbsp;» en observant
+le bit <i>rtr</i>. Puis on sort les données formatées.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=193 height=60
+src="../images/image035.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Ensuite on teste les indicateurs
+<i>rtr</i> pour trame «&nbsp;request&nbsp;»<i>, err_ovfl </i>pour les erreurs 
+et <i>inv</i>  avant d&#8217;afficher ces indicateurs. Le dernier <i>printf</i>
+effectue un retour à la ligne.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=245 height=52
+src="../images/image036.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Bien entendu, on ne peut
+observer ici que les trames qui n&#8217;ont pas été filtrées par le circuit MCP grâce
+aux filtres et masques que l&#8217;on aura pris soin de positionner à
+«&nbsp;0&nbsp;».</p>
+
+<h2>4/ Utilisation du bus CAN dans une application.</h2>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Dans le petit exemple qui suit,
+nous allons scruter le contrôleur pour vérifier s&#8217;il y a réception puis en
+fonction des identifiants reçus nous allons émettre des données.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Quand notre programme reçoit des
+trames, dont les identifiants sont&nbsp;: 0x201 ou 0x202, on doit effectuer une
+action définie (voir la suite)</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=242 height=35
+src="../images/image037.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>On pourra utiliser dans le
+programme principal, et ce après les initialisations nécessaires, le code
+suivant&nbsp;:</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><img width=539 height=192
+src="../images/image038.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Dans le premier cas, si
+l&#8217;identifiant est RESPOND_TO_ID_LED, on teste, dans le buffer qui contient les
+données, un bit avant de commander une LED.</p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'>Dans le second cas, si
+l&#8217;identifiant est RESPOND_TO_ID_AD, on réalise une conversion analogique
+numérique et on envoie la donnée sur 1 octet vers le bus CAN.</p>
+
+</div>
+
+</div>
+</body>
+</html>

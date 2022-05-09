@@ -1,0 +1,351 @@
+<html>
+<head>
+<title>module moteur</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+<!--
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+ li.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Sylfaen;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:Sylfaen;
+	}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF">Module moteur.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module moteur permet la 
+commande des moteurs de positionnement du panneau solaire.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le module moteur dialogue avec le 
+module de contrôle au travers du bus CAN.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum12_fichiers/image002.jpg" width="329" height="199"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">On donne le schéma structurel de ce module&nbsp;:</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt" align="center">
+<img border="0" src="solarlum12_fichiers/image004.jpg" width="683" height="514"></p>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Gestion de la carte.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Le pilotage de la carte est confié à un microcontrôleur PIC16F876. 
+La programmation in situ du PIC est assurée depuis le connecteur RJ11. Elle 
+utilise les broches RB6 et RB7 du PIC. La broche MCLR permet, en mode 
+programmation d'appliquer la tension de programmation.</span></p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<span style="font-family:&quot;Times New Roman&quot;;
+color:black">L&#8217;horloge du processeur est fournie par la sortie SLK du circuit 
+MCP2510 qui fournit un signal de fréquence 2,5 MHz (la fréquence du quartz 
+divisée par 8). </span></p>
+<div align="center">
+	<table class="MsoTableGrid" border="0" cellpadding="0" style="border-collapse: collapse; border-width: 0" id="table1">
+		<tr>
+			<td width="295" valign="top" style="width:221.4pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+			<img border="0" src="solarlum12_fichiers/image006.jpg" width="210" height="185"></td>
+			<td width="398" valign="top" style="width:298.65pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">La broche MCLR permet également d'assurer un RESET matériel.
+			</span></p>
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Le superviseur d'alimentation MC34164 est activé en mode normal 
+			par la mise en place d'un cavalier sur le connecteur NICD. Il permet 
+			de produire un RESET matériel dans le cas ou la tension 
+			d'alimentation devient trop faible. </span></p>
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Lors de la programmation ou la mise au point d'un programme, ce 
+			cavalier est à enlevé. Le microcontrôleur fonctionne à une fréquence 
+			de 4 MHz obtenue grâce à un quartz.</span></td>
+		</tr>
+	</table>
+</div>
+<h1>Alimentation de la carte.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;alimentation de la carte est 
+obtenue depuis le bus système.</p>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum12_fichiers/image008.jpg" width="258" height="187"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La tension <i>+Velec</i> de 8V 
+générée par le module énergie permet grâce au régulateur 7805 de fournir la 
+tension de 5V nécessaire aux différents circuits de la carte.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les circuits de commande des 
+moteurs sont alimentés par la tension <i>+Vbat</i> du bus système et générée par 
+le module énergie. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">La LED indicateur de présence 
+tension peut être désactivée par le cavalier prévu à cet effet afin de diminuer 
+la consommation.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Un interrupteur S permet de mettre 
+la carte hors tension. Cette interrupteur peut être omis sur certaines versions 
+(on a alors des «&nbsp;straps&nbsp;» et le module et continuellement sous tension).</p>
+<h1>Commande des moteurs.</h1>
+<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+<img border="0" src="solarlum12_fichiers/image010.jpg" width="684" height="393"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Le relais de commande, le moteur 
+élévation et le moteur rotation sont commandés grâce aux circuits L293D. En 
+sortie, on trouve les diodes de roue libre, une LED bicolore désactivable par un 
+cavalier qui permet de visualiser les commandes et un fusible réarmable.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les circuits L293 sont reliés à la 
+masse à travers une résistance de 0,1 ohm. Les amplificateurs TL082 permettent 
+de produire une tension proportionnelle au courant consommé. Les tensions sont 
+appliquées aux entrées de conversion analogique/numérique du PIC afin de 
+permettre la mesure du courant. Les amplificateurs sont alimentés en +5V et, 
+grâce au convertisseur ICL7660S, en -5V. </p>
+<p class="MsoNormal" style="margin-top:6.0pt">Les codeurs solidaires du moteurs, 
+dont la sortie est à collecteur ouvert (sur cette version mais ce n&#8217;est pas 
+toujours le cas) fournissent des impulsions calibrées à 5V au PIC. Ces 
+impulsions servent à déterminer la position du panneau.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">Il est utile de se reporter au 
+schéma de la carte moteur de la partie opérative pour analyser l&#8217;ensemble du 
+schéma de commande des moteurs.</p>
+<h1>Accès au bus CAN.</h1>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Pour l&#8217;accès au bus CAN, on 
+utilise les éléments suivants&nbsp;:</p>
+<p class="MsoNormal" align="center" style="margin-bottom:6.0pt;text-align:center">
+<img border="0" src="solarlum12_fichiers/image012.jpg" width="683" height="194"></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le circuit MCP2510 dialogue 
+avec le microprocesseur de la carte à travers les liaisons suivantes&nbsp;:</p>
+<ul style="margin-top: 0cm; margin-bottom: 0cm" type="disc">
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">Un bus série constitué de 
+	MSO, MSI et l&#8217;horloge MSCK.</li>
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">Un fils de sélection de 
+	boîtier MCS.</li>
+	<li class="MsoNormal" style="margin-bottom: 6.0pt">La sortie MINT peut être 
+	utilisé pour générer des interruptions pour le microprocesseur (non activé 
+	dans notre cas).</li>
+</ul>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La liaison du circuit MCP2510 
+avec le bus CAN s&#8217;effectue grâce aux broches TXCAN et RXCAN (niveau TTL) et le 
+circuit d&#8217;interface PCA82C250T qui produit les signaux du bus. Le bus utilise 
+les signaux VCAN+, VCAN- et GND.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le circuit MCP2510 nécessite 
+pour rythmer les signaux du bus CAN d&#8217;un quartz fixé ici à 20 MHz. La broche 
+CLKOUT produit un signal de 2,5 MHz (division par 8 de la fréquence du quartz) 
+qui est utilisé pour fournir une horloge au circuit PIC.</p>
+<p class="MsoNormal">On notera la présence de la résistance RT de 120 ohms qui 
+permet d&#8217;assurer, si nécessaire, la terminaison du bus CAN si l&#8217;on met en place 
+le cavalier prévu.</p>
+<p class="MsoNormal">La LED «&nbsp;TRAFFIC CAN&nbsp;» sera commandé par le PIC pour 
+signaler une activité sur le bus CAN.</p>
+<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Etude du logiciel embarqué dans le PIC.</h1>
+<p class="MsoNormal" style="margin-top:6.0pt">En ce qui concerne le logiciel, on 
+trouve tout d&#8217;abord les indications relatives à la compilation du programme pour 
+le PIC.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="solarlum12_fichiers/image014.jpg" width="600" height="72"></p>
+<h2>Gestion du bus CAN.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">Le driver logiciel du circuit 
+MCP2510 est pris en compte par la ligne&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image016.jpg" width="611" height="15"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;identifiant utilisé pour ce 
+module est déclaré&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image018.jpg" width="587" height="52"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">La commande de la LED d&#8217;activité 
+est également déclarée&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image020.jpg" width="397" height="30"></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Le bus CAN n&#8217;est utilisé qu&#8217;en 
+réception par la fonction <i>gest_can</i>&nbsp;. </p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La réception est opérée par 
+scrutation au moyen de la commande
+<img border="0" src="solarlum12_fichiers/image022.jpg" width="122" height="13">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Si une réception est détectée, 
+on examine l&#8217;identifiant et, suivant le cas, on recueille les données 
+adéquates&nbsp;:</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 6.0pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La demande d&#8217;information depuis le module de contrôle correspond à 
+l&#8217;identifiant <i>i_m_m</i>. La fonction <i>can_putd</i> permet de renvoyer les 
+mesures demandées.</p>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 6.0pt">
+<span style="font-family: Symbol">
+<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>L&#8217;envoie de données de commande correspond à l&#8217;identifiant <i>
+i_m_c</i>.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La fonction <i>gest_can</i> est 
+appelée périodiquement par le programme principal.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="solarlum12_fichiers/image024.jpg" width="684" height="392"></p>
+<h2>Gestion des moteurs.</h2>
+<div align="center">
+	<table class="MsoTableGrid" border="0" cellpadding="0" style="border-collapse: collapse; border-width: 0" id="table2">
+		<tr>
+			<td width="343" valign="top" style="width:257.4pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">La gestion des moteurs 
+			est assurée par la fonction <i>gest_mot</i>&nbsp; appelée cycliquement 
+			depuis le programme principal.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">On a deux cas&nbsp;:</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">1/ Si l&#8217;indicateur on 
+			est égal à 0, les moteurs sont à l&#8217;arrêt et il convient de les 
+			démarrer si la variable <i>mot_x_sens</i> vaut 1 ou 2 (0 = arrêt) ou 
+			si on a une demande de parking.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">Pour chacun des 
+			déplacements demandés&nbsp;:</p>
+			<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+			<span style="font-family: Symbol">
+			<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span></span>On lance le moteur si la butée correspondante n&#8217;est 
+			pas activée.</p>
+			<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+			<span style="font-family: Symbol">
+			<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span></span>On fixe la durée du mouvement (500ms) multiplié par la 
+			donnée <i>mot_x_duree</i>.</p>
+			<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+			<span style="font-family: Symbol">
+			<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span></span>On positionne les bits d&#8217;entrée/sortie du PIC</p>
+			<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+			<span style="font-family: Symbol">
+			<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span></span>On attend 100 ms afin d&#8217;être sur que la prochaine 
+			mesure de courant trouvera bien un moteur actif.</p>
+			<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 36.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: .0001pt">
+			<span style="font-family: Symbol">
+			<img width="13" height="13" src="clip_image001.gif" alt="*"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span></span>On positionne l&#8217;indicateur <i>on</i> qui nous 
+			renseigne sur le déplacement en cours. </p>
+			<p class="MsoNormal" style="margin-top:6.0pt">Pour le mode <i>
+			parking</i>, on lance le déplacement azimut puis le déplacement 
+			élévation.</td>
+			<td width="355" valign="top" style="width:266.45pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<img border="0" src="solarlum12_fichiers/image026.jpg" width="358" height="525"><!--[if gte mso 9]><![endif]--></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="margin-top:6.0pt">2/ Si l&#8217;indicateur on est 
+différent de 0, les moteurs fonctionnent et il convient de les arrêter si 
+l&#8217;indicateur <i>off_flag</i> ou l&#8217;indicateur <i>mot_off</i> sont positionnés à 
+1. On positionne, lors d&#8217;une demande d&#8217;arrêt, les bits d&#8217;entrée/sortie à l&#8217;état 
+inactif, on annule les demandes de mise en marche, on remet à 0 le compteur <i>
+mst</i> et les différents indicateurs.</p>
+<p class="MsoNormal" style="margin-top:6.0pt">
+<img border="0" src="solarlum12_fichiers/image028.jpg" width="606" height="169"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;indicateur <i>butee</i> est 
+calculé systématiquement en position les 4 bits de poids faible de l&#8217;octet.</p>
+<h1>Mesure des courants.</h1>
+<div align="center">
+	<table class="MsoTableGrid" border="0" cellpadding="0" style="border-collapse: collapse; border-width: 0" id="table3">
+		<tr>
+			<td width="343" valign="top" style="width:257.4pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">La mesure des courants 
+			est assurée par la fonction <i>mes_mot</i>&nbsp; appelée cycliquement 
+			depuis le programme principal.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">Cette fonction est 
+			activée périodiquement par le <i>timer</i> logiciel grâce à 
+			l&#8217;indicateur <i>mes_flag</i>.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">On calcule les angles 
+			élévation et azimut depuis les compteurs d&#8217;impulsions positionnés 
+			par les codeurs.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">Les grandeurs sont 
+			codées sur 8 bits, aussi quand la rotation dépasse 255°, on ajoute 
+			100 à l&#8217;ange d&#8217;élévation qui lui est toujours inférieur à 90°. Il 
+			suffira de tester les valeurs pour afficher correctement les angles 
+			au niveau du module de contrôle.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">Pour l&#8217;élévation si la 
+			grandeur mesurée dépasse 240, on commande l&#8217;arrêt. Si le moteur lève 
+			le panneau, on positionne l&#8217;indicateur butée haute <i>but_h</i>.</td>
+			<td width="355" valign="top" style="width:266.45pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<img border="0" src="solarlum12_fichiers/image030.jpg" width="356" height="391"><!--[if gte mso 9]><![endif]--></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal">Toujours pour l&#8217;élévation, si le courant s&#8217;annule alors 
+qu&#8217;on descend le panneau (descente ou parking), c&#8217;est que le capteur de fin de 
+course basse au niveau de la carte moteur de la partie opérative a coupé le 
+courant. On annule la commande de déplacement et on positionne la butée basse.</p>
+<p class="MsoNormal">Pour un déplacement en azimut, si la grandeur mesurée 
+dépasse 180, on annule la commande de déplacement et on positionne les 
+indicateurs de butée suivant le mouvement en cours.</p>
+<p class="MsoNormal">Les indicateurs <i>mo_ovle</i> et <i>mo_ovla</i> sont 
+positionnés si nécessaire et transmis au module de contrôle.</p>
+<h2>Le programme principal.</h2>
+<p class="MsoNormal" style="margin-top:6.0pt">La déclaration des variables&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image032.jpg" width="576" height="257"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">On déclare les fonctions&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image034.jpg" width="230" height="67"></p>
+<p class="MsoNormal" style="margin-top:6.0pt">Reste le programme principal&nbsp;qui 
+appelle le programme d&#8217;initialisation&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image036.jpg" width="408" height="140"></p>
+<p class="MsoNormal" style="margin-top:6.0pt" align="left">Le programme 
+d&#8217;initialisation initialise le bus CAN, les variables, la conversion 
+analogique/numérique, le <i>timer</i> et les entrées <i>CCPPx</i> de capture des 
+impulsions des codeurs.<br>
+&nbsp;<img border="0" src="solarlum12_fichiers/image038.jpg" width="683" height="366"></p>
+<h2>Gestion du temps.</h2>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Afin de ne pas rendre les 
+fonctions bloquantes, on utilise un <i>timer</i> logiciel appelé par un <i>timer</i> 
+matériel initialisé pour générer une interruption toutes les ms.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Les déclarations&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image040.jpg" width="524" height="83"></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Toutes les millisecondes, la 
+fonction ci-dessous est déclenchée&nbsp;:<br>
+<img border="0" src="solarlum12_fichiers/image042.jpg" width="684" height="196"></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">L&#8217;indicateur <i>msc</i> sert à 
+déclencher les mesures de courants. Il est activé toutes les 100 ms.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Si on a un mouvement (<i>on</i> 
+non nul), on incrémente le compteur <i>mst </i>sauf en mode <i>parking</i> qui 
+s&#8217;arrête quand in arrive en butée.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Dés que <i>mst</i> atteint la 
+valeur <i>msa</i> (durée déplacement azimut) ou <i>mse</i> (durée déplacement 
+élévation), on arrête le déplacement (<i>off_flag</i> = 1) et on remet <i>mst</i> 
+à 0.</p>
+<h2>Gestion des codeurs.</h2>
+<p class="MsoNormal" style="margin-bottom:6.0pt">La gestion des codeurs est 
+activée par 2 interruptions qui suivant le sens et la nature du déplacement vont 
+incrémenter les compteurs d&#8217;impulsions.<br>
+<img border="0" src="solarlum12_fichiers/image044.jpg" width="293" height="217"></p>
+<p class="MsoNormal" style="margin-bottom:6.0pt">Les compteurs <i>pos_elev</i> 
+et <i>pos_azim</i> sont remis à 0 quand on arrive en butée car un parking est 
+systématiquement activé en fin de journée, à la mise sous tension ou 
+manuellement par l&#8217;utilisateur.</p>
+<div class=Section1> 
+
+	<p> </div>
+</body>
+</html>

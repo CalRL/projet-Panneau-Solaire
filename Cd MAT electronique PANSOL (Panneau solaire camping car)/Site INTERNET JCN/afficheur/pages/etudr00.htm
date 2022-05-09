@@ -1,0 +1,1963 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40"><HEAD><TITLE>
+L'afficheur MAT : module rabbit</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="Microsoft FrontPage 6.0" name=GENERATOR>
+
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<SCRIPT language=JavaScript>
+// Le site de njc
+// lycée la briquerie 15 route de la briquerie 57100 thionville
+<!-- Beginning of JavaScript Applet -------------------
+function scrollit_r2l(seed)
+{
+	var msg="Bienvenue dans la page web de Niedercorn Jean-Claude !!!     j-c.niedercorn@ac-nancy-metz.fr "//Changer ici le texte
+	var out = " ";
+	var c   = 1;
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit_r2l(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+		}
+	}
+}
+function stop() {
+clearTimeout(timerTwo)
+}
+// -- End of JavaScript code -------------- -->
+
+</SCRIPT>
+<!-- Fonction Onload ! -->
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ li.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;
+	}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+h3
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:13.5pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+span.CarCar
+	{font-family:Arial;
+	font-weight:bold;}
+-->
+</style>
+<meta name="Microsoft Border" content="none">
+</HEAD>
+<BODY leftMargin=50 background="../../images/fspiral.gif" onload=scrollit_r2l(100)>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="10%"><a name="0" href="../accueil.htm">
+    <IMG alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></TD>
+    <TD align=middle width="51%"><font size="5" color="#FF0000">
+    <img border="0" src="../../images/project.gif" width="32" height="32"> </font><font size="5" color="#0000FF">
+    L'afficheur MAT : module Rabbit</font></TD>
+    <TD align=middle width="21%"><a href="javascript:history.back();">
+    <IMG alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></TD></TR></TBODY></TABLE>
+<P align=center>
+<IMG alt="lignrougfin.gif (950 octets)" 
+src="../../images/lignrfin.gif" width="530" height="4"></P>
+<p align="center">Le fichier au format Word</p>
+<p align="center">&nbsp;<a href="../fichiers/etude%20du%20module%20Rabbit.doc"><img border="0" src="../images/image001.gif" width="40" height="40"></a></p>
+<hr>
+
+<h1 style='margin-left:36.0pt;text-indent:-18.0pt'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span>Le microprocesseur du module Rabbit.</h1>
+
+<p class=MsoBodyText3><span style='font-size:12.0pt'>Le Rabbit3000 est un
+microprocesseur ultra faible EMI (émissions électromagnétiques) spécifiquement
+conçu pour le contrôle embarqué. Il est rapide - cadencement jusqu’à 54 MHz -
+et programmable en C. Le code généré est compact et supporte 1 Mo d’espace
+code/données. Il est riche de 6 ports série avec IrDA">
+</HEAD>
+<BODY leftMargin=50 background="../../images/fspiral.gif" onload=scrollit_r2l(100)>
+<TABLE width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="10%"><a name="0" href="../accueil.htm">
+    <IMG alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></TD>
+    <TD align=middle width="51%"><font size="5" color="#FF0000">
+    <img border="0" src="../../images/project.gif" width="32" height="32"> </font><font size="5" color="#0000FF">
+    L'afficheur MAT : module Rabbit</font></TD>
+    <TD align=middle width="21%"><a href="javascript:history.back();">
+    <IMG alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></TD></TR></TBODY></TABLE>
+<P align=center>
+<IMG alt="lignrougfin.gif (950 octets)" 
+src="../../images/lignrfin.gif" width="530" height="4"></P>
+<p align="center">Le fichier au format Word</p>
+<p align="center">&nbsp;<a href="../fichiers/etude%20du%20module%20Rabbit.doc"><img border="0" src="../images/image001.gif" width="40" height="40"></a></p>
+<hr>
+
+<h1 style='margin-left:36.0pt;text-indent:-18.0pt'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span>Le microprocesseur du module Rabbit.</h1>
+
+<p class=MsoBodyText3><span style='font-size:12.0pt'>Le Rabbit3000 est un
+microprocesseur ultra faible EMI (émissions électromagnétiques) spécifiquement
+conçu pour le contrôle embarqué. Il est rapide - cadencement jusqu’à 54 MHz -
+et programmable en C. Le code généré est compact et supporte 1 Mo d’espace
+code/données. Il est riche de 6 ports série avec IrDA, plus de 56 E/S, des
+entrées impulsions et décodeurs quadrature, des sorties PWM, une horloge temps
+réel sauvegardable, 11 timers, une mémoire sans glue et interface E/S, des
+entrées interruptives, une interface esclave et des capacités de programmation
+distante.</span></p>
+
+<p class=MsoBodyText3 align=center style='text-align:center'>
+<img width=194
+height=170 src="../images/image001.jpg"></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<h3>Fonctions du microprocesseur Rabbit3000</h3>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Mémoire sans glue, interface E/S et port esclave</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          1 Mo d’espace code/données</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Horloge temps réel sauvegardable et chien de garde</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Programmation/boot local ou à distance</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Performances exceptionnelles pour les maths, la logique et les
+E/S</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          EMI typique &lt; 10 dB µV/m @ 3 m</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Modes ultra faible consommation</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Alimentation 3,3 Volts (tolérance E/S au 5 volts)</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Vitesse horloge jusqu’à 54 MHz</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Plus de 56 entrées/sorties numériques</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          6 ports série avec IrDA, SDLC/HDLC, Async., SPI</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Mesure et capture d’impulsions</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Décodeurs quadrature</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:17.4pt;text-autospace:
+none'>•          Sorties PWM</p>
+
+<h2>Programmation du Rabbit3000</h2>
+
+<p class=MsoBodyText><span style='font-size:12.0pt'>Le Rabbit3000 se programme
+en Z-World Dynamic C Premier, environnement multitâches temps réel standard
+dans l’industrie. Le Dynamic C est un atelier logiciel comportant un
+compilateur C, un éditeur, un loader et un débogueur. La programmation et le
+débogage sur cible s’effectuent simplement en connectant son système Rabbit à
+un PC par un port série ou USB, ou via Ethernet/Internet en utilisant les
+accessoires appropriés.</span></p>
+
+<h3>Fonctions de programmation clés</h3>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Des centaines de fonctions et programmes d’exemples en code source</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Support ultra rapide pour l’arithmétique virgule flottante et les
+fonctions transcendantales</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Communication série, support complet Internet et Ethernet</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Pilotes d’entrées/sorties analogiques et numériques</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     I2C, SPI, GPS, cryptage, système fichiers</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Puissantes extensions de langage pour le multitâche coopératif ou
+préemptif</p>
+
+<h2>Le microprocesseur sans EMI</h2>
+
+<p class=MsoBodyText2><span style='font-size:12.0pt'>Les difficultés
+principales de mise au point d’un système sont souvent liées aux interférences
+électromagnétiques (EMI). Elles peuvent perturber à la fois le fonctionnement
+même de l’applicatif mais également l’environnement qui peut réagir à son tour
+sur le système. Le Rabbit3000 possède des fonctions qui éliminent pratiquement
+toute interférence. Ces fonctions rendent quasi-impossible la rencontre de
+problèmes de mise au point ou d’utilisation liés aux EMI.</span></p>
+
+<h3>Les fonctions ultra-faible EMI du Rabbit3000</h3>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'><span style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dispositif d’étalement de spectre réduisant de 25 dB l’amplitude
+EMI induite par l’horloge</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'><span style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Doubleur de fréquence interne permettant d’utiliser des quartzs
+externes 2 fois moins rapides</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'><span style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Pins d’alimentations séparées évitant la propagation du bruit en
+mode commun</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'><span style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Déclencheur d’horloge stoppant le cadencement des blocs de
+logique non concernés par l’opération en cours</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'><span style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Architecture de bus éliminant le besoin de router l’horloge hors
+du processeur</p>
+
+<h2>Fonctions spéciales faible consommation</h2>
+
+<p class=MsoBodyText3><span style='font-size:12.0pt'>Le Rabbit3000 contient
+plusieurs fonctions uniques autorisant une alimentation par pile ou batterie.
+Le processeur offre des options horloge qui permettent de diviser le
+cadencement de l’horloge 32KHz par 2, 4, 8 ou 16 ou celui de l’horloge mère par
+2, 4, 6 ou 8. Certains types de mémoires Flash ou SRAM consomment lorsque le
+Chip Select est validé même si aucun signal ne change. Le Rabbit3000 possède
+des fonctions minimisant les cycles en Chip Select validé de façon à réduire
+cette consommation inutile. Ces dispositifs permettent d’obtenir des
+consommations de l’ordre de 40 µA pour des cartes complètes comme le RCM3100.</span></p>
+
+<p class=MsoBodyText3 align=center style='text-align:center'><span
+style='font-size:8.0pt'>
+<img width=315 height=263
+src="../images/image002.jpg"></span></p>
+
+<h3>Jeu d’instructions Rabbit</h3>
+
+<p class=MsoNormal>Les microprocesseurs Rabbit présentent une architecture
+bi-processeur type Z-180 améliorée ainsi que des performances bien supérieures.
+Tout code existant en assembleur Z-180 peut être porté sur Rabbit moyennant
+quelques légères modifications.</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Vitesse d’exécution 8 fois plus rapide que celle d’un Z180</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Nouvelles instructions rendant le jeu de registres alternés
+vraiment accessible et utilisable</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Accès banalisé aux entrées/sorties (instructions mémoire
+préfixées)</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Long Jumps et Returns permettant l’accès à 1 Mo d’espace code</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Stockages/chargement d’adresses mémoire longues permettant
+l’accès à 1 Mo de données</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>La majorité des instructions s’exécutent en 2 cycles d’horloge
+par octet d’instruction.</p>
+
+<h2>Les périphériques.</h2>
+
+<h3>Bus E/S auxiliaire</h3>
+
+<p class=MsoNormal style='text-align:justify;text-autospace:none'>Avec le
+Rabbit3000, les concepteurs ont la possibilité de réaliser des bus séparés pour
+les E/S et la mémoire. Le bus E/S auxiliaire reflète le bus de données du
+processeur sur le port A et procure sur le port B les 6 premières lignes
+d’adresses pour réaliser l’interfaçage de périphériques externes. Le bus
+auxiliaire est seulement actif durant les cycles du bus E/S.</p>
+
+<h3>Ports série et parallèle</h3>
+
+<p class=MsoNormal style='text-align:justify;text-autospace:none'>Le Rabbit3000
+compte 7 ports parallèles de 8 bits, soit 56 E/S dont quelques unes partageant
+leurs ressources avec d’autres fonctions comme le port esclave ou le bus
+auxiliaire. Le Rabbit3000 offre aussi 6 ports série asynchrones, vitesse allant
+jusqu’à 1/8 de l’horloge mère. 4 de ces 6 ports supportent le mode synchrone ou
+le SPI avec des vitesses allant jusqu’à 1/4 de la fréquence du processeur. 2
+des voies série supportent la communication rapide HDLC/SDLC. Les 6 voies du
+Rabbit3000 acceptent aussi la communication IrDA en mode SIR (Infra Rouge Série
+- 115 Kbps), les 2 voies HDLC/SDLC supportent le MIR (Medium Infra Rouge -
+jusqu’à 1,152 Mbps).</p>
+
+<h3>Interface mémoire sans glue</h3>
+
+<p class=MsoNormal style='text-align:justify;text-autospace:none'>Le Rabbit3000
+ne nécessite ni pilote de mémoire externe ni logique interface. Ses 20 lignes
+d’adresses, 8 lignes de données, 3 lignes Chip Select, 2 lignes validation
+sortie et 2 lignes validation écriture peuvent interfacer directement 6
+composants mémoire statique (Flash ou SRAM). Jusqu’à 1 Mo de mémoire peuvent
+ainsi être adressé directement.<img width=294 height=179
+src="../images/image003.gif" align=left hspace=12
+alt="Zone de Texte:  "></p>
+
+<h3>Interface esclave intégrée  </h3>
+
+<p class=MsoNormal style='text-align:justify;text-autospace:none'>Le port
+esclave intégré au Rabbit3000 facilite la conception de systèmes
+maître-esclave. 3 entrées et 3 sorties données, ainsi que 2 registres de
+contrôle simplifient l’échange des données entre maître et esclave. 2 lignes
+d’adresses, 8 lignes de données, plus quelques lignes de contrôle offrent une
+grande souplesse d’interfaçage en mode maître, esclave, ou mixte.</p>
+
+<h3>Capture/mesure d’impulsions</h3>
+
+<p class=MsoBodyText><span style='font-size:12.0pt'>Le Rabbit3000 contient 2
+entrées impulsions consistant chacune en un compteur 16 bits cadencé par la
+sortie d’un timer interne. Ces entrées peuvent être utilisées par exemple pour
+de la mesure de largeur d’impulsion ou de la détection de vitesse série.</span></p>
+
+<h3>Décodeurs quadrature</h3>
+
+<p class=MsoBodyText><span style='font-size:12.0pt'>Le Rabbit3000 contient 2
+voies de décodeur quadrature pour l’interfaçage direct d’unités d’encodage
+optique. Chaque décodeur possède 2 entrées, l’une servant d’entrée normale et
+l’autre de quadrature (sens). Un compteur/décompteur 8 bits compte les pas de
+l’encodeur dans les 2 sens de rotation et demande une interruption lorsque le
+compte atteint zéro quel que soit la direction.</span></p>
+
+<h3>Sorties PWM</h3>
+
+<p class=MsoBodyText><span style='font-size:12.0pt'>Le Rabbit3000 comporte 4
+sorties PWM (Pulse Width Modulation) indépendantes. Les sorties PWM génèrent un
+train d’impulsions périodiques basé sur une trame de 1024 éléments. Le rapport
+cyclique varie de 0/1024 à 1024/1024. Ces dispositifs sont pilotés par la
+sortie d’un timer interne qui peut être programmé pour moduler la largeur des
+impulsions.</span></p>
+
+<h2>Spécifications d’environnement du Rabbit3000</h2>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Boîtier                               128 pins LQFP</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Taille du boîtier                  16 mm x 16 mm x 1,5 mm</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Tension d’alimentation       1,8 - 3,6 VDC (tolérance au 5 V)</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Courant d’alimentation       2 mA / MHz @ 3,3 V</p>
+
+<p class=MsoNormal>•     Température                      -55°C à +85°C</p>
+
+<h1>2. Le module Rabbit.</h1>
+
+<p class=MsoNormal>Le module Rabbit regroupe sur un même circuit imprimé
+différentes fonctions. On donne un schéma fonctionnel ci-dessous&nbsp;:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:Times'>
+<img width=405 height=206
+src="../images/image004.jpg"></span></p>
+
+<p class=MsoNormal>Le module Rabbit utilise un connecteur pour se placer sur la
+carte d’application. Le module Rabbit dispose de 40 entrées/sorties qui sont
+regroupées en 7 ports de 8 bits disponibles sur les connecteurs J1 et J2. Les
+37 E/S sont disponibles sur les broches PA0-PA7, PD2-PD7, PE0-PE1, PE3-PE7,
+PF0-PF7 et PG0-PG7.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:Times'>
+<img width=313 height=264
+src="../images/image005.gif"></span></p>
+
+<p class=MsoNormal>Les connecteurs J1 et J2 sont au pas de
+2mm. Un connecteur RJ45 permet la connexion au réseau Ethernet.</p>
+
+<p class=MsoNormal>Les signaux PD2, PD3, PD6 et PD7 (broches 29-32 sur J1) et
+les broches non connectées (33-34 sur J1 et 33 sur J2) sont réservées pour une
+utilisation future.</p>
+
+<p class=MsoNormal>On donne le schéma du module Rabbit avec ses entrées
+sorties.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><span style='font-size:10.0pt;font-family:
+Times;color:black'>
+<img width=517 height=297
+src="../images/image006.gif"></span></p>
+
+<p class=MsoNormal>Les ports du module
+Rabbit sont configurés par défaut mais le tableau ci-dessous montre que l’on
+peut leurs affecter une autre fonction.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 id="table1">
+ <tr style='height:14.2pt'>
+  <td colspan=6 style='border:none;background:#CCCCCC;padding:3.75pt 3.75pt 3.75pt 3.75pt;
+  height:14.2pt'>
+  <p class=MsoNormal><a name=997667></a><a name=996906></a><span
+  style='font-size:9.0pt'>RCM3000 Configurations&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td colspan=2 style='background:#CCCCCC;padding:3.75pt 3.75pt 3.75pt 3.75pt;
+  height:14.2pt'>
+  <p class=MsoNormal><a name=996918></a><span style='font-size:9.0pt;
+  color:#003366'>Pin</span></p>
+  </td>
+  <td style='background:#CCCCCC;padding:3.75pt 3.75pt 3.75pt 3.75pt;height:
+  14.2pt'>
+  <p class=MsoNormal><a name=996922></a><span style='font-size:9.0pt;
+  color:#003366'>Pin Name</span></p>
+  </td>
+  <td style='background:#CCCCCC;padding:3.75pt 3.75pt 3.75pt 3.75pt;height:
+  14.2pt'>
+  <p class=MsoNormal><a name=996924></a><span style='font-size:9.0pt;
+  color:#003366'>Default Use</span></p>
+  </td>
+  <td style='background:#CCCCCC;padding:3.75pt 3.75pt 3.75pt 3.75pt;height:
+  14.2pt'>
+  <p class=MsoNormal><a name=996926></a><span style='font-size:9.0pt;
+  color:#003366'>Alternate Use</span></p>
+  </td>
+  <td style='background:#CCCCCC;padding:3.75pt 3.75pt 3.75pt 3.75pt;height:
+  14.2pt'>
+  <p class=MsoNormal><a name=996928></a><span style='font-size:9.0pt;
+  color:#003366'>Notes</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td rowspan=26 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996930></a><span style='font-size:9.0pt'>Header J1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996932></a><span style='font-size:9.0pt'>1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996934></a><span style='font-size:9.0pt'>GND</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=996936></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=996938></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=996940></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996944></a><span style='font-size:9.0pt'>2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996946></a><span style='font-size:9.0pt'>STATUS</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996948></a><span style='font-size:9.0pt'>Output
+  (Status)</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996950></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=996952></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996956></a><span style='font-size:9.0pt'>3-10</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996958></a><span style='font-size:9.0pt'>PA[7:0]</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996960></a><span style='font-size:9.0pt'>Parallel
+  I/O</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996962></a><span lang=EN-GB style='font-size:9.0pt'>External
+  data bus<br>
+  (ID0-ID7)<br>
+  <a name=996963></a>Slave port data bus<br>
+  (SD0-SD7)</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=996965></a>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996969></a><span style='font-size:9.0pt'>11</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996971></a><span style='font-size:9.0pt'>PF3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996973></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996975></a><span style='font-size:9.0pt'>QD2A</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=996977></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996981></a><span style='font-size:9.0pt'>12</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996983></a><span style='font-size:9.0pt'>PF2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996985></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996987></a><span style='font-size:9.0pt'>QD2B</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=996989></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996993></a><span style='font-size:9.0pt'>13</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996995></a><span style='font-size:9.0pt'>PF1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996997></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=996999></a><span style='font-size:9.0pt'>QD1A<br>
+  <a name=997000></a>CLKC</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997002></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997006></a><span style='font-size:9.0pt'>14</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997008></a><span style='font-size:9.0pt'>PF0</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997010></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997012></a><span style='font-size:9.0pt'>QD1B<br>
+  <a name=997013></a>CLKD</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997015></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997019></a><span style='font-size:9.0pt'>15</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997021></a><span style='font-size:9.0pt'>PC0</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997023></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997025></a><span style='font-size:9.0pt'>TXD</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997027></a><span style='font-size:9.0pt'>Serial
+  Port D</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997031></a><span style='font-size:9.0pt'>16</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997033></a><span style='font-size:9.0pt'>PC1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997035></a><span style='font-size:9.0pt'>Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997037></a><span style='font-size:9.0pt'>RXD</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997043></a><span style='font-size:9.0pt'>17</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997045></a><span style='font-size:9.0pt'>PC2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997047></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997049></a><span style='font-size:9.0pt'>TXC</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997051></a><span style='font-size:9.0pt'>Serial
+  Port C</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997055></a><span style='font-size:9.0pt'>18</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997057></a><span style='font-size:9.0pt'>PC3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997059></a><span style='font-size:9.0pt'>Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997061></a><span style='font-size:9.0pt'>RXC</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997067></a><span style='font-size:9.0pt'>19</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997069></a><span style='font-size:9.0pt'>PC4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997071></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997073></a><span style='font-size:9.0pt'>TXB</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997075></a><span style='font-size:9.0pt'>Serial
+  Port B</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997079></a><span style='font-size:9.0pt'>20</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997081></a><span style='font-size:9.0pt'>PC5</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997083></a><span style='font-size:9.0pt'>Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997085></a><span style='font-size:9.0pt'>RXB</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997091></a><span style='font-size:9.0pt'>21</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997093></a><span style='font-size:9.0pt'>PC6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997095></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997097></a><span style='font-size:9.0pt'>TXA</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997099></a><span style='font-size:9.0pt'>Serial
+  Port A<br>
+  (programming port)</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997103></a><span style='font-size:9.0pt'>22</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997105></a><span style='font-size:9.0pt'>PC7</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997107></a><span style='font-size:9.0pt'>Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997109></a><span style='font-size:9.0pt'>RXA</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997115></a><span style='font-size:9.0pt'>23</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997117></a><span style='font-size:9.0pt'>PG0</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997119></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997121></a><span style='font-size:9.0pt'>TCLKF</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997123></a><span style='font-size:9.0pt'>Serial
+  Clock F output</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997127></a><span style='font-size:9.0pt'>24</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997129></a><span style='font-size:9.0pt'>PG1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997131></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997133></a><span style='font-size:9.0pt'>RCLKF</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997135></a><span style='font-size:9.0pt'>Serial
+  Clock F input</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997139></a><span style='font-size:9.0pt'>25</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997141></a><span style='font-size:9.0pt'>PG2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997143></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997145></a><span style='font-size:9.0pt'>TXF</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997147></a><span style='font-size:9.0pt'>Serial
+  Port F</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997151></a><span style='font-size:9.0pt'>26</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997153></a><span style='font-size:9.0pt'>PG3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997155></a><span style='font-size:9.0pt'>Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997157></a><span style='font-size:9.0pt'>RXF</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997163></a><span style='font-size:9.0pt'>27</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997165></a><span style='font-size:9.0pt'>PD4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997167></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997169></a><span style='font-size:9.0pt'>ATXB</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997171></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997175></a><span style='font-size:9.0pt'>28</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997177></a><span style='font-size:9.0pt'>PD5</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997179></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997181></a><span style='font-size:9.0pt'>ARXB</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997183></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997187></a><span style='font-size:9.0pt'>29</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997189></a><span style='font-size:9.0pt'>PD2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997191></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997193></a><span style='font-size:9.0pt'>TPOUT- *</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997195></a><span style='font-size:9.0pt'>Ethernet
+  transmit port</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997199></a><span style='font-size:9.0pt'>30</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997201></a><span style='font-size:9.0pt'>PD3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997203></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997205></a><span style='font-size:9.0pt'>TPOUT+ *</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997211></a><span style='font-size:9.0pt'>31</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997213></a><span style='font-size:9.0pt'>PD6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997215></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997217></a><span style='font-size:9.0pt'>TPIN- *</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997219></a><span style='font-size:9.0pt'>Ethernet
+  receive port</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997223></a><span style='font-size:9.0pt'>32</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997225></a><span style='font-size:9.0pt'>PD7</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997227></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997229></a><span style='font-size:9.0pt'>TPIN+ *</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997235></a><span style='font-size:9.0pt'>33-34 *</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997237></a><span style='font-size:9.0pt'>n.c.</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997239></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997241></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997243></a><span style='font-size:9.0pt'>Not
+  connected</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td colspan=6 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=998044></a><span lang=EN-GB style='font-size:9.0pt'>*
+  Pins 29-34 are reserved for future RCM3000 series RabbitCore modules.</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td rowspan=19 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997245></a><span style='font-size:9.0pt'>Header J2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997247></a><span style='font-size:9.0pt'>1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997249></a><span style='font-size:9.0pt'>/RES</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997251></a><span style='font-size:9.0pt'>Reset
+  output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997253></a><span style='font-size:9.0pt'>Reset
+  input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997255></a><span lang=EN-GB style='font-size:9.0pt'>Reset
+  output from Reset Generator</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997259></a><span style='font-size:9.0pt'>2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997261></a><span style='font-size:9.0pt'>PB0</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997263></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997265></a><span style='font-size:9.0pt'>CLKB</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997267></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997271></a><span style='font-size:9.0pt'>3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997273></a><span style='font-size:9.0pt'>PB2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997275></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997277></a><span style='font-size:9.0pt'>IA0<br>
+  <a name=997278></a>/SWR</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997280></a><span lang=EN-GB style='font-size:9.0pt'>External
+  Address 0<br>
+  <a name=997281></a>Slave port write</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997285></a><span style='font-size:9.0pt'>4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997287></a><span style='font-size:9.0pt'>PB3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997289></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997291></a><span style='font-size:9.0pt'>IA1<br>
+  <a name=997292></a>/SRD</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997294></a><span lang=EN-GB style='font-size:9.0pt'>External
+  Address 1<br>
+  <a name=997295></a>Slave port read </span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997299></a><span style='font-size:9.0pt'>5</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997301></a><span style='font-size:9.0pt'>PB4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997303></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997305></a><span style='font-size:9.0pt'>IA2<br>
+  <a name=997306></a>SA0</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997308></a><span lang=EN-GB style='font-size:9.0pt'>External
+  Address 2<br>
+  <a name=997309></a>Slave port Address 0</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997313></a><span style='font-size:9.0pt'>6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997315></a><span style='font-size:9.0pt'>PB5</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997317></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997319></a><span style='font-size:9.0pt'>IA3<br>
+  <a name=997320></a>SA1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997322></a><span lang=EN-GB style='font-size:9.0pt'>External
+  Address 3<br>
+  <a name=997323></a>Slave port Address 1</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997327></a><span style='font-size:9.0pt'>7</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997329></a><span style='font-size:9.0pt'>PB6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997331></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997333></a><span style='font-size:9.0pt'>IA4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997335></a><span style='font-size:9.0pt'>External
+  Address 4</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997339></a><span style='font-size:9.0pt'>8</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997341></a><span style='font-size:9.0pt'>PB7</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997343></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997345></a><span style='font-size:9.0pt'>IA5<br>
+  <a name=997346></a>/SLAVEATTN</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997348></a><span style='font-size:9.0pt'>External
+  Address 5<br>
+  <a name=997349></a>Slave Attention</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997353></a><span style='font-size:9.0pt'>9</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997355></a><span style='font-size:9.0pt'>PF4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997357></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997359></a><span style='font-size:9.0pt'>AQD1B<br>
+  <a name=997360></a>PWM0</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997362></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997366></a><span style='font-size:9.0pt'>10</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997368></a><span style='font-size:9.0pt'>PF5</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997370></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997372></a><span style='font-size:9.0pt'>AQD1A<br>
+  <a name=997373></a>PWM1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997375></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997379></a><span style='font-size:9.0pt'>11</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997381></a><span style='font-size:9.0pt'>PF6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997383></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997385></a><span style='font-size:9.0pt'>AQD2B<br>
+  <a name=997386></a>PWM2</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997388></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997392></a><span style='font-size:9.0pt'>12</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997394></a><span style='font-size:9.0pt'>PF7</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997396></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997398></a><span style='font-size:9.0pt'>AQD2A<br>
+  <a name=997399></a>PWM3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997401></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997405></a><span style='font-size:9.0pt'>13</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997407></a><span style='font-size:9.0pt'>PE7</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997409></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997411></a><span style='font-size:9.0pt'>I7 <br>
+  <a name=997412></a>/SCS</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997414></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997418></a><span style='font-size:9.0pt'>14</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997420></a><span style='font-size:9.0pt'>PE6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997422></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997424></a><span style='font-size:9.0pt'>I6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997426></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997430></a><span style='font-size:9.0pt'>15</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997432></a><span style='font-size:9.0pt'>PE5</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997434></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997436></a><span style='font-size:9.0pt'>I5 <br>
+  <a name=997437></a>INT1B </span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997439></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997443></a><span style='font-size:9.0pt'>16</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997445></a><span style='font-size:9.0pt'>PE4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997447></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997449></a><span style='font-size:9.0pt'>I4 <br>
+  <a name=997450></a>INT0B </span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997452></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997456></a><span style='font-size:9.0pt'>17</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997458></a><span style='font-size:9.0pt'>PE3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997460></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997462></a><span style='font-size:9.0pt'>I3</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997464></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997468></a><span style='font-size:9.0pt'>18</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997470></a><span style='font-size:9.0pt'>PE1</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997472></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997474></a><span style='font-size:9.0pt'>I1<br>
+  <a name=997475></a>INT1A </span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997477></a><span lang=EN-GB style='font-size:9.0pt'>I/O
+  Strobe 1<br>
+  <a name=997478></a>Interrupt 1A</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997482></a><span style='font-size:9.0pt'>19</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997484></a><span style='font-size:9.0pt'>PE0</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997486></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997488></a><span style='font-size:9.0pt'>I0 <br>
+  <a name=997489></a>INT0A </span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997491></a><span lang=EN-GB style='font-size:9.0pt'>I/O
+  Strobe 0<br>
+  <a name=997492></a>Interrupt 0A</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td rowspan=14 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997494></a><span style='font-size:9.0pt'>Header J2</span></p>
+  <a name=997495></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997497></a><span style='font-size:9.0pt'>20</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997499></a><span style='font-size:9.0pt'>PG7</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997501></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997503></a><span style='font-size:9.0pt'>RXE</span></p>
+  </td>
+  <td rowspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997505></a><span style='font-size:9.0pt'>Serial
+  Port E</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997509></a><span style='font-size:9.0pt'>21</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997511></a><span style='font-size:9.0pt'>PG6</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997513></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997515></a><span style='font-size:9.0pt'>TXE</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997521></a><span style='font-size:9.0pt'>22</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997523></a><span style='font-size:9.0pt'>PG5</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997525></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997527></a><span style='font-size:9.0pt'>RCLKE</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997529></a><span style='font-size:9.0pt'>Serial
+  Clock E input</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997533></a><span style='font-size:9.0pt'>23</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997535></a><span style='font-size:9.0pt'>PG4</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997537></a><span style='font-size:9.0pt'>Input/Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997539></a><span style='font-size:9.0pt'>TCLKE</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997541></a><span style='font-size:9.0pt'>Serial Clock
+  E ouput</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997545></a><span style='font-size:9.0pt'>24</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997547></a><span style='font-size:9.0pt'>/IOWR</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997549></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997551></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997553></a><span style='font-size:9.0pt'>External
+  write strobe</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997557></a><span style='font-size:9.0pt'>25</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997559></a><span style='font-size:9.0pt'>/IORD</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997561></a><span style='font-size:9.0pt'>Input </span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997563></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997565></a><span style='font-size:9.0pt'>External
+  read strobe</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997569></a><span style='font-size:9.0pt'>26-27</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997571></a><span style='font-size:9.0pt'>SMODE0,<br>
+  SMODE1</span></p>
+  </td>
+  <td colspan=2 style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997573></a><span lang=EN-GB style='font-size:9.0pt'>(0,0)--start
+  executing at address zero<br>
+  <a name=997574></a>(0,1)--cold boot from slave port<br>
+  <a name=997575></a>(1,0)--cold boot from clocked Serial Port A<br>
+  <a name=997576></a><br>
+  <a name=997577></a>SMODE0 =1, SMODE1 = 1<br>
+  <a name=997578></a>Cold boot from asynchronous Serial Port A at 2400&nbsp;bps
+  (programming cable connected)</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997582></a><span lang=EN-GB style='font-size:9.0pt'>Also
+  connected to programming cable</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997586></a><span style='font-size:9.0pt'>28</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997588></a><span style='font-size:9.0pt'>/RESET_IN</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997590></a><span style='font-size:9.0pt'>Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997592></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997594></a><span style='font-size:9.0pt'>Input to
+  Reset Generator</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997598></a><span style='font-size:9.0pt'>29</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997600></a><span style='font-size:9.0pt'>VRAM</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997602></a><span style='font-size:9.0pt'>Output</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997604></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997606></a><span style='font-size:9.0pt'>Maximum
+  Current Draw 50 µA</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997610></a><span style='font-size:9.0pt'>30</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997612></a><span style='font-size:9.0pt'>VBAT_EXT</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997614></a><span style='font-size:9.0pt'>3 V
+  battery Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997616></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997618></a><span style='font-size:9.0pt'>Minimum
+  battery voltage 2.8 V</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997622></a><span style='font-size:9.0pt'>31</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997624></a><span style='font-size:9.0pt'>+3.3V</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997626></a><span style='font-size:9.0pt'>Input</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997628></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997630></a><span style='font-size:9.0pt'>3.15-3.45
+  V DC</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997634></a><span style='font-size:9.0pt'>32</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997636></a><span style='font-size:9.0pt'>GND</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997638></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997640></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997642></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997646></a><span style='font-size:9.0pt'>33</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997648></a><span style='font-size:9.0pt'>n.c.</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997650></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997652></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997654></a><span lang=EN-GB style='font-size:9.0pt'>Future
+  option for +5 V input or +5 V output</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.2pt'>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997658></a><span style='font-size:9.0pt'>34</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'>
+  <p class=MsoNormal><a name=997660></a><span style='font-size:9.0pt'>GND</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997662></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997664></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt;height:14.2pt'><a name=997666></a>
+  <p class=MsoNormal><span style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal>Les emplacements R38-R43 permettent la
+mise en place de résistances 0 <span style='font-family:Symbol'>W</span>
+(jumpers) afin d’autoriser de futures options. Ces emplacements sont vides
+actuellement. </p>
+
+<h2>Utilisation de la mémoire et des ES.</h2>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Le bus d’adresse (A0-A19) et le bus de données (D0-D7) sont
+utilisés pour accéder à la mémoire flash et à la mémoire RAM. </span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>Les signaux I/0
+write (/IOWR) and I/0 read (/IORD) permettent l’accès aux périphériques
+d’entrée/sortie additionnel.</span><span style='color:black'> </span></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Le Port A peut également être utilisé comme un bus de données
+externe afin de ne pas interférer avec le bus de données principal.</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>Les broches PB3-PB7
+du Port B peuvent également être utilisé comme bus de données externe.</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>En usage normal,
+le port A est utilisé en E/S et si on veut l’utiliser comme bus de données, il
+faut placer</span><span style='color:black'> la ligne suivante au début du
+programme&nbsp;:</span></p>
+
+<p class=MsoNormal><b><span
+style='font-size:10.0pt;font-family:Courier;color:teal'>#define PORTA_AUX_IO   
+// port A en bus de donné des E/S</span></b></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>La sortie STATUS peut avoir, par programmation, 3 fonctions
+différentes :</span><span style='color:black'> </span></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='color:black'>On peut le faire passer à l’état bas
+     au premier cycle de recherche (fetch)</li>
+ <li class=MsoNormal style='color:black'>On peut le faire passer à l’état bas
+     pendant un cycle d’acquittement d’interruption</li>
+ <li class=MsoNormal style='color:black'>On peut l’utiliser comme une sortie
+     standard</li>
+</ul>
+
+<p class=MsoNormal>Les deux lignes, SMODE0 et SMODE1, sont
+utilisées comme entrées afin de déterminer le mode de démarrage après un Reset.</p>
+
+<p class=MsoNormal>L’entrée /RESET_IN permet d’initialiser
+le module rabbit. </p>
+
+<p class=MsoNormal>/RES est une sortie du circuit de Reset afin de pouvoir
+initialiser d’autres périphériques.</p>
+
+<h3>Les ports séries.</h3>
+
+<p class=MsoNormal>Le module Rabbit ne dispose pas d’adaptateur de niveau pour
+les liaisons série (RS232, RS485…) aussi faudra-t-il placer les circuits
+nécessaires sur la carte applicative.</p>
+
+<p class=MsoNormal><span
+style='font-family:Times;color:black'>Six port série sont disponible, les Ports
+A, B, C, D, E, et F. Ils sont utilisables en mode asynchrone jusqu’à des
+vitesses égale à celle de l’horloge système divisée par 16</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>En mode 7 ou 8
+bits (un 9<sup>ème</sup> bit peut être utilisé afin de repérer le début d’un
+message).</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>Les ports A, B,
+C et D peuvent également être utilisé en mode synchrone en utilisant une ligne
+d’horloge supplémentaire. Cette ligne peut être l’horloge système et dans ce cas
+le débit peut être de 80% de celle de l’horloge divisée par 128 (soit  183,750
+bps pour une horloge à 29.4 MHz ).</span><span style='color:black'> </span></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Les Ports E et F peuvent utiliser le mode SDLC/HDLC. Le protocole
+IRDA est supporté au format SDLC sur ces deux ports.</span><span
+style='color:black'> </span></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Le Port A est réservé au port de programmation.</span><span
+style='color:black'> </span></p>
+
+<h3>Le port Ethernet</h3>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Le port Ethernet est disponible sur le connecteur J4.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><a name=994397></a><span
+style='font-size:10.0pt;font-family:Times;color:black'>
+<img width=240
+height=129 src="../images/image007.gif">           
+<img width=122 height=79
+src="../images/image008.gif"></span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span><span
+style='font-family:Times;color:black'>Les LEDs placées près du connecteur
+indique la connexion (</span><b><span style='font-family:Arial;color:black'>LNK</span></b><span
+style='font-family:Times;color:black'>) et le trafic Ethernet </span><b><span
+style='font-family:Arial;color:black'>ACT</span></b><span style='font-family:
+Times;color:black'>).</span><span style='color:black'> </span></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Les signaux Ethernet sont également disponibles sur J1.</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>L’ensemble transformateur/connecteur est relié à la masse du
+circuit imprimé à travers une résistance de 0 </span><span style='font-family:
+Symbol;color:black'>W</span><span style='font-family:Times;color:black'>  R31.</span></p>
+
+<p class=MsoNormal><span
+style='font-family:Times;color:black'>Le connecteur RJ-45 est blindé afin de
+réduire les rayonnements de et vers les signaux ethernet.</span><span
+style='color:black'> </span></p>
+
+<h3>Le port de Programmation.</h3>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>En mode <b>programmation</b>, le Port série A est utilisé pour
+initialiser le module Rabbit et il permet la programmation depuis l’atelier
+logiciel grâce au connecteur 10 broches J3.</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>Les broches SMODE0 et SMODE1) également disponible sur J3 permettent de
+passer en mode bootstrap afin d’accéder au module Rabbit.</span><span
+style='color:black'> </span></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Sur J3, le signal /RESET_IN permet de forcer l’initialisation du
+Rabbit et le fil STATUS est également accessible.</span><span style='color:
+black'> </span></p>
+
+<p class=MsoNormal><span style='font-family:Times;
+color:black'>Une ligne d’horloge pour le port A est également accessible
+permettant ainsi de travailler (si nécessaire) en mode synchrone).</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>En mode <b>diagnostic</b>,
+l’utilisation du port A est disponible pour un usage normal (le micro Rabbit
+est déjà programmé), on dispose alors suivant la programmation choisie
+de&nbsp;:</span></p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal style='color:black'><span style='font-family:Times'>Un
+     port série synchrone</span></li>
+ <li class=MsoNormal style='color:black'><span style='font-family:Times'>Un
+     port série asynchrone avec le fil d’horloge qui sera une entrée CMOS</span></li>
+ <li class=MsoNormal style='color:black'><span style='font-family:Times'>Deux
+     entrées et une sortie CMOS.</span></li>
+ <li class=MsoNormal style='color:black'><span style='font-family:Times'>Les
+     broches SMODE0 and SMODE1sont utilisables comme entrées après leur examen
+     lors du Reset.</span> </li>
+ <li class=MsoNormal style='color:black'><span
+     style='font-family:Times'>/RES_IN pour forcer un reset.</span> </li>
+ <li class=MsoNormal style='color:black'><span
+     style='font-family:Times'>La broche Status comme sortie CMOS.</span> </li>
+</ul>
+
+<h2>Doubleur d’horloge</h2>
+
+<p class=MsoNormal>Le module Rabbit
+utilise un doubleur de fréquence interne optionnel afin de réduire les rayonnements
+électromagnétiques. Pour obtenir une fréquence de 29.4 MHz on peut ainsi utiliser
+un quartz de 14.7456 MHz. Le doubleur de fréquence ne fonctionne qu’avec un
+quartz de valeur inférieur à 52.8384 MHz. </p>
+
+<p class=MsoNormal>Le doubleur de fréquence sera désactivé si la fréquence de
+29,4 MHz n’est pas nécessaire afin de réduire le rayonnement électromagnétique
+et la consommation.</p>
+
+<p class=MsoNormal>Pour désactiver le doubleur, il suffit de
+modifier des lignes dans le fichier <span style='font-size:10.0pt'>RABBITBIOS.C</span>
+du répertoire <span style='font-size:10.0pt'>BIOS</span>.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:36.0pt' id="table2">
+ <tr>
+  <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+  <p class=MsoNormal><b>
+	<span
+  lang=EN-GB style='font-size:10.0pt;font-family:Courier;color:teal'>#define
+  CLOCK_DOUBLED 1 // set to 1 to double clock if<br>
+                          // Rabbit 3000: crystal &lt;= 52.8384 MHz,<br>
+                          // or to 0 to always disable clock doubler</span></b></p>
+  <p class=MsoNormal>Afin de lire. </p>
+  <p class=MsoNormal><b>
+	<span style='font-size:10.0pt;
+  font-family:Courier;color:teal'>#define CLOCK_DOUBLED 0</span></b></p>
+  <p class=MsoNormal><span lang=EN-GB>Enregistrer </span><b><span
+  lang=EN-GB style='font-family:Arial'>File &gt; Save</span></b><span
+  lang=EN-GB>. </span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span><span
+style='font-family:Times;color:black'>Le circuit Rabbit 3000 utilise un
+dispositif d’étalement de spectre qui permet de réduire les émissions
+électromagnétiques. Par défaut ce dispositif est actif mais on peut le
+dévalider afin d’améliorer la rapidité du processeur. </span>Pour désactiver le
+dispositif, il suffit d’inclure les lignes suivantes dans le programme&nbsp;:</p>
+
+<p class=MsoNormal><b>
+<span lang=EN-GB style='font-size:
+10.0pt;font-family:Courier;color:teal'>#define ENABLE_SPREADER 1  // Set to 0
+to disable spectrum spreader.</span></b></p>
+
+<p class=MsoNormal><b>
+<span lang=EN-GB style='font-size:
+10.0pt;font-family:Courier;color:teal'>#define SPREADER_SETTING 0 // 0 = normal
+spreading, 1 = strong spreading<a name=994529></a></span></b></p>
+
+<h2>Mémoire RAM</h2>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>Le module
+RCM3000 peut utiliser des mémoires de 128K à 512K de SRAM.</span></p>
+
+<h2>Mémoire ROM (flash eprom)</h2>
+
+<p class=MsoNormal><span
+style='font-family:Times;color:black'>Le module RCM3000 peut utiliser des
+mémoires de 128K à 512K de mémoire Flash.</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'>Il n’est pas
+recommander d’écrire dans une adresse quelconque mais d’utiliser la fonction &quot;<i>user
+block</i>&quot; afin de mémoriser une donné. Les fonctions </span><i>writeUserBlock</i><span
+style='font-family:Times;color:black'> et </span><i>readUserBlock</i><span
+style='font-family:Times;color:black'> sont prévues à cet effet.</span></p>
+
+<p class=MsoNormal><span style='font-family:Times;color:black'> </span><span style='font-family:Times;
+color:black'>La sélection d’une banque de mémoire flash basé sur une résistance
+de 0 </span><span style='font-family:Symbol;color:black'>W</span><span
+style='font-family:Times;color:black'> en CMS sur JP1 permet, avec quelques
+fonctions logicielles annexes, d’utiliser deux zones mémoires distinctes dans une
+mémoire de 256K afin d’implanter deux programmes distincts qui débute tous deux
+à l’adresse 0. On peut ainsi utiliser un programme de téléchargement comme
+c’est le acs quand on utilise l’atelier logiciel. </span></p>
+
+<p class=MsoNormal>La gestion des tailles mémoires est prise en compte automatiquement
+par l’atelier logiciel dynamique C.</p>
+
+<h1><span class=CarCar>3. Programmation du module Rabbit3000</span></h1>
+
+<p class=MsoBodyText><span style='font-size:12.0pt'>Le Rabbit3000 se programme
+en Z-World Dynamic C Premier, environnement multitâches temps réel standard
+dans l’industrie. Le Dynamic C est un atelier logiciel comportant un
+compilateur C, un éditeur, un loader et un débogueur. La programmation et le
+débogage sur cible s’effectuent simplement en connectant son système Rabbit à
+un PC par un port série ou USB, ou via Ethernet/Internet en utilisant les
+accessoires appropriés.</span></p>
+
+<h2>Fonctions de programmation clés</h2>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Des centaines de fonctions et programmes d’exemples en code source</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Support ultra rapide pour l’arithmétique virgule flottante et les
+fonctions transcendantales</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Communication série, support complet Internet et Ethernet</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Pilotes d’entrées/sorties analogiques et numériques</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     I2C, SPI, GPS, cryptage, système fichiers</p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;text-autospace:
+none'>•     Puissantes extensions de langage pour le multitâche coopératif ou
+préemptif</p>
+
+<h2>Mise en œuvre</h2>
+
+<p class=MsoNormal>Pour programmer le module, il suffit, ce dernier étant placé
+sur un produit ou sur la carte de développement du Kit, de le connecter au
+moyen d’un câble série fourni au PC (ce câble actif contient un MAX 232 pour
+translater les niveaux de tension).</p>
+
+<p class=MsoNormal align="center">
+<img width=660 height=153
+src="../images/image009.gif"> </p>
+
+<p class=MsoNormal>Une fois le logiciel de développement chargé sur le PC, il
+suffit de charger ou de créer un projet, de le compiler (cela va
+automatiquement transférer le code dans la mémoire Flash du module Rabbit)
+pour&nbsp;:</p>
+
+<ul style='margin-top:0cm; margin-bottom:0cm' type=disc>
+ <li class=MsoNormal>Tester le programme avec le débogueur intégré.</li>
+ <li class=MsoNormal>Une fois le programme au point, il suffit de déconnecter
+     le câble pour (après Reset) avoir un produit finit. </li>
+</ul>
+
+<p class=MsoNormal>Cette procédure simple permet, comme pour tous les produits
+récents, de disposer d’une phase de développement très rapide et efficace.</p>
+
+<h2>Utilisation des bibliothèques.</h2>
+
+<p class=MsoNormal>Quand on lance une compilation, le compilateur utilise un
+fichier appelé <i>lib.dir</i> qui contient les fichiers bibliothèques à
+utiliser. Ce fichier contient la liste des bibliothèques disponibles. Bien que
+ce fichier puisse être modifié, il est conseillé d’en créer un nouveau si
+besoin est (il faudra le faire prendre en compte dans l’atelier de
+développement).</p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=281
+height=63 src="../images/image010.jpg"></p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+<img width=272
+height=285 src="../images/image011.jpg"></p>
+
+<p class=MsoNormal>On donne un exemple du contenu de ce fichier&nbsp;:</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>LIB\BIOSLIB\DKCORE.LIB</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>LIB\BIOSLIB\DKAPP.LIB</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>LIB\BIOSLIB\CPUPARAM.LIB</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>LIB\TCPIP\ARP.LIB</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>LIB\TCPIP\BOOTP.LIB</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:10.0pt'>LIB\TCPIP\BSDNAME.LIB</span></i></p>
+
+<p class=MsoNormal>On peut ajouter ou supprimer des fichiers à prendre en
+compte. La bibliothèque BIOSLIB, est utilisée par le loader et le débogueur.</p>
+
+<h2>Contenu des bibliothèques.</h2>
+
+<p class=MsoNormal>Les fichiers bibliothèques (fichier LIB) contiennent des
+fonctions utilisables dans les programmes utilisateur.</p>
+
+<p class=MsoNormal>Bien qu’il ne soit pas toujours nécessaire de comprendre le
+contenu de ces fichiers, leur examen peut s’avérer utile pour comprendre le
+déroulement des programmes.</p>
+
+<p class=MsoNormal>Il s’avère également utile pour acquérir une meilleure
+dextérité dans l’écriture des programmes (ce sont des spécialistes du langage C
+qui les ont écrites).</p>
+
+<p class=MsoNormal>Certaines fonctions, non utilisées dans les exemples et
+souvent forts utiles, y sont disponibles.</p>
+
+<p class=MsoNormal>Nous verrons plus tard comment créer ses propres
+bibliothèques…</p>
+
+</BODY></HTML>
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

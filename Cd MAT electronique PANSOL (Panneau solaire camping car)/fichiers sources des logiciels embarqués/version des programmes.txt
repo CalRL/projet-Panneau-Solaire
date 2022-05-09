@@ -1,0 +1,16 @@
+La version des programmes PIC est à l'heure actuelle
+
+Carte contrôle : V2.1 du 15/10/2005
+programme clavier : V2.0 du 30/07/2005
+
+Carte énergie : V2.0 du 27/08/2005
+
+Carte analyseur CAN : V2.0 du 30/07/2005
+
+Carte CAN HF : V2.0 du 23/08/2005
+
+Carte moteurs : V2.1 du 12/09/2005
+
+Carte éclairage 60 leds : V2.0 du 22/08/2005
+
+Carte luminosité : V2.0 du 23/08/2005

@@ -1,0 +1,260 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>module éclairage</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<style>
+<!--
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+ li.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Sylfaen;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:Sylfaen;
+	}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" background="../../images/fspiral.gif" marginwidth="50" leftmargin="50">
+<table width="100%" border=0>
+  <tbody> 
+  <tr> 
+    <td align=middle width="10%"><a name="0" href="../../index.htm"> <img alt="bprecedent.gif (4840 octets)" 
+      src="../../images/bsom.gif" border=0 width="90" height="76"></a></td>
+    <td align=middle width="51%">
+      <div align="center"><font size="5" color="#FF0000"> <img border="0" src="../../images/project.gif" width="32" height="32"> 
+        </font> <font size="5" color="#0000FF">Module éclairage.</font></div>
+    </td>
+    <td align=middle width="21%">
+      <div align="center"><a href="../accueil.htm"> <img alt="bprecedent.gif (3497 octets)" 
+      src="../../images/bprec.gif" 
+border=0 width="72" height="82"></a></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p align="center"><img src="../../images/lignrfin.gif" width="530" height="4"></p>
+<div class=Section1> 
+
+	<p class="MsoNormal" style="margin-top:6.0pt">Le module éclairage permet la 
+	commande d&#8217;une matrice de 64 LEDS. Dans le système étudié, ce pavé de LEDS 
+	est destiné à servir de source d&#8217;éclairage dont on peut moduler la 
+	luminosité. Cette source est destinée à servir d&#8217;éclairage dans un bloc de 
+	secours. D&#8217;autres applications utilisent la même structure matérielle afin 
+	d&#8217;alimenter des signaux lumineux de type messages d&#8217;alertes&nbsp;; ces messages, 
+	dont l&#8217;importance est liée à la sécurité, nécessitent d&#8217;avoir une 
+	alimentation ininterrompue. Dans ce dernier cas, les messages sont obtenus 
+	par mise en place d&#8217;un cache ajouré devant les blocs de LEDS regroupées par 
+	16 (bloc 1 à 4 pour notre matrice).</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le module d&#8217;éclairage est 
+	commandé par le module de contrôle au travers du bus CAN.</p>
+	<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+	<img border="0" src="solarlum16_fichiers/image002.jpg" width="340" height="202"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">On donne le schéma structurel de ce module&nbsp;:</span></p>
+	<p class="MsoNormal" style="margin-top:6.0pt" align="center">
+	<img border="0" src="solarlum16_fichiers/image004.jpg" width="684" height="458"></p>
+	<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Gestion de la carte.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">Le pilotage de la carte est confié à un microcontrôleur PIC16F876. 
+	La programmation in situ du PIC est assurée depuis le connecteur RJ11. Elle 
+	utilise les broches RB6 et RB7 du PIC. La broche MCLR permet, en mode 
+	programmation d'appliquer la tension de programmation.</span></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<span style="font-family:&quot;Times New Roman&quot;;
+color:black">L&#8217;horloge du processeur est fournie par la sortie SLK du circuit 
+	MCP2510 qui fournit un signal de fréquence 2,5 MHz (la fréquence du quartz 
+	divisée par 8). </span></p>
+	<div align="center">
+	<table class="MsoTableGrid" border="0" cellpadding="0" style="border-width:0; border-collapse: collapse" id="table1">
+		<tr>
+			<td width="295" valign="top" style="width:221.4pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+			<img border="0" src="solarlum16_fichiers/image006.jpg" width="210" height="185"></td>
+			<td width="398" valign="top" style="width:298.65pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">La broche MCLR permet également d'assurer un RESET matériel.
+			</span></p>
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Le superviseur d'alimentation MC34164 est activé en mode normal 
+			par la mise en place d'un cavalier sur le connecteur NICD. Il permet 
+			de produire un RESET matériel dans le cas ou la tension 
+			d'alimentation devient trop faible. </span></p>
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<span style="font-family:&quot;Times New Roman&quot;;
+  color:black">Lors de la programmation ou la mise au point d'un programme, ce 
+			cavalier est à enlevé. Le microcontrôleur fonctionne à une fréquence 
+			de 4 MHz obtenue grâce à un quartz.</span></td>
+		</tr>
+	</table>
+	</div>
+	<h1>Alimentation de la carte.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;alimentation de la carte est 
+	obtenue depuis le bus système.</p>
+	<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+	<img border="0" src="solarlum16_fichiers/image008.jpg" width="368" height="246"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La tension <i>+Velec</i> de 8V 
+	générée par le module énergie permet grâce au régulateur 7805 de fournir la 
+	tension de 5V nécessaire aux différents circuits de la carte.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La matrice de LEDS est 
+	alimentée par la tension <i>+Vapp</i> obtenue par abaissement de la tension
+	<i>+Vbat</i> du bus système et générée par le module énergie. On utilise un 
+	régulateur à découpage construit autour du circuit MC34063 afin d&#8217;améliorer 
+	le rendement de la conversion.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La LED indicateur de présence 
+	tension peut être désactivée par le cavalier prévu à cet effet afin de 
+	diminuer la consommation.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Un interrupteur S permet de 
+	mettre la carte hors tension. Cette interrupteur peut être omis sur 
+	certaines versions (on a alors des «&nbsp;straps&nbsp;» et le module et 
+	continuellement sous tension).</p>
+	<h1>Commande de la matrice à LEDS.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">La matrice, alimentée par la 
+	tension <i>+Vapp</i>, est commandée par le microcontrôleur au moyen de 5 
+	signaux.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Un <i>buffer</i> 8 voies 
+	ULN2803, permet de commander indépendamment chacun des 4 pavés de 16 LEDS 
+	grâce aux 4 signaux <i>BLOCx-LEDS</i>.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La sortie CPP1 du PIC permet 
+	de produire des signaux périodiques à rapport cyclique variable. Cette 
+	sortie peut, au travers du <i>buffer</i> commander l&#8217;ensemble des 4 blocs 
+	donc toute la matrice. </p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le réglage du rapport cyclique 
+	permettant alors de faire varier le niveau de luminosité des LEDS.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le circuit ULN2803 dispose de 
+	sortie à collecteur ouvert ce qui permet de mettre en parallèle un couple de 
+	2 sorties. </p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On pourra, avec la même 
+	structure, soit commander un des blocs de 16 LEDS en tout ou rien, soit 
+	moduler la luminosité de l&#8217;ensemble de la matrice.</p>
+	<p class="MsoNormal" align="center" style="margin-top:6.0pt;text-align:center">
+	<img border="0" src="solarlum16_fichiers/image010.jpg" width="390" height="307"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le niveau d&#8217;intensité dans les 
+	LEDS est réglable par la tension <i>+Vapp</i> qu&#8217;on peut ajuster. Les 
+	résistances de 10 ohms limitent le courant.</p>
+	<h1>Accès au bus CAN.</h1>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Pour l&#8217;accès au bus CAN, on 
+	utilise les éléments suivants&nbsp;:</p>
+	<p class="MsoNormal" align="center" style="margin-bottom:6.0pt;text-align:center">
+	<img border="0" src="solarlum16_fichiers/image012.jpg" width="683" height="194"></p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Le circuit MCP2510 dialogue 
+	avec le microprocesseur de la carte à travers les liaisons suivantes&nbsp;:</p>
+	<ul style="margin-top: 0cm; margin-bottom: 0cm" type="disc">
+		<li class="MsoNormal" style="margin-bottom: 6.0pt">Un bus série 
+		constitué de MSO, MSI et l&#8217;horloge MSCK.</li>
+		<li class="MsoNormal" style="margin-bottom: 6.0pt">Un fils de sélection 
+		de boîtier MCS.</li>
+		<li class="MsoNormal" style="margin-bottom: 6.0pt">La sortie MINT peut 
+		être utilisé pour générer des interruptions pour le microprocesseur (non 
+		activé dans notre cas).</li>
+	</ul>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La liaison du circuit 
+	MCP2510 avec le bus CAN s&#8217;effectue grâce aux broches TXCAN et RXCAN (niveau 
+	TTL) et le circuit d&#8217;interface PCA82C250T qui produit les signaux du bus. Le 
+	bus utilise les signaux VCAN+, VCAN- et GND.</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Le circuit MCP2510 
+	nécessite pour rythmer les signaux du bus CAN d&#8217;un quartz fixé ici à 20 MHz. 
+	La broche CLKOUT produit un signal de 2,5 MHz (division par 8 de la 
+	fréquence du quartz) qui est utilisé pour fournir une horloge au circuit 
+	PIC.</p>
+	<p class="MsoNormal">On notera la présence de la résistance RT de 120 ohms 
+	qui permet d&#8217;assurer, si nécessaire, la terminaison du bus CAN si l&#8217;on met 
+	en place le cavalier prévu.</p>
+	<p class="MsoNormal">La LED «&nbsp;TRAFFIC CAN&nbsp;» sera commandé par le PIC pour 
+	signaler une activité sur le bus CAN.</p>
+	<h1 style="margin-top:6.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:
+0cm;margin-bottom:.0001pt">Etude du logiciel embarqué dans le PIC.</h1>
+	<p class="MsoNormal" style="margin-top:6.0pt">En ce qui concerne le 
+	logiciel, on trouve tout d&#8217;abord les indications relatives à la compilation 
+	du programme pour le PIC.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum16_fichiers/image014.jpg" width="600" height="72"></p>
+	<h2>Gestion du bus CAN.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le driver logiciel du circuit 
+	MCP2510 est pris en compte par la ligne&nbsp;:<br>
+	<img border="0" src="solarlum16_fichiers/image016.jpg" width="611" height="15"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">L&#8217;identifiant utilisé pour ce 
+	module est déclaré&nbsp;:<br>
+	<img border="0" src="solarlum16_fichiers/image018.jpg" width="600" height="30"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">La commande de la LED 
+	d&#8217;activité est également déclarée&nbsp;:<br>
+	<img border="0" src="solarlum16_fichiers/image020.jpg" width="244" height="30"></p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Le bus CAN n&#8217;est utilisé 
+	qu&#8217;en réception par la fonction <i>gest_can</i>&nbsp;. </p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">La réception est opérée par 
+	scrutation au moyen de la commande 
+	<img border="0" src="solarlum16_fichiers/image022.jpg" width="122" height="13">&nbsp;</p>
+	<p class="MsoNormal" style="margin-bottom:6.0pt">Si une réception est 
+	détectée, on examine l&#8217;identifiant et, suivant le cas, on recueille les 
+	données adéquates.</p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum16_fichiers/image024.jpg" width="660" height="149"></p>
+	<h2>Gestion de la matrice de LEDS.</h2>
+	<div align="center">
+	<table class="MsoTableGrid" border="0" cellpadding="0" style="border-width:0; border-collapse: collapse" id="table2">
+		<tr>
+			<td width="347" valign="top" style="width:260.0pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">On trouve la 
+			définition des commandes de la matrice en tout ou rien.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<img border="0" src="solarlum16_fichiers/image026.jpg" width="312" height="114"></p>
+			<p class="MsoNormal" style="margin-top:6.0pt">La matrice de LEDS est 
+			commandée en fonction de la variable <i>ec_com</i> qui indique la 
+			commande à effectuer et de la variable <i>ec_int</i> qui permet de 
+			moduler le niveau d&#8217;éclairage de la matrice.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">La fonction <i>
+			gest_mat</i> est lancée cycliquement par le programme principal.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">S&#8217;il y a eu réception 
+			d&#8217;une commande depuis le bus CAN, flag est alors à 1, on exécute 
+			cette commande.</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">&nbsp;</p>
+			<p class="MsoNormal" style="margin-top:6.0pt">&nbsp;</td>
+			<td width="347" valign="top" style="width:260.05pt;padding:0cm 5.4pt 0cm 5.4pt">
+			<p class="MsoNormal" style="margin-top:6.0pt">
+			<img border="0" src="solarlum16_fichiers/image028.jpg" width="166" height="423"></td>
+		</tr>
+	</table>
+	</div>
+	<h2>Le programme principal.</h2>
+	<p class="MsoNormal" style="margin-top:6.0pt">La déclaration des variables&nbsp;:<br>
+	<img border="0" src="solarlum16_fichiers/image030.jpg" width="567" height="55"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">On déclare les fonctions&nbsp;:<br>
+	<img border="0" src="solarlum16_fichiers/image032.jpg" width="227" height="53"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Reste le programme 
+	principal&nbsp;qui appelle le programme d&#8217;initialisation&nbsp;:<br>
+	<img border="0" src="solarlum16_fichiers/image034.jpg" width="156" height="122"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">Le programme d&#8217;initialisation 
+	initialise le bus CAN et le <i>timer</i>. </p>
+	<p class="MsoNormal" style="margin-top:6.0pt">
+	<img border="0" src="solarlum16_fichiers/image036.jpg" width="311" height="108"></p>
+	<p class="MsoNormal" style="margin-top:6.0pt">&nbsp;</p>
+
+	<p> </div>
+</body>
+</html>
